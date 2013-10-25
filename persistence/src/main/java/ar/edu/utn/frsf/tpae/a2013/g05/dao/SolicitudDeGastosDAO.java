@@ -27,12 +27,23 @@ public interface SolicitudDeGastosDAO {
 	SolicitudDeGastos persistir(SolicitudDeGastos solicitudDeGastos);
 
 	/**
-	 * Obtiene la lista de todas las solicitudes de gastos creadas por un empleado.
+	 * Obtiene la lista de todas las solicitudes de gastos pendientes de un empleado.
+	 *  Es decir aquellas no procesadas.
 	 * @param idEmpleado
 	 *            El número identificador del empleado creador de las solicitudes de gastos.
-	 * @return La lista de todas las solicitudes de gastos creadas por un empleado.
+	 * @return La lista de todas las solicitudes de gastos pendientes de un empleado.
 	 */
-	List<SolicitudDeGastos> listar(int idEmpleado);
+	List<SolicitudDeGastos> listarSolicitudesPendientes(int idEmpleado);
+	
+	
+	/**
+	 * Obtiene la lista de todas las solicitudes de gastos pendientes de un empleado. 
+	 *  Es decir aprobadas, rechazadas y no procesadas
+	 * @param idEmpleado
+	 *            El número identificador del empleado creador de las solicitudes de gastos.
+	 * @return La lista de todas las solicitudes de gastos pendientes de un empleado.
+	 */
+	List<SolicitudDeGastos> listarSolicitudes(int idEmpleado);
 	
 
 	
