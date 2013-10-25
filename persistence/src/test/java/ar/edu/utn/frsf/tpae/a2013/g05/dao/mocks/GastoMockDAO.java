@@ -1,10 +1,11 @@
 /**
  * 
  */
-package ar.edu.utn.frsf.tpae.a2013.g05.dao;
+package ar.edu.utn.frsf.tpae.a2013.g05.dao.mocks;
 
 import java.util.List;
 
+import ar.edu.utn.frsf.tpae.a2013.g05.dao.GastoDAO;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.CentroDeCosto;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Gasto;
