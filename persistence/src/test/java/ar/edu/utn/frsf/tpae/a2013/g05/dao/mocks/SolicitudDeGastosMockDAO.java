@@ -19,19 +19,17 @@ import ar.edu.utn.frsf.tpae.a2013.g05.model.Supervisor;
  */
 public class SolicitudDeGastosMockDAO implements SolicitudDeGastosDAO {
 
-	boolean dbCaida = false;
+
 	@Override
 	public SolicitudDeGastos persistir(SolicitudDeGastos solicitudDeGastos) {
-		if(dbCaida)
-			return null;
+		
 		//Acá persistiría
 		return solicitudDeGastos;
 	}
 
 	@Override
 	public List<SolicitudDeGastos> listarSolicitudesPendientes(int idEmpleado) {
-		if(dbCaida)
-			return null;
+	
 		if(idEmpleado == 1){
 			ArrayList<SolicitudDeGastos> solicitudes = new ArrayList<SolicitudDeGastos>();
 			solicitudes.add(new SolicitudDeGastos(1, new CentroDeCosto(1, "Centro Uno"), "Gastos en viajes a CBA", (float) 12334.34, "No Procesada", new Supervisor(3, "Dario", "5678", "De Filippis",
@@ -53,8 +51,7 @@ public class SolicitudDeGastosMockDAO implements SolicitudDeGastosDAO {
 
 	@Override
 	public List<SolicitudDeGastos> listarSolicitudes(int idEmpleado) {
-		if(dbCaida)
-			return null;
+		
 		if(idEmpleado == 1){
 			ArrayList<SolicitudDeGastos> solicitudes = new ArrayList<SolicitudDeGastos>();
 			solicitudes.add(new SolicitudDeGastos(1, new CentroDeCosto(1, "Centro Uno"), "Gastos en viajes a CBA", 12354, "No Procesada", new Supervisor(3, "Dario", "5678", "De Filippis",
