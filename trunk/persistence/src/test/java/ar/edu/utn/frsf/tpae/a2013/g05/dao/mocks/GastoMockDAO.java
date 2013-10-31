@@ -55,21 +55,22 @@ public class GastoMockDAO implements GastoDAO{
 			
 		if (dbCaida)
 			return null;
-		if (centrosDeCosto == null && empleados == null){
+		if (centrosDeCosto.size()==0 && empleados.size()== 0){
 			listaDeGastos.add(gastoUno);
 			listaDeGastos.add(gastoDos);
 			listaDeGastos.add(gastoTres);
 			listaDeGastos.add(gastoCuatro);
 			return listaDeGastos;
 		}
-		else if (centrosDeCosto.get(0).getId() == 1 && empleados == null)
+		else if (centrosDeCosto.get(0).getId() == 1 && empleados.size()== 0)
 		{
 			listaDeGastos.add(gastoUno);
 			listaDeGastos.add(gastoTres);
 			listaDeGastos.add(gastoCuatro);
 			return listaDeGastos;
 		}
-		else if(centrosDeCosto == null && empleados.get(0).getId() == 1){
+		else if(centrosDeCosto.size()==0 && empleados.get(0).getId() == 1)
+		{
 			listaDeGastos.add(gastoUno);
 			listaDeGastos.add(gastoDos);
 			listaDeGastos.add(gastoTres);
