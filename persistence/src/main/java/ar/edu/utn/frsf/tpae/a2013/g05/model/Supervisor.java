@@ -12,6 +12,26 @@ import java.util.Date;
 public class Supervisor extends Usuario {
 	private Date ultimoAcceso;
 
+	
+	
+	
+	
+
+	/**
+	 * @param id
+	 * @param usuario
+	 * @param password
+	 * @param apellido
+	 * @param nombre
+	 * @param dni
+	 * @param ultimoAcceso
+	 */
+	public Supervisor(int id, String usuario, String password, String apellido,
+			String nombre, String dni, Date ultimoAcceso) {
+		super(id, usuario, password, apellido, nombre, dni);
+		this.ultimoAcceso = ultimoAcceso;
+	}
+
 	/**
 	 * @return the ultimoAcceso
 	 */

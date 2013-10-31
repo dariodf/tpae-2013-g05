@@ -15,6 +15,30 @@ public class SolicitudDeGastos {
 	private float importeEstimado;
 	private String estado;
 	private Supervisor supervisor;
+	private Empleado empleado;
+	
+	
+	
+	
+	/**
+	 * @param id
+	 * @param centroDeCosto
+	 * @param descripcion
+	 * @param importeEstimado
+	 * @param estado
+	 * @param supervisor
+	 */
+	public SolicitudDeGastos(int id, CentroDeCosto centroDeCosto,
+			String descripcion, float importeEstimado, String estado,
+			Supervisor supervisor, Empleado empleado) {
+		this.id = id;
+		this.centroDeCosto = centroDeCosto;
+		this.descripcion = descripcion;
+		this.importeEstimado = importeEstimado;
+		this.estado = estado;
+		this.supervisor = supervisor;
+		this.empleado = empleado;
+	}
 	/**
 	 * @return the id
 	 */
@@ -87,6 +111,19 @@ public class SolicitudDeGastos {
 	public void setSupervisor(Supervisor supervisor) {
 		this.supervisor = supervisor;
 	}
+	/**
+	 * @return the empleado
+	 */
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+	/**
+	 * @param empleado the empleado to set
+	 */
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
+	
 
 	
 }

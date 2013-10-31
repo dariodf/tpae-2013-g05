@@ -13,6 +13,34 @@ public class Empleado extends Usuario {
 	private String nroCuenta;
 	private String telefono;
 	private String email;
+	
+	
+	
+	
+	
+	/**
+	 * @param id
+	 * @param usuario
+	 * @param password
+	 * @param apellido
+	 * @param nombre
+	 * @param dni
+	 * @param cargo
+	 * @param cuil
+	 * @param nroCuenta
+	 * @param telefono
+	 * @param email
+	 */
+	public Empleado(int id, String usuario, String password, String apellido,
+			String nombre, String dni, String cargo, String cuil,
+			String nroCuenta, String telefono, String email) {
+		super(id, usuario, password, apellido, nombre, dni);
+		this.cargo = cargo;
+		this.cuil = cuil;
+		this.nroCuenta = nroCuenta;
+		this.telefono = telefono;
+		this.email = email;
+	}
 	/**
 	 * @return the cargo
 	 */
