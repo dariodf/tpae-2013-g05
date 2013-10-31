@@ -17,6 +17,23 @@ public class Gasto {
 	private String nroFactura;
 	
 	
+	
+	
+	/**
+	 * @param id
+	 * @param solicitudDeGastos
+	 * @param fecha
+	 * @param importe
+	 * @param nroFactura
+	 */
+	public Gasto(int id, SolicitudDeGastos solicitudDeGastos, Date fecha,
+			float importe, String nroFactura) {
+		this.id = id;
+		this.solicitudDeGastos = solicitudDeGastos;
+		this.fecha = fecha;
+		this.importe = importe;
+		this.nroFactura = nroFactura;
+	}
 	/**
 	 * @return the id
 	 */

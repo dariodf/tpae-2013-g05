@@ -14,6 +14,27 @@ public abstract class Usuario {
 	private String apellido;
 	private String nombre;
 	private String dni;
+	
+	
+	
+	
+	/**
+	 * @param id
+	 * @param usuario
+	 * @param password
+	 * @param apellido
+	 * @param nombre
+	 * @param dni
+	 */
+	public Usuario(int id, String usuario, String password, String apellido,
+			String nombre, String dni) {
+		this.id = id;
+		this.usuario = usuario;
+		this.password = password;
+		this.apellido = apellido;
+		this.nombre = nombre;
+		this.dni = dni;
+	}
 	/**
 	 * @return the id
 	 */

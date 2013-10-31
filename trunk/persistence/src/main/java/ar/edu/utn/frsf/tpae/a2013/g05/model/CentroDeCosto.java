@@ -10,6 +10,18 @@ package ar.edu.utn.frsf.tpae.a2013.g05.model;
 public class CentroDeCosto {
 	private int id;
 	private String nombre;
+	
+	
+	
+	
+	/**
+	 * @param id
+	 * @param nombre
+	 */
+	public CentroDeCosto(int id, String nombre) {
+		this.id = id;
+		this.nombre = nombre;
+	}
 	/**
 	 * @return the id
 	 */

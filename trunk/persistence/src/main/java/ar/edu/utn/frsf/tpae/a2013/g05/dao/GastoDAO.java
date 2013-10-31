@@ -26,7 +26,7 @@ public interface GastoDAO {
 	 *         una operación de creación, el objeto retornado tendrá seteado el
 	 *         identificador.
 	 */
-	Gasto persistir(int idGasto);
+	Gasto persistir(Gasto gasto);
 
 	
 	
