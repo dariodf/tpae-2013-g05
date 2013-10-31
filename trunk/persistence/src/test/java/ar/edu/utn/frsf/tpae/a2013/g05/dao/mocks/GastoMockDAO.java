@@ -20,11 +20,9 @@ import ar.edu.utn.frsf.tpae.a2013.g05.model.Supervisor;
  */
 public class GastoMockDAO implements GastoDAO{
 
-	boolean dbCaida = false;
+	
 	@Override
 	public Gasto persistir(Gasto gasto) {
-		if (dbCaida)
-			return null;
 		// Acá persistiría.
 		return gasto;
 	}
@@ -53,8 +51,6 @@ public class GastoMockDAO implements GastoDAO{
 		
 		
 			
-		if (dbCaida)
-			return null;
 		if (centrosDeCosto.size()==0 && empleados.size()== 0){
 			listaDeGastos.add(gastoUno);
 			listaDeGastos.add(gastoDos);

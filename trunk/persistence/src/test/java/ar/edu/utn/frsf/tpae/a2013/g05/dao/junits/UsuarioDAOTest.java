@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 import java.util.Date;
 
 
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,9 +34,9 @@ public class UsuarioDAOTest {
 		usuarioDAO = UsuarioDAOFactory.getUsuarioDAO();
 	}
 
-
+	
 	@Test
-	public void validarLogin(){
+	public void validarLogin() {
 		
 		Usuario usuario = new Empleado(1, "Agustin","1234", "Martinez",
 				"Agustin", "32123456", "Programador Java Junior", "20321234568",
@@ -61,5 +62,5 @@ public class UsuarioDAOTest {
 		assertEquals(usuario.getClass(), usuarioRetornado.getClass()); // Probamos que traiga un Empleado.
 		
 	}
-
+	
 }

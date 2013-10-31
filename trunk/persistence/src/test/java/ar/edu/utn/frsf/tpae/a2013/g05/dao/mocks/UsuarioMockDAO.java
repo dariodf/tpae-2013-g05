@@ -13,11 +13,12 @@ import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
  *
  */
 public class UsuarioMockDAO implements UsuarioDAO{
-
+	
 	@Override
 	public Usuario validarUsuario(String usuario, String password) {
+		
 		// En el caso de que el usuario no exista, devuelve null
-		Usuario usuarioTemporal = null;
+		Usuario usuarioTemporal;
 		
 		// Casos para cuando los usuarios seamos algunos de los tres desarrolladores, se setea lo correspondiente
 		if(0 == usuario.compareTo("Agustin") && 0 == password.compareTo("1234")){
