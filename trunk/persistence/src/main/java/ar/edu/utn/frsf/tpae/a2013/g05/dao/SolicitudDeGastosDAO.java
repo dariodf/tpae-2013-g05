@@ -28,7 +28,7 @@ public interface SolicitudDeGastosDAO {
 
 	/**
 	 * Obtiene la lista de todas las solicitudes de gastos pendientes de un empleado.
-	 *  Es decir aquellas no procesadas.
+	 *  Es decir, aquellas no procesadas.
 	 * @param idEmpleado
 	 *            El número identificador del empleado creador de las solicitudes de gastos.
 	 * @return La lista de todas las solicitudes de gastos pendientes de un empleado.
@@ -37,8 +37,8 @@ public interface SolicitudDeGastosDAO {
 	
 	
 	/**
-	 * Obtiene la lista de todas las solicitudes de gastos pendientes de un empleado. 
-	 *  Es decir aprobadas, rechazadas y no procesadas
+	 * Obtiene la lista de todas las solicitudes de gastos de un empleado. 
+	 *  Es decir: aprobadas, rechazadas y no procesadas
 	 * @param idEmpleado
 	 *            El número identificador del empleado creador de las solicitudes de gastos.
 	 * @return La lista de todas las solicitudes de gastos pendientes de un empleado.
