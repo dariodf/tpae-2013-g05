@@ -24,14 +24,11 @@ import ar.edu.utn.frsf.tpae.a2013.g05.model.Supervisor;
  * @author Dario
  *
  */
-public class GastoDAOTest {
+public class GastoDAOTest{
 
 	private GastoDAO gastoDAO; 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		gastoDAO = GastoDAOFactory.getGastoDAO();
 	}
 

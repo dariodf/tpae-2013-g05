@@ -25,12 +25,8 @@ import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 public class UsuarioDAOTest {
 
 	private UsuarioDAO usuarioDAO;
-
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp(){
 		usuarioDAO = UsuarioDAOFactory.getUsuarioDAO();
 	}
 

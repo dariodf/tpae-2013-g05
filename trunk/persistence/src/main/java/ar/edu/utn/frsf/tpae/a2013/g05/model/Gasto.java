@@ -5,18 +5,38 @@ package ar.edu.utn.frsf.tpae.a2013.g05.model;
 
 import java.util.Date;
 
+import javax.persistence.*;
+
 /**
  * @author root
  *
  */
+@Entity
+@Table(name="gst")
 public class Gasto {
-	private int id;
-	private SolicitudDeGastos solicitudDeGastos;
-	private Date fecha;
-	private float importe;
-	private String nroFactura;
+        
+        @Id
+        @Column(name="gst_id")
+        @SequenceGenerator(name = "SecuenciaGasto", sequenceName = "seq_gst", allocationSize = 1)
+        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SecuenciaGasto")
+        private Integer id;
+        
+        @ManyToOne
+        @JoinColumn(name="gst_slg_id")
+        private SolicitudDeGastos solicitudDeGastos;
+        
+        @Column(name="gst_fech")
+        @Temporal(TemporalType.DATE)
+        private Date fecha;
+        
+        @Column(name="gst_imp")
+        private float importe;
+        
+        @Column(name="gst_nro_fact")
+        private String nroFactura;
 	
-	
+        @Column(name="gst_cmt_emp")
+        private String comentario;
 	
 	
 	/**
@@ -93,6 +113,18 @@ public class Gasto {
 	 */
 	public void setNroFactura(String nroFactura) {
 		this.nroFactura = nroFactura;
+	}
+	/**
+	 * @return the comentario
+	 */
+	public String getComentario() {
+		return comentario;
+	}
+	/**
+	 * @param comentario the comentario to set
+	 */
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
 	
 }

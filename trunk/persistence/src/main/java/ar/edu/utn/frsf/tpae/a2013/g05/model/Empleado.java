@@ -3,16 +3,30 @@
  */
 package ar.edu.utn.frsf.tpae.a2013.g05.model;
 
+import javax.persistence.*;
+
 /**
  * @author root
  *
  */
+@Entity
+@Table(name="emp")
 public class Empleado extends Usuario {
-	private String cargo;
-	private String cuil;
-	private String nroCuenta;
-	private String telefono;
-	private String email;
+
+        @Column(name="emp_crg")
+        private String cargo;
+        
+        @Column(name="emp_ncta")
+        private String nroCuenta;
+        
+        @Column(name="emp_tel")
+        private String telefono;
+        
+        @Column(name="emp_cuil")
+        private String cuil;
+        
+        @Column(name="emp_mail")
+        private String email;
 	
 	
 	

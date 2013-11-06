@@ -3,12 +3,25 @@
  */
 package ar.edu.utn.frsf.tpae.a2013.g05.model;
 
+import javax.persistence.*;
+
 /**
  * @author root
  *
  */
+
+
+@Entity
+@Table(name = "cco")
 public class CentroDeCosto {
-	private int id;
+	
+	@Id
+    @Column(name="cco_id")
+    @SequenceGenerator(name = "SecuenciaCentroDeCosto", sequenceName = "seq_cco", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SecuenciaCentroDeCosto")
+    private int id;
+	
+	@Column (name = "cco_nom")
 	private String nombre;
 	
 	
