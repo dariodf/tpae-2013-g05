@@ -25,11 +25,8 @@ import ar.edu.utn.frsf.tpae.a2013.g05.model.Supervisor;
 public class SolicitudDeGastosDAOTest {
 
 	private SolicitudDeGastosDAO solicitudDeGastosDAO;
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp(){
 		solicitudDeGastosDAO = SolicitudDeGastosDAOFactory.getSolicitudDeGastosDAO();
 	}
 

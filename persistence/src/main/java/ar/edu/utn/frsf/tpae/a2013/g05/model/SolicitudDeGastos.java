@@ -3,21 +3,45 @@
  */
 package ar.edu.utn.frsf.tpae.a2013.g05.model;
 
+import javax.persistence.*;
+
 /**
  * @author root
  *
  */
+@Entity
+@Table(name="slg")
 public class SolicitudDeGastos {
 
-	private int id;
-	private CentroDeCosto centroDeCosto;
-	private String descripcion;
-	private float importeEstimado;
-	private String estado;
-	private Supervisor supervisor;
-	private Empleado empleado;
+	@Id
+    @Column(name="slg_id")
+    @SequenceGenerator(name = "SecuenciaSolicitud", sequenceName = "seq_slg", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SecuenciaSolicitud")
+    private Integer id;
+    
+    @ManyToOne
+    @JoinColumn(name="slg_emp_id")
+    private Empleado empleado;
+    
+    @ManyToOne
+    @JoinColumn(name="slg_cco_id")
+    private CentroDeCosto centroDeCosto;
+    
+    @Column(name="slg_desc")
+    private String descripcion;
+    
+    @Column(name="slg_imp_est")
+    private float importeEstimado;
+    
+    @Column(name="slg_est")
+    private String estado; 
+    
+    @ManyToOne
+    @JoinColumn(name="slg_spv_id")
+    private Supervisor supervisor;
 	
-	
+	@Column(name="slg_cmt_spv")
+	private String comentario;
 	
 	
 	/**
@@ -122,6 +146,18 @@ public class SolicitudDeGastos {
 	 */
 	public void setEmpleado(Empleado empleado) {
 		this.empleado = empleado;
+	}
+	/**
+	 * @return the comentario
+	 */
+	public String getComentario() {
+		return comentario;
+	}
+	/**
+	 * @param comentario the comentario to set
+	 */
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
 	
 

@@ -3,16 +3,36 @@
  */
 package ar.edu.utn.frsf.tpae.a2013.g05.model;
 
+import javax.persistence.*;
+
 /**
  * @author 
  *
  */
+
+@Entity
+@Table(name = "usr")
+@Inheritance(strategy=InheritanceType.JOINED)
 public abstract class Usuario {
+	@Id
+	@Column(name="usr_id")
+	@SequenceGenerator(name = "SecuenciaUsuario", sequenceName = "seq_usr", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SecuenciaUsuario")
 	private int id;
+	
+	@Column(name="usr_usr")
 	private String usuario;
+	
+	@Column(name="usr_pwd")
 	private String password;
+	
+	@Column(name="usr_ape")
 	private String apellido;
+	
+	@Column(name="usr_nom")
 	private String nombre;
+	
+	@Column(name="usr_dni")
 	private String dni;
 	
 	

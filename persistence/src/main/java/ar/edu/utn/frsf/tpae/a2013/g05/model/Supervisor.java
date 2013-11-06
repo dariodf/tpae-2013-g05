@@ -5,12 +5,20 @@ package ar.edu.utn.frsf.tpae.a2013.g05.model;
 
 import java.util.Date;
 
+import javax.persistence.*;
+
 /**
  * @author root
  *
  */
-public class Supervisor extends Usuario {
-	private Date ultimoAcceso;
+
+@Entity
+@Table(name="spv")
+public class Supervisor extends Usuario{
+
+        @Column(name="spv_ult_acc")
+        @Temporal(TemporalType.DATE)
+        private Date ultimoAcceso;
 
 	
 	
