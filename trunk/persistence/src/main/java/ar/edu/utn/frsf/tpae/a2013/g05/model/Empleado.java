@@ -31,7 +31,7 @@ public class Empleado extends Usuario {
 	
 	
 	
-	
+	public Empleado(){};//Constructor por defecto para Hibernate.
 	/**
 	 * @param id
 	 * @param usuario

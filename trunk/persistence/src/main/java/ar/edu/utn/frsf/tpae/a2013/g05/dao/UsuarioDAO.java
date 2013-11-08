@@ -23,4 +23,6 @@ public interface UsuarioDAO {
 	 * 		Si los valores son incorrectos, se retorna null.
 	 */
 	Usuario validarUsuario(String usuario, String password);
+	
+	
 }

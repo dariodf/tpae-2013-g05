@@ -37,6 +37,8 @@ public abstract class Usuario {
 	
 	
 	
+	public Usuario(){}//Constructor por defecto para Hibernate.
+	
 	
 	/**
 	 * @param id
@@ -45,7 +47,7 @@ public abstract class Usuario {
 	 * @param apellido
 	 * @param nombre
 	 * @param dni
-	 */
+	 */	
 	public Usuario(int id, String usuario, String password, String apellido,
 			String nombre, String dni) {
 		this.id = id;

@@ -25,7 +25,7 @@ public class CentroDeCosto {
 	private String nombre;
 	
 	
-	
+	public CentroDeCosto(){};//Constructor por defecto para Hibernate.
 	
 	/**
 	 * @param id
