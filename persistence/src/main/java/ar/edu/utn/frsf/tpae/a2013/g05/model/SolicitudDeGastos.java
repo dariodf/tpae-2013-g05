@@ -44,6 +44,7 @@ public class SolicitudDeGastos {
 	private String comentario;
 	
 	
+    public SolicitudDeGastos(){};//Constructor por defecto para Hibernate.
 	/**
 	 * @param id
 	 * @param centroDeCosto

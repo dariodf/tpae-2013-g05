@@ -40,7 +40,6 @@ public class UsuarioDAOTest {
 		Usuario usuarioRetornado = usuarioDAO.validarUsuario("Agustin","1234");
 		assertEquals(usuarioRetornado.getId(), usuario.getId()); // Probamos que el Id sea el correcto.
 		
-		
 		usuarioRetornado = usuarioDAO.validarUsuario("Carlos","1234");
 		assertEquals(usuarioRetornado, null); // Probamos que la validación no es correcta, por lo tanto retorna null.
 		
@@ -56,7 +55,6 @@ public class UsuarioDAOTest {
 				"Daniela", "31654321", "Programador Java Senior", "28316543218",
 				"098765432109876543210987654321", "156654321", "daniela.greca@gmail.com");
 		assertEquals(usuario.getClass(), usuarioRetornado.getClass()); // Probamos que traiga un Empleado.
-		
 	}
 	
 }

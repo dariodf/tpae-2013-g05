@@ -38,7 +38,7 @@ public class Gasto {
         @Column(name="gst_cmt_emp")
         private String comentario;
 	
-	
+    public Gasto(){};//Constructor por defecto para Hibernate.
 	/**
 	 * @param id
 	 * @param solicitudDeGastos

@@ -23,7 +23,7 @@ public class Supervisor extends Usuario{
 	
 	
 	
-	
+    public Supervisor(){};//Constructor por defecto para Hibernate.
 
 	/**
 	 * @param id

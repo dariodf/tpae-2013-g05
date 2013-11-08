@@ -2,7 +2,6 @@
 <!DOCTYPE hibernate-configuration PUBLIC
     "-//Hibernate/Hibernate Configuration DTD//EN"
     "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
-
 <hibernate-configuration>
 
   <session-factory>
@@ -13,7 +12,6 @@
     <property name="connection.username">postgres</property>
     <property name="connection.password">root</property>
     <property name="connection.pool_size">1</property>
-    <property name="hibernate.hbm2ddl.auto">create</property>
     
     <!-- Dialecto SQL. -->
     <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
@@ -24,12 +22,12 @@
     <!-- Mostrar SQL generado. -->
     <property name="show_sql">true</property>
 
-    <mapping class="ar.edu.utn.frsf.tpae.a2013.g04.persistence.model.Usuario" />
-    <mapping class="ar.edu.utn.frsf.tpae.a2013.g04.persistence.model.Supervisor" />
-    <mapping class="ar.edu.utn.frsf.tpae.a2013.g04.persistence.model.Empleado" />
-    <mapping class="ar.edu.utn.frsf.tpae.a2013.g04.persistence.model.CentroCosto" />
-    <mapping class="ar.edu.utn.frsf.tpae.a2013.g04.persistence.model.Gasto" />
-    <mapping class="ar.edu.utn.frsf.tpae.a2013.g04.persistence.model.SolicitudDeGasto" />
+    <mapping class="ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario" />
+    <mapping class="ar.edu.utn.frsf.tpae.a2013.g05.model.Supervisor" />
+    <mapping class="ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado" />
+    <mapping class="ar.edu.utn.frsf.tpae.a2013.g05.model.CentroDeCosto" />
+    <mapping class="ar.edu.utn.frsf.tpae.a2013.g05.model.Gasto" />
+    <mapping class="ar.edu.utn.frsf.tpae.a2013.g05.model.SolicitudDeGastos" />
     
     
 	
