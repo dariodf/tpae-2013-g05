@@ -14,7 +14,10 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 import ar.edu.utn.frsf.tpae.a2013.g05.dao.SolicitudDeGastosDAO;
+import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.SolicitudDeGastos;
+import ar.edu.utn.frsf.tpae.a2013.g05.model.Supervisor;
+import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 
 /**
  * @author Dario
@@ -35,18 +38,48 @@ public class SolicitudDeGastosHibernate implements SolicitudDeGastosDAO {
     
 	@Override
 	public SolicitudDeGastos persistir(SolicitudDeGastos solicitudDeGastos) {
-		return null;
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(solicitudDeGastos);
+		session.getTransaction().commit();
+		Query query = session.createQuery("FROM SolicitudDeGastos WHERE id=:id");
+		query.setInteger("id", solicitudDeGastos.getId());
+		if (query.list().isEmpty())
+			return null;
+		SolicitudDeGastos solicitudRetorno = (SolicitudDeGastos) query.uniqueResult();
+		session.close();
+		return solicitudRetorno;
 	}
 
 	@Override
 	public List<SolicitudDeGastos> listarSolicitudesPendientes(int idEmpleado) {
-		return null;
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		Query query = session.createQuery("FROM SolicitudDeGastos WHERE empleado.id=:idEmpleado AND estado=:estado");
+		query.setInteger("idEmpleado", idEmpleado);
+		query.setString("estado", "No Procesada");
+		if (query.list().isEmpty())
+			return null;
+		List<SolicitudDeGastos> listaRetorno = query.list();
+		
+		session.close();
+		return listaRetorno;
 	}
 
 	@Override
 	public List<SolicitudDeGastos> listarSolicitudes(int idEmpleado) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		Query query = session.createQuery("FROM SolicitudDeGastos WHERE empleado.id=:idEmpleado");
+		query.setInteger("idEmpleado", idEmpleado);
+		if (query.list().isEmpty())
+			return null;
+		List<SolicitudDeGastos> listaRetorno = query.list();
+		
+		session.close();
+		return listaRetorno;		
 	}
 
 }
