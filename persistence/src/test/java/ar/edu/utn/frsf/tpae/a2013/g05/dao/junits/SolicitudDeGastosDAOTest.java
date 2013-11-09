@@ -33,7 +33,7 @@ public class SolicitudDeGastosDAOTest {
 	@Test
 	public void validarPersistencia() {
 		
-		SolicitudDeGastos solicitudDeGastos = new SolicitudDeGastos(1, new CentroDeCosto(1, "Centro Uno"), "Gastos en viajes a CBA", 12354, "No Procesada", new Supervisor(3, "Dario", "5678", "De Filippis",
+		SolicitudDeGastos solicitudDeGastos = new SolicitudDeGastos(1, new CentroDeCosto(1, "Centro Uno"), "Gastos en viajes a CBA", (float) 12354.54, "No Procesada", new Supervisor(3, "Dario", "5678", "De Filippis",
 				"Dario", "30789456", new Date()), new Empleado(1, "Agustin","1234", "Martinez",
 						"Agustin", "32123456", "Programador Java Junior", "20321234568",
 						"123456789012345678901234567890", "156123456", "mrtnz.agustin@gmail.com"));
@@ -61,7 +61,7 @@ public class SolicitudDeGastosDAOTest {
 		
 		List<SolicitudDeGastos> listaSolicitudes = solicitudDeGastosDAO.listarSolicitudes(1);
 		for (SolicitudDeGastos solicitudDeGastos : listaSolicitudes)
-			assertEquals(solicitudDeGastos.getEmpleado().getId(), 1); // Probamos que las solicitudes que se traigan sean del usuario especificado.
+			assertEquals(solicitudDeGastos.getEmpleado( ).getId(), 1); // Probamos que las solicitudes que se traigan sean del usuario especificado.
 		
 		
 		listaSolicitudes= solicitudDeGastosDAO.listarSolicitudesPendientes(43);
