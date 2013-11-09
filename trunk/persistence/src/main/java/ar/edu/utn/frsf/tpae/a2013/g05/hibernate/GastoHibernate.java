@@ -18,6 +18,7 @@ import ar.edu.utn.frsf.tpae.a2013.g05.dao.GastoDAO;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.CentroDeCosto;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Gasto;
+import ar.edu.utn.frsf.tpae.a2013.g05.model.SolicitudDeGastos;
 
 /**
  * @author Dario
@@ -42,9 +43,13 @@ public class GastoHibernate implements GastoDAO {
 		session.beginTransaction();
 		session.save(gasto);
 		session.getTransaction().commit();
+		Query query = session.createQuery("FROM Gasto WHERE id=:id");
+		query.setInteger("id", gasto.getId());
+		if (query.list().isEmpty())
+			return null;
+		Gasto gastoRetorno = (Gasto) query.uniqueResult();
 		session.close();
-
-		return gasto;
+		return gastoRetorno;
 	}
 
 	@Override
@@ -52,10 +57,33 @@ public class GastoHibernate implements GastoDAO {
 			List<Empleado> empleados) {
 		
 		Session session = sessionFactory.openSession();
+		Query query;
+		switch ((centrosDeCosto.size() == 0)? ((empleados.size()==0)? 0: 1):((empleados.size()==0)? 2: 3)) {
+		case 0:
+			query = session.createQuery("FROM Gasto");
+			break;
+		case 1:
+			query = session.createQuery("FROM Gasto WHERE solicitudDeGastos.empleado=:empleados");
+			query.setParameterList("empleados", empleados);
+			break;
+		case 2:
+			query = session.createQuery("FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto");
+			query.setParameterList("centrosdecosto", centrosDeCosto);
+			break;
+		case 3:
+			query = session.createQuery("FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto AND solicitudDeGastos.empleado=:empleados");
+			query.setParameterList("centrosdecosto", centrosDeCosto);
+			query.setParameterList("empleados", empleados);
+			break;
+
+		default:
+			query = null;
+			return null;
+		}
+		 
 		
-		Query query = session.createQuery("SELECT FROM gst, slg WHERE gst_slg_id=sgl_id slg_cco=:centrosdecosto AND slg_emp_id=:empleados"); //TODO: Ver consulta
-		query.setParameterList("centrosdecosto", centrosDeCosto);
-		query.setParameterList("empleados", empleados);
+		
+		
 		if (query.list().isEmpty())
 			return null;
 		List<Gasto> listaGastosSeleccionados=query.list();
