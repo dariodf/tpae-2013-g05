@@ -3,6 +3,8 @@
  */
 package ar.edu.utn.frsf.tpae.a2013.g05.hibernate;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -70,6 +72,19 @@ public class UsuarioHibernate implements UsuarioDAO {
 		session.close();
 		
 		return usuarioRetorno;
+	}
+
+	@Override
+	public List<Usuario> listarEmpleados() {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		Query query = session.createQuery("FROM Empleado");
+		if (query.list().isEmpty())
+			return null;
+		List<Usuario> usuariosRetorno = query.list();		
+		session.close();				
+		return usuariosRetorno;
 	}
 
 }

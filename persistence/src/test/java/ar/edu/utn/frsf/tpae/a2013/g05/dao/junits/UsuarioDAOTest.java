@@ -9,6 +9,8 @@ import java.util.Date;
 
 
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -56,5 +58,17 @@ public class UsuarioDAOTest {
 				"098765432109876543210987654321", "156654321", "daniela.greca@gmail.com");
 		assertEquals(usuario.getClass(), usuarioRetornado.getClass()); // Probamos que traiga un Empleado.
 	}
+	
+	
+	@Test
+	public void validarListarEmpleados() {
+		
+		List<Usuario> listaUsuarios = usuarioDAO.listarEmpleados();
+		for (int i=0; i<listaUsuarios.size();i++)
+		{
+			assertEquals(i+1, listaUsuarios.get(i).getId()); // Probamos que traiga todos los empleados comprobando que los traiga secuencialmente.
+		}
+	}
+	
 	
 }

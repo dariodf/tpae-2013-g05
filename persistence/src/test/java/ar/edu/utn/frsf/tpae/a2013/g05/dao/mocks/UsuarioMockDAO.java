@@ -1,6 +1,8 @@
 package ar.edu.utn.frsf.tpae.a2013.g05.dao.mocks;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import ar.edu.utn.frsf.tpae.a2013.g05.dao.UsuarioDAO;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
@@ -40,6 +42,18 @@ public class UsuarioMockDAO implements UsuarioDAO{
 		}
 		
 		return null;
+	}
+
+	@Override
+	public List<Usuario> listarEmpleados() {
+		List<Usuario> listaRetorno = new ArrayList<Usuario>();
+		listaRetorno.add(new Empleado(1, "Agustin","1234", "Martinez",
+				"Agustin", "32123456", "Programador Java Junior", "20321234568",
+				"123456789012345678901234567890", "156123456", "mrtnz.agustin@gmail.com"));
+		listaRetorno.add(new Empleado(2, "Daniela","3456", "Greca",
+					"Daniela", "31654321", "Programador Java Senior", "28316543218",
+					"098765432109876543210987654321", "156654321", "daniela.greca@gmail.com"));
+		return listaRetorno;
 	}
 
 }
