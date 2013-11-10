@@ -3,6 +3,8 @@
  */
 package ar.edu.utn.frsf.tpae.a2013.g05.dao;
 
+import java.util.List;
+
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 
 /**
@@ -24,5 +26,11 @@ public interface UsuarioDAO {
 	 */
 	Usuario validarUsuario(String usuario, String password);
 	
+	/**
+	 * 		Busca y retorna la lista completa de empleados de la empresa.
+	 * @return
+	 * 		Lista de los empleados.
+	 */
+	List<Usuario> listarEmpleados();
 	
 }

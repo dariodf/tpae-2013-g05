@@ -14,10 +14,7 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 import ar.edu.utn.frsf.tpae.a2013.g05.dao.SolicitudDeGastosDAO;
-import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.SolicitudDeGastos;
-import ar.edu.utn.frsf.tpae.a2013.g05.model.Supervisor;
-import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 
 /**
  * @author Dario

@@ -18,7 +18,6 @@ import ar.edu.utn.frsf.tpae.a2013.g05.dao.GastoDAO;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.CentroDeCosto;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Gasto;
-import ar.edu.utn.frsf.tpae.a2013.g05.model.SolicitudDeGastos;
 
 /**
  * @author Dario
