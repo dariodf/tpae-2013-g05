@@ -62,12 +62,29 @@
       <version>3.12.1.GA</version>
     </dependency>
 
-<!-- dependency junit --> 
-      <dependency> 
-        <groupId>junit</groupId> 
-	<artifactId>junit</artifactId> 
-        <version>4.11</version> 
-      </dependency> 
+<!-- Spring -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring</artifactId>
+        <version>2.5.6.SEC03</version>
+      </dependency>
+
+      <!-- Testing. -->
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <!--
+          <version>4.10</version>
+          https://jira.springsource.org/browse/SPR-5145
+        -->
+        <version>4.4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>2.5.6.SEC03</version>
+      </dependency>
+
     </dependencies> 
   </dependencyManagement> 
  
