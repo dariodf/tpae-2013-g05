@@ -1,90 +1,81 @@
-/**
- * 
- */
 package ar.edu.utn.frsf.tpae.a2013.g05.hibernate;
 
 import java.util.List;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import ar.edu.utn.frsf.tpae.a2013.g05.dao.UsuarioDAO;
-import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
-import ar.edu.utn.frsf.tpae.a2013.g05.model.Supervisor;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 
 /**
  * @author Dario
- *
+ * 
  */
+@Component
 public class UsuarioHibernate implements UsuarioDAO {
 
-    private static SessionFactory  sessionFactory = configureSessionFactory();
-    private static ServiceRegistry serviceRegistry;
+	private SessionFactory sessionFactory;
 
-    
-    
-    private static SessionFactory configureSessionFactory() throws HibernateException {
-        Configuration configuration = new Configuration();
-        configuration.configure();
-        serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();        
-        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        return sessionFactory;
-    }
-	
+	// Setter utilizado por Spring.
+	@Autowired(required = true)
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
+	private Session getCurrentSession() {
+		return sessionFactory.getCurrentSession();
+	}
+
 	@Override
 	public Usuario validarUsuario(String usuario, String password) {
-		Usuario usuarioRetorno;
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-
-		Query query = session.createQuery("FROM Usuario WHERE usuario=:usuario AND password=:password");
+		Query query = getCurrentSession().createQuery("FROM Usuario WHERE usuario=:usuario AND password=:password");
 		query.setString("usuario", usuario);
 		query.setString("password", password);
-		if (query.list().isEmpty())
-			return null;
 
-		
-		Usuario usuarioTemporal= (Usuario) query.uniqueResult();
-		
-		query = session.createQuery("FROM Empleado WHERE id=:id");
-		query.setInteger("id", usuarioTemporal.getId());
-		if (query.list().isEmpty())
-		{
-			query = session.createQuery("FROM Supervisor WHERE id=:id");
-			query.setInteger("id", usuarioTemporal.getId());
-			if (query.list().isEmpty())
-				return null;
-			else
-				usuarioRetorno = (Supervisor) query.uniqueResult();// Guardamos el resultado para poder cerrar la sesión.
-		}
-		else
-			usuarioRetorno = (Empleado) query.uniqueResult();// Guardamos el resultado para poder cerrar la sesión.
-		
-		
-		
-		
-		session.close();
-		
-		return usuarioRetorno;
+		return (Usuario) query.uniqueResult();
+
+		// query =
+		// getCurrentSession().createQuery("FROM Empleado WHERE id=:id");
+		// query.setInteger("id", usuarioTemporal.getId());
+		// if (query.list().isEmpty()) {
+		// query =
+		// getCurrentSession().createQuery("FROM Supervisor WHERE id=:id");
+		// query.setInteger("id", usuarioTemporal.getId());
+		// if (query.list().isEmpty())
+		// return null;
+		// else {
+		// // Guardamos el resultado para poder cerrar la sesión.
+		// usuarioRetorno = (Supervisor) query.uniqueResult();
+		// }
+		//
+		// } else {
+		// // Guardamos el resultado para poder cerrar la sesión.
+		// usuarioRetorno = (Empleado) query.uniqueResult();
+		// }
+		// return usuarioRetorno;
 	}
 
 	@Override
 	public List<Usuario> listarEmpleados() {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
+		Query query = getCurrentSession().createQuery("FROM Empleado");
 
-		Query query = session.createQuery("FROM Empleado");
-		if (query.list().isEmpty())
-			return null;
-		List<Usuario> usuariosRetorno = query.list();		
-		session.close();				
+		@SuppressWarnings("unchecked")
+		List<Usuario> usuariosRetorno = query.list();
 		return usuariosRetorno;
+	}
+
+	@Override
+	public Usuario persistir(Usuario usuario) {
+		getCurrentSession().save(usuario);
+
+		Query query = getCurrentSession().createQuery("FROM Usuario WHERE id=:id");
+		query.setInteger("id", usuario.getId());
+
+		return (Usuario) query.uniqueResult();
 	}
 
 }
