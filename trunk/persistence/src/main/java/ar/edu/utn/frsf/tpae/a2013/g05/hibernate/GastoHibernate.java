@@ -1,18 +1,12 @@
-/**
- * 
- */
 package ar.edu.utn.frsf.tpae.a2013.g05.hibernate;
-
 
 import java.util.List;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import ar.edu.utn.frsf.tpae.a2013.g05.dao.GastoDAO;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.CentroDeCosto;
@@ -21,56 +15,52 @@ import ar.edu.utn.frsf.tpae.a2013.g05.model.Gasto;
 
 /**
  * @author Dario
- *
+ * 
  */
+@Component
 public class GastoHibernate implements GastoDAO {
 
-    private static SessionFactory  sessionFactory = configureSessionFactory();
-    private static ServiceRegistry serviceRegistry;
+	private SessionFactory sessionFactory;
 
-    private static SessionFactory configureSessionFactory() throws HibernateException {
-        Configuration configuration = new Configuration();
-        configuration.configure();
-        serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();        
-        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        return sessionFactory;
-    }
-	
-	@Override
-	public Gasto persistir(Gasto gasto) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.save(gasto);
-		session.getTransaction().commit();
-		Query query = session.createQuery("FROM Gasto WHERE id=:id");
-		query.setInteger("id", gasto.getId());
-		if (query.list().isEmpty())
-			return null;
-		Gasto gastoRetorno = (Gasto) query.uniqueResult();
-		session.close();
-		return gastoRetorno;
+	// Setter utilizado por Spring.
+	@Autowired(required = true)
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
+	private Session getCurrentSession() {
+		return sessionFactory.getCurrentSession();
 	}
 
 	@Override
-	public List<Gasto> listarGastos(List<CentroDeCosto> centrosDeCosto,
-			List<Empleado> empleados) {
-		
-		Session session = sessionFactory.openSession();
+	public Gasto persistir(Gasto gasto) {
+		getCurrentSession().save(gasto);
+
+		Query query = getCurrentSession().createQuery("FROM Gasto WHERE id=:id");
+		query.setInteger("id", gasto.getId());
+
+		return (Gasto) query.uniqueResult();
+	}
+
+	@Override
+	public List<Gasto> listarGastos(List<CentroDeCosto> centrosDeCosto, List<Empleado> empleados) {
 		Query query;
-		switch ((centrosDeCosto.size() == 0)? ((empleados.size()==0)? 0: 1):((empleados.size()==0)? 2: 3)) {
+		switch ((centrosDeCosto.size() == 0) ? ((empleados.size() == 0) ? 0 : 1) : ((empleados.size() == 0) ? 2 : 3)) {
 		case 0:
-			query = session.createQuery("FROM Gasto");
+			query = getCurrentSession().createQuery("FROM Gasto");
 			break;
 		case 1:
-			query = session.createQuery("FROM Gasto WHERE solicitudDeGastos.empleado=:empleados");
+			query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.empleado=:empleados");
 			query.setParameterList("empleados", empleados);
 			break;
 		case 2:
-			query = session.createQuery("FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto");
+			query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto");
 			query.setParameterList("centrosdecosto", centrosDeCosto);
 			break;
 		case 3:
-			query = session.createQuery("FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto AND solicitudDeGastos.empleado=:empleados");
+			query = getCurrentSession()
+					.createQuery(
+							"FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto AND solicitudDeGastos.empleado=:empleados");
 			query.setParameterList("centrosdecosto", centrosDeCosto);
 			query.setParameterList("empleados", empleados);
 			break;
@@ -79,20 +69,11 @@ public class GastoHibernate implements GastoDAO {
 			query = null;
 			return null;
 		}
-		 
-		
-		
-		
-		if (query.list().isEmpty())
-			return null;
-		List<Gasto> listaGastosSeleccionados=query.list();
-		
-					
-		session.close();
-		
+
+		@SuppressWarnings("unchecked")
+		List<Gasto> listaGastosSeleccionados = query.list();
+
 		return listaGastosSeleccionados;
 	}
 
-	
-	
 }

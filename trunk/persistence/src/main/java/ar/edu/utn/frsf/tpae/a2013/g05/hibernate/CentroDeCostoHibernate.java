@@ -1,50 +1,40 @@
-/**
- * 
- */
 package ar.edu.utn.frsf.tpae.a2013.g05.hibernate;
 
 import java.util.List;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import ar.edu.utn.frsf.tpae.a2013.g05.dao.CentroDeCostoDAO;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.CentroDeCosto;
 
 /**
  * @author Dario
- *
+ * 
  */
+@Component
 public class CentroDeCostoHibernate implements CentroDeCostoDAO {
 
-    private static SessionFactory  sessionFactory = configureSessionFactory();
-    private static ServiceRegistry serviceRegistry;
+	private SessionFactory sessionFactory;
 
-    
-    
-    private static SessionFactory configureSessionFactory() throws HibernateException {
-        Configuration configuration = new Configuration();
-        configuration.configure();
-        serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();        
-        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        return sessionFactory;
-    }
-	
+	// Setter utilizado por Spring.
+	@Autowired(required = true)
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
+	private Session getCurrentSession() {
+		return sessionFactory.getCurrentSession();
+	}
+
 	@Override
 	public List<CentroDeCosto> listarCentrosDeCosto() {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-
-		Query query = session.createQuery("FROM CentroDeCosto");
-		if (query.list().isEmpty())
-			return null;
-		List<CentroDeCosto> centrosDeCostoRetorno = query.list();		
-		session.close();				
+		Query query = getCurrentSession().createQuery("FROM CentroDeCosto");
+		@SuppressWarnings("unchecked")
+		List<CentroDeCosto> centrosDeCostoRetorno = query.list();
 		return centrosDeCostoRetorno;
 	}
 
