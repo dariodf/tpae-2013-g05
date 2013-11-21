@@ -14,8 +14,9 @@ import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Gasto;
 
 /**
- * @author Dario
+ * DAO de Gasto basado en Hibernate.
  * 
+ * @author Dario
  */
 @Component
 public class GastoHibernate implements GastoDAO {
@@ -45,29 +46,30 @@ public class GastoHibernate implements GastoDAO {
 	@Override
 	public List<Gasto> listarGastos(List<CentroDeCosto> centrosDeCosto, List<Empleado> empleados) {
 		Query query;
-		switch ((centrosDeCosto.size() == 0) ? ((empleados.size() == 0) ? 0 : 1) : ((empleados.size() == 0) ? 2 : 3)) {
-		case 0:
-			query = getCurrentSession().createQuery("FROM Gasto");
-			break;
-		case 1:
-			query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.empleado=:empleados");
-			query.setParameterList("empleados", empleados);
-			break;
-		case 2:
-			query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto");
-			query.setParameterList("centrosdecosto", centrosDeCosto);
-			break;
-		case 3:
-			query = getCurrentSession()
-					.createQuery(
-							"FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto AND solicitudDeGastos.empleado=:empleados");
-			query.setParameterList("centrosdecosto", centrosDeCosto);
-			query.setParameterList("empleados", empleados);
-			break;
+		int longitudListaEmpleados = empleados.size();
 
-		default:
-			query = null;
-			return null;
+		if (centrosDeCosto.size() == 0) {
+
+			if (longitudListaEmpleados == 0) {
+				query = getCurrentSession().createQuery("FROM Gasto");
+			} else {
+				query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.empleado=:empleados");
+				query.setParameterList("empleados", empleados);
+			}
+
+		} else {
+
+			if (longitudListaEmpleados == 0) {
+				query = getCurrentSession().createQuery(
+						"FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto");
+				query.setParameterList("centrosdecosto", centrosDeCosto);
+			} else {
+				query = getCurrentSession()
+						.createQuery(
+								"FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto AND solicitudDeGastos.empleado=:empleados");
+				query.setParameterList("centrosdecosto", centrosDeCosto);
+				query.setParameterList("empleados", empleados);
+			}
 		}
 
 		@SuppressWarnings("unchecked")

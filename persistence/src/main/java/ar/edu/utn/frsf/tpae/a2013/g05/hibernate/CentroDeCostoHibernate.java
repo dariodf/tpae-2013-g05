@@ -12,8 +12,9 @@ import ar.edu.utn.frsf.tpae.a2013.g05.dao.CentroDeCostoDAO;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.CentroDeCosto;
 
 /**
- * @author Dario
+ * DAO de Centro de Costo basado en Hibernate.
  * 
+ * @author Dario
  */
 @Component
 public class CentroDeCostoHibernate implements CentroDeCostoDAO {

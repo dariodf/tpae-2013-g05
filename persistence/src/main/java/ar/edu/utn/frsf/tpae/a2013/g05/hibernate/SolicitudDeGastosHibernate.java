@@ -12,8 +12,9 @@ import ar.edu.utn.frsf.tpae.a2013.g05.dao.SolicitudDeGastosDAO;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.SolicitudDeGastos;
 
 /**
- * @author Dario
+ * DAO de Solicitud de Gasto basado en Hibernate.
  * 
+ * @author Dario
  */
 @Component
 public class SolicitudDeGastosHibernate implements SolicitudDeGastosDAO {

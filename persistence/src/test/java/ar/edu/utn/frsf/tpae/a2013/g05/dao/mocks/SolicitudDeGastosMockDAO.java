@@ -32,20 +32,20 @@ public class SolicitudDeGastosMockDAO implements SolicitudDeGastosDAO {
 		if (idEmpleado == 1) {
 			ArrayList<SolicitudDeGastos> solicitudes = new ArrayList<SolicitudDeGastos>();
 			solicitudes.add(new SolicitudDeGastos(new CentroDeCosto("Centro Uno"), "Gastos en viajes a CBA",
-					(float) 12334.34, "No Procesada", new Supervisor("Dario", "5678", "De Filippis", "Dario",
-							"30789456", new Date()), new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456",
-							"Programador Java Junior", "20321234568", "123456789012345678901234567890", "156123456",
-							"mrtnz.agustin@gmail.com")));
+					(float) 12334.34, "No Procesada", new Date(), new Supervisor("Dario", "5678", "De Filippis",
+							"Dario", "30789456", new Date()), new Empleado("Agustin", "1234", "Martinez", "Agustin",
+							"32123456", "Programador Java Junior", "20321234568", "123456789012345678901234567890",
+							"156123456", "mrtnz.agustin@gmail.com")));
 			solicitudes.add(new SolicitudDeGastos(new CentroDeCosto("Centro Dos"), "Gastos en viajes a ER",
-					(float) 24134.65, "No Procesada", new Supervisor("Dario", "5678", "De Filippis", "Dario",
-							"30789456", new Date()), new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456",
-							"Programador Java Junior", "20321234568", "123456789012345678901234567890", "156123456",
-							"mrtnz.agustin@gmail.com")));
+					(float) 24134.65, "No Procesada", new Date(), new Supervisor("Dario", "5678", "De Filippis",
+							"Dario", "30789456", new Date()), new Empleado("Agustin", "1234", "Martinez", "Agustin",
+							"32123456", "Programador Java Junior", "20321234568", "123456789012345678901234567890",
+							"156123456", "mrtnz.agustin@gmail.com")));
 			solicitudes.add(new SolicitudDeGastos(new CentroDeCosto("Centro Dos"), "Comidas evento Federal",
-					(float) 15134.35, "No Procesada", new Supervisor("Dario", "5678", "De Filippis", "Dario",
-							"30789456", new Date()), new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456",
-							"Programador Java Junior", "20321234568", "123456789012345678901234567890", "156123456",
-							"mrtnz.agustin@gmail.com")));
+					(float) 15134.35, "No Procesada", new Date(), new Supervisor("Dario", "5678", "De Filippis",
+							"Dario", "30789456", new Date()), new Empleado("Agustin", "1234", "Martinez", "Agustin",
+							"32123456", "Programador Java Junior", "20321234568", "123456789012345678901234567890",
+							"156123456", "mrtnz.agustin@gmail.com")));
 			return solicitudes;
 		}
 		return null;
@@ -57,17 +57,20 @@ public class SolicitudDeGastosMockDAO implements SolicitudDeGastosDAO {
 		if (idEmpleado == 1) {
 			ArrayList<SolicitudDeGastos> solicitudes = new ArrayList<SolicitudDeGastos>();
 			solicitudes.add(new SolicitudDeGastos(new CentroDeCosto("Centro Uno"), "Gastos en viajes a CBA", 12354,
-					"No Procesada", new Supervisor("Dario", "5678", "De Filippis", "Dario", "30789456", new Date()),
-					new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456", "Programador Java Junior",
-							"20321234568", "123456789012345678901234567890", "156123456", "mrtnz.agustin@gmail.com")));
+					"No Procesada", new Date(), new Supervisor("Dario", "5678", "De Filippis", "Dario", "30789456",
+							new Date()), new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456",
+							"Programador Java Junior", "20321234568", "123456789012345678901234567890", "156123456",
+							"mrtnz.agustin@gmail.com")));
 			solicitudes.add(new SolicitudDeGastos(new CentroDeCosto("Centro Dos"), "Gastos en viajes a ER", 12354,
-					"Aprobada", new Supervisor("Dario", "5" + "678", "De Filippis", "Dario", "30789456", new Date()),
-					new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456", "Programador Java Junior",
-							"20321234568", "123456789012345678901234567890", "156123456", "mrtnz.agustin@gmail.com")));
+					"Aprobada", new Date(), new Supervisor("Dario", "5" + "678", "De Filippis", "Dario", "30789456",
+							new Date()), new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456",
+							"Programador Java Junior", "20321234568", "123456789012345678901234567890", "156123456",
+							"mrtnz.agustin@gmail.com")));
 			solicitudes.add(new SolicitudDeGastos(new CentroDeCosto("Centro Dos"), "Comidas evento Federal", 12354,
-					"Rechazada", new Supervisor("Dario", "5678", "De Filippis", "Dario", "30789456", new Date()),
-					new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456", "Programador Java Junior",
-							"20321234568", "123456789012345678901234567890", "156123456", "mrtnz.agustin@gmail.com")));
+					"Rechazada", new Date(), new Supervisor("Dario", "5678", "De Filippis", "Dario", "30789456",
+							new Date()), new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456",
+							"Programador Java Junior", "20321234568", "123456789012345678901234567890", "156123456",
+							"mrtnz.agustin@gmail.com")));
 			return solicitudes;
 		}
 

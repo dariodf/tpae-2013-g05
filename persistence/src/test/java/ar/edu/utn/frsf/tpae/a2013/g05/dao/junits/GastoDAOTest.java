@@ -37,11 +37,13 @@ public class GastoDAOTest {
 	@Rollback(true)
 	public void validarPersistencia() {
 		Gasto gasto = new Gasto(new SolicitudDeGastos(new CentroDeCosto("Centro Uno"), "Gastos en viajes a CBA", 12354,
-				"No Procesada", new Supervisor("Dario", "5678", "De Filippis", "Dario", "30789456", new Date()),
-				new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456", "Programador Java Junior",
-						"20321234568", "123456789012345678901234567890", "156123456", "mrtnz.agustin@gmail.com")),
-				new Date(), (float) 1500.50, "B004");
+				"No Procesada", new Date(), new Supervisor("Dario", "5678", "De Filippis", "Dario", "30789456",
+						new Date()), new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456",
+						"Programador Java Junior", "20321234568", "123456789012345678901234567890", "156123456",
+						"mrtnz.agustin@gmail.com")), new Date(), (float) 1500.50, "B004");
+		
 		Gasto gastoRetorno = gastoDAO.persistir(gasto);
+
 		// Probamos que ambas solicitudes tengan el mismo id.
 		assertEquals(gasto.getId(), gastoRetorno.getId());
 	}

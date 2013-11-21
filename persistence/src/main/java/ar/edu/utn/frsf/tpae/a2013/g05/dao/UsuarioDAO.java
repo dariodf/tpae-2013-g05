@@ -5,8 +5,9 @@ import java.util.List;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 
 /**
- * @author root
+ * Interfaz que define las operaciones que debe proveer un DAO de Usuario.
  * 
+ * @author Agustín
  */
 public interface UsuarioDAO {
 
@@ -31,7 +32,17 @@ public interface UsuarioDAO {
 	 */
 	List<Usuario> listarEmpleados();
 
-	//TODO
+	/**
+	 * Crea o modifica un usuario. Si el identificador tiene el valor
+	 * <code>null</code>, se trata de una operación de creación. En caso
+	 * contrario, modificación.
+	 * 
+	 * @param usuario
+	 *            El usuario a crear o modificar.
+	 * @return El usuario persistido, con sus campos actualizados. En el caso de
+	 *         una operación de creación, el objeto retornado tendrá seteado el
+	 *         identificador.
+	 */
 	Usuario persistir(Usuario usuario);
 
 }

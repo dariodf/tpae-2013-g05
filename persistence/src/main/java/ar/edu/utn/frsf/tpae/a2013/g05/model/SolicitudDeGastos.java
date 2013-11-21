@@ -1,6 +1,17 @@
 package ar.edu.utn.frsf.tpae.a2013.g05.model;
 
-import javax.persistence.*;
+import java.util.Date;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  * @author root
@@ -27,6 +38,9 @@ public class SolicitudDeGastos {
 	@Column(name = "slg_desc")
 	private String descripcion;
 
+	@Column(name = "slg_fecha")
+	private Date fechaCreacion;
+
 	@Column(name = "slg_imp_est")
 	private float importeEstimado;
 
@@ -51,12 +65,14 @@ public class SolicitudDeGastos {
 	 * @param descripcion
 	 * @param importeEstimado
 	 * @param estado
+	 * @param fechaCreacion 
 	 * @param supervisor
 	 */
 	public SolicitudDeGastos(CentroDeCosto centroDeCosto, String descripcion, float importeEstimado, String estado,
-			Supervisor supervisor, Empleado empleado) {
-		this.centroDeCosto = centroDeCosto;
+			Date fechaCreacion, Supervisor supervisor, Empleado empleado) {
+		this.centroDeCosto = centroDeCosto ;
 		this.descripcion = descripcion;
+		this.fechaCreacion = fechaCreacion;
 		this.importeEstimado = importeEstimado;
 		this.estado = estado;
 		this.supervisor = supervisor;
@@ -106,6 +122,21 @@ public class SolicitudDeGastos {
 	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	/**
+	 * @return the fechaCreacion
+	 */
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	/**
+	 * @param fechaCreacion
+	 *            the fechaCreacion to set
+	 */
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
 
 	/**
