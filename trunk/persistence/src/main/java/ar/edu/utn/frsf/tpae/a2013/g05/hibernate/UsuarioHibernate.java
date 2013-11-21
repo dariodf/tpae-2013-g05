@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import ar.edu.utn.frsf.tpae.a2013.g05.dao.UsuarioDAO;
+import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 
 /**
@@ -41,11 +42,11 @@ public class UsuarioHibernate implements UsuarioDAO {
 	}
 
 	@Override
-	public List<Usuario> listarEmpleados() {
+	public List<Empleado> listarEmpleados() {
 		Query query = getCurrentSession().createQuery("FROM Empleado");
 
 		@SuppressWarnings("unchecked")
-		List<Usuario> usuariosRetorno = query.list();
+		List<Empleado> usuariosRetorno = query.list();
 		return usuariosRetorno;
 	}
 

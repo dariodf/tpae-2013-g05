@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent> 
+    <groupId>ar.edu.utn.frsf.tpae.a2013.g05</groupId> 
+    <artifactId>parent-pom</artifactId> 
+    <version>1</version> 
+    <relativePath>../pom.xml</relativePath>
+  </parent>  
+
+  <groupId>ar.edu.utn.frsf.tpae.a2013.g05</groupId>
+  <artifactId>persistence</artifactId>
+  <packaging>jar</packaging>
+  <version>${product.version}</version> 
+  <name>persistence</name>
+    
+
+  <dependencies>
+	
+	<!-- Hibernate -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+    </dependency>   
+	<!-- Hibernate annotations -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-annotations</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+    </dependency>
+    <!-- Hibernate uses slf4j for logging, for our purposes here use the simple backend -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+    </dependency>
+	<!-- Bytecode providers -->
+    <dependency>
+      <groupId>javassist</groupId>
+      <artifactId>javassist</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+</project>

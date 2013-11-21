@@ -2,6 +2,7 @@ package ar.edu.utn.frsf.tpae.a2013.g05.dao;
 
 import java.util.List;
 
+import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 
 /**
@@ -30,7 +31,7 @@ public interface UsuarioDAO {
 	 * 
 	 * @return Lista de los empleados.
 	 */
-	List<Usuario> listarEmpleados();
+	List<Empleado> listarEmpleados();
 
 	/**
 	 * Crea o modifica un usuario. Si el identificador tiene el valor

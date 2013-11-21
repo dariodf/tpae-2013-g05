@@ -32,6 +32,16 @@ public class CentroDeCostoHibernate implements CentroDeCostoDAO {
 	}
 
 	@Override
+	public CentroDeCosto persistir(CentroDeCosto centroDeCosto) {
+		getCurrentSession().save(centroDeCosto);
+
+		Query query = getCurrentSession().createQuery("FROM CentroDeCosto WHERE id=:id");
+		query.setInteger("id", centroDeCosto.getId());
+
+		return (CentroDeCosto) query.uniqueResult();
+	}
+	
+	@Override
 	public List<CentroDeCosto> listarCentrosDeCosto() {
 		Query query = getCurrentSession().createQuery("FROM CentroDeCosto");
 		@SuppressWarnings("unchecked")

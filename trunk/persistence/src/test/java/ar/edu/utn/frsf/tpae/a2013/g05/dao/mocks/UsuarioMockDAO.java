@@ -10,8 +10,8 @@ import ar.edu.utn.frsf.tpae.a2013.g05.model.Supervisor;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 
 /**
- * @author root
  * 
+ * @author Agustín
  */
 public class UsuarioMockDAO implements UsuarioDAO {
 
@@ -42,8 +42,8 @@ public class UsuarioMockDAO implements UsuarioDAO {
 	}
 
 	@Override
-	public List<Usuario> listarEmpleados() {
-		List<Usuario> listaRetorno = new ArrayList<Usuario>();
+	public List<Empleado> listarEmpleados() {
+		List<Empleado> listaRetorno = new ArrayList<Empleado>();
 		listaRetorno.add(new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456", "Programador Java Junior",
 				"20321234568", "123456789012345678901234567890", "156123456", "mrtnz.agustin@gmail.com"));
 		listaRetorno.add(new Empleado("Daniela", "3456", "Greca", "Daniela", "31654321", "Programador Java Senior",
