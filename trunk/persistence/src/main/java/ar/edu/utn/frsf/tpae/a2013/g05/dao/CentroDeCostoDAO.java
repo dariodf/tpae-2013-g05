@@ -5,8 +5,10 @@ import java.util.List;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.CentroDeCosto;
 
 /**
- * @author Dario
+ * Interfaz que define las operaciones que debe proveer un DAO de Centro de
+ * Costo.
  * 
+ * @author Dario
  */
 public interface CentroDeCostoDAO {
 

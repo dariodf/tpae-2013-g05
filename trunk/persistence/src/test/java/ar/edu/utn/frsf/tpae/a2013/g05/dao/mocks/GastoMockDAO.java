@@ -28,25 +28,26 @@ public class GastoMockDAO implements GastoDAO {
 
 		List<Gasto> listaDeGastos = new ArrayList<Gasto>();
 		Gasto gastoUno = new Gasto(new SolicitudDeGastos(new CentroDeCosto("Centro Uno"), "Gastos en viajes a CBA",
-				12354, "No Procesada", new Supervisor("Dario", "5678", "De Filippis", "Dario", "30789456", new Date()),
-				new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456", "Programador Java Junior",
-						"20321234568", "123456789012345678901234567890", "156123456", "mrtnz.agustin@gmail.com")),
-				new Date(), (float) 1500.50, "B004");
+				12354, "No Procesada", new Date(), new Supervisor("Dario", "5678", "De Filippis", "Dario", "30789456",
+						new Date()), new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456",
+						"Programador Java Junior", "20321234568", "123456789012345678901234567890", "156123456",
+						"mrtnz.agustin@gmail.com")), new Date(), (float) 1500.50, "B004");
 		Gasto gastoDos = new Gasto(new SolicitudDeGastos(new CentroDeCosto("Centro Dos"), "Gastos en viajes a ER",
-				12354, "No Procesada", new Supervisor("Dario", "5678", "De Filippis", "Dario", "30789456", new Date()),
-				new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456", "Programador Java Junior",
-						"20321234568", "123456789012345678901234567890", "156123456", "mrtnz.agustin@gmail.com")),
-				new Date(), (float) 2000.99, "B034");
+				12354, "No Procesada", new Date(), new Supervisor("Dario", "5678", "De Filippis", "Dario", "30789456",
+						new Date()), new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456",
+						"Programador Java Junior", "20321234568", "123456789012345678901234567890", "156123456",
+						"mrtnz.agustin@gmail.com")), new Date(), (float) 2000.99, "B034");
 		Gasto gastoTres = new Gasto(new SolicitudDeGastos(new CentroDeCosto("Centro Uno"), "Gastos en viajes a CBA",
-				12354, "No Procesada", new Supervisor("Dario", "5678", "De Filippis", "Dario", "30789456", new Date()),
-				new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456", "Programador Java Junior",
-						"20321234568", "123456789012345678901234567890", "156123456", "mrtnz.agustin@gmail.com")),
-				new Date(), (float) 1200.99, "B031");
+				12354, "No Procesada", new Date(), new Supervisor("Dario", "5678", "De Filippis", "Dario", "30789456",
+						new Date()), new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456",
+						"Programador Java Junior", "20321234568", "123456789012345678901234567890", "156123456",
+						"mrtnz.agustin@gmail.com")), new Date(), (float) 1200.99, "B031");
 		Gasto gastoCuatro = new Gasto(new SolicitudDeGastos(new CentroDeCosto("Centro Uno"),
-				"Gastos en viaticos a CBA", 12354, "No Procesada", new Supervisor("Dario", "5678", "De Filippis",
-						"Dario", "30789456", new Date()), new Empleado("Daniela", "3456", "Greca", "Daniela",
-						"31654321", "Programador Java Senior", "28316543218", "098765432109876543210987654321",
-						"156654321", "daniela.greca@gmail.com")), new Date(), (float) 4120.99, "B068");
+				"Gastos en viaticos a CBA", 12354, "No Procesada", new Date(), new Supervisor("Dario", "5678",
+						"De Filippis", "Dario", "30789456", new Date()), new Empleado("Daniela", "3456", "Greca",
+						"Daniela", "31654321", "Programador Java Senior", "28316543218",
+						"098765432109876543210987654321", "156654321", "daniela.greca@gmail.com")), new Date(),
+				(float) 4120.99, "B068");
 
 		if (centrosDeCosto.size() == 0 && empleados.size() == 0) {
 			listaDeGastos.add(gastoUno);

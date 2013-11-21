@@ -12,8 +12,9 @@ import ar.edu.utn.frsf.tpae.a2013.g05.dao.UsuarioDAO;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 
 /**
- * @author Dario
+ * DAO de usuario basado en Hibernate.
  * 
+ * @author Dario
  */
 @Component
 public class UsuarioHibernate implements UsuarioDAO {
@@ -37,26 +38,6 @@ public class UsuarioHibernate implements UsuarioDAO {
 		query.setString("password", password);
 
 		return (Usuario) query.uniqueResult();
-
-		// query =
-		// getCurrentSession().createQuery("FROM Empleado WHERE id=:id");
-		// query.setInteger("id", usuarioTemporal.getId());
-		// if (query.list().isEmpty()) {
-		// query =
-		// getCurrentSession().createQuery("FROM Supervisor WHERE id=:id");
-		// query.setInteger("id", usuarioTemporal.getId());
-		// if (query.list().isEmpty())
-		// return null;
-		// else {
-		// // Guardamos el resultado para poder cerrar la sesión.
-		// usuarioRetorno = (Supervisor) query.uniqueResult();
-		// }
-		//
-		// } else {
-		// // Guardamos el resultado para poder cerrar la sesión.
-		// usuarioRetorno = (Empleado) query.uniqueResult();
-		// }
-		// return usuarioRetorno;
 	}
 
 	@Override

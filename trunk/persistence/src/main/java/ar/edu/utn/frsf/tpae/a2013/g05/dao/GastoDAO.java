@@ -7,18 +7,20 @@ import ar.edu.utn.frsf.tpae.a2013.g05.model.CentroDeCosto;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 
 /**
- * @author root
+ * Interfaz que define las operaciones que debe proveer un DAO de Gasto.
  * 
+ * @author Agustín
  */
 public interface GastoDAO {
+
 	/**
-	 * Crea o modifica una gasto Si el identificador tiene el valor
+	 * Crea o modifica un gasto. Si el identificador tiene el valor
 	 * <code>null</code>, se trata de una operación de creación. En caso
 	 * contrario, modificación.
 	 * 
 	 * @param gasto
 	 *            El gasto a crear o modificar.
-	 * @return El gasto persistido, con sus campos actualizados. El el caso de
+	 * @return El gasto persistido, con sus campos actualizados. En el caso de
 	 *         una operación de creación, el objeto retornado tendrá seteado el
 	 *         identificador.
 	 */

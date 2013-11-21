@@ -5,8 +5,10 @@ import java.util.List;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.SolicitudDeGastos;
 
 /**
- * @author root
+ * Interfaz que define las operaciones que debe proveer un DAO de Solicitud de
+ * gasto.
  * 
+ * @author Agustín
  */
 public interface SolicitudDeGastosDAO {
 

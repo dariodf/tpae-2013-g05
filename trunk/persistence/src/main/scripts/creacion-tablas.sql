@@ -52,6 +52,7 @@ CREATE TABLE slg (
 	slg_emp_id integer NOT NULL,
 	slg_cco_id integer NOT NULL,
 	slg_desc varchar(256) NOT NULL,
+	slg_fecha timestamp NOT NULL,
 	slg_imp_est numeric(10,2) NOT NULL,
 	slg_est varchar(16) NOT NULL,
 	slg_spv_id integer,
