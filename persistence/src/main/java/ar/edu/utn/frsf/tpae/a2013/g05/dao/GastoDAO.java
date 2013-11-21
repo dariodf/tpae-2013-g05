@@ -33,10 +33,10 @@ public interface GastoDAO {
 	 * 
 	 * @param centrosDeCosto
 	 *            centros de costo para los cuales se desea generar el listado
-	 * @param empleados
-	 *            empleados para los cuales se desea generar el listado
+	 * @param empleado
+	 *            empleado para el cual se desea generar el listado
 	 * @return
 	 */
-	List<Gasto> listarGastos(List<CentroDeCosto> centrosDeCosto, List<Empleado> empleados);
+	List<Gasto> listarGastos(List<CentroDeCosto> centrosDeCosto, Empleado empleado);
 
 }

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package ar.edu.utn.frsf.tpae.a2013.g05.dao.mocks;
 
 import java.util.ArrayList;
@@ -14,14 +11,13 @@ import ar.edu.utn.frsf.tpae.a2013.g05.model.SolicitudDeGastos;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Supervisor;
 
 /**
- * @author root
  * 
+ * @author Agustín
  */
 public class SolicitudDeGastosMockDAO implements SolicitudDeGastosDAO {
 
 	@Override
 	public SolicitudDeGastos persistir(SolicitudDeGastos solicitudDeGastos) {
-
 		// Acá persistiría
 		return solicitudDeGastos;
 	}

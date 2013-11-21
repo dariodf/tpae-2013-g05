@@ -7,8 +7,8 @@ import ar.edu.utn.frsf.tpae.a2013.g05.dao.CentroDeCostoDAO;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.CentroDeCosto;
 
 /**
- * @author Dario
  * 
+ * @author Dario
  */
 public class CentroDeCostoMockDAO implements CentroDeCostoDAO {
 
@@ -19,6 +19,12 @@ public class CentroDeCostoMockDAO implements CentroDeCostoDAO {
 		listaRetorno.add(new CentroDeCosto("Centro Uno"));
 		listaRetorno.add(new CentroDeCosto("Centro Dos"));
 		return listaRetorno;
+	}
+
+	@Override
+	public CentroDeCosto persistir(CentroDeCosto centroDeCosto) {
+		// Acá persistiría.
+		return centroDeCosto;
 	}
 
 }

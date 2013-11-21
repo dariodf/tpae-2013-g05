@@ -28,9 +28,6 @@
     <mapping class="ar.edu.utn.frsf.tpae.a2013.g05.model.CentroDeCosto" />
     <mapping class="ar.edu.utn.frsf.tpae.a2013.g05.model.Gasto" />
     <mapping class="ar.edu.utn.frsf.tpae.a2013.g05.model.SolicitudDeGastos" />
-    
-    
-	
 
   </session-factory>
 
