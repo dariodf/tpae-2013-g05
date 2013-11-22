@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author root
@@ -38,8 +40,13 @@ public class SolicitudDeGastos {
 	@Column(name = "slg_desc")
 	private String descripcion;
 
-	@Column(name = "slg_fecha")
+	@Column(name = "slg_fecha_creacion")
+	@Temporal(TemporalType.DATE)
 	private Date fechaCreacion;
+
+	@Column(name = "slg_fecha_aprobacion")
+	@Temporal(TemporalType.DATE)
+	private Date fechaAprobacion;
 
 	@Column(name = "slg_imp_est")
 	private float importeEstimado;
@@ -65,18 +72,22 @@ public class SolicitudDeGastos {
 	 * @param descripcion
 	 * @param importeEstimado
 	 * @param estado
-	 * @param fechaCreacion 
+	 * @param fechaCreacion
+	 * @param fechaAprobacion
 	 * @param supervisor
+	 * @param comentario
 	 */
 	public SolicitudDeGastos(CentroDeCosto centroDeCosto, String descripcion, float importeEstimado, String estado,
-			Date fechaCreacion, Supervisor supervisor, Empleado empleado) {
-		this.centroDeCosto = centroDeCosto ;
+			Date fechaCreacion, Date fechaAprobacion, Supervisor supervisor, Empleado empleado, String comentario) {
+		this.centroDeCosto = centroDeCosto;
 		this.descripcion = descripcion;
 		this.fechaCreacion = fechaCreacion;
+		this.fechaAprobacion = fechaAprobacion;
 		this.importeEstimado = importeEstimado;
 		this.estado = estado;
 		this.supervisor = supervisor;
 		this.empleado = empleado;
+		this.comentario = comentario;
 	}
 
 	/**
@@ -137,6 +148,21 @@ public class SolicitudDeGastos {
 	 */
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
+	}
+
+	/**
+	 * @return the fechaAprobacion
+	 */
+	public Date getFechaAprobacion() {
+		return fechaAprobacion;
+	}
+
+	/**
+	 * @param fechaAprobacion
+	 *            the fechaAprobacion to set
+	 */
+	public void setFechaAprobacion(Date fechaAprobacion) {
+		this.fechaAprobacion = fechaAprobacion;
 	}
 
 	/**
