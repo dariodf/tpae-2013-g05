@@ -5,25 +5,25 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>ar.edu.utn.frsf.tpae.a20xx.gyy</groupId>
+    <groupId>ar.edu.utn.frsf.tpae.a2013.g05</groupId>
     <artifactId>parent-pom</artifactId>
     <version>1</version>
   </parent>
 
-  <groupId>ar.edu.utn.frsf.tpae.a20xx.gyy</groupId>
-  <artifactId>webgui</artifactId>
+  <groupId>ar.edu.utn.frsf.tpae.a2013.g05</groupId>
+  <artifactId>webui</artifactId>
   <version>${product.version}</version>
-  <name>webgui</name>
+  <name>webui</name>
   <packaging>war</packaging>
   
   <dependencies>
 
     <dependency>
-      <groupId>ar.edu.utn.frsf.tpae.a20xx.gyy</groupId>
+      <groupId>ar.edu.utn.frsf.tpae.a2013.g05</groupId>
       <artifactId>persistence</artifactId>
     </dependency>
     <dependency>
-      <groupId>ar.edu.utn.frsf.tpae.a20xx.gyy</groupId>
+      <groupId>ar.edu.utn.frsf.tpae.a2013.g05</groupId>
       <artifactId>service</artifactId>
     </dependency>
 
