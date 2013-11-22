@@ -1,0 +1,1 @@
+ALTER TABLE slg ADD slg_fecha timestamp NOT NULL;
