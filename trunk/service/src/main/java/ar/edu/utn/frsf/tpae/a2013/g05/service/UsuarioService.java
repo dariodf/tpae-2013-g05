@@ -20,4 +20,14 @@ public interface UsuarioService {
 	 *         sistema, retorna el usuario. Sino retorna null.
 	 */
 	Usuario ingresar(String usuario, String password);
+
+	/**
+	 * Permite crear un nuevo usuario con acceso a la aplicación.
+	 * 
+	 * @param usuario
+	 *            el usuario a crear.
+	 * @return el usuario creado.
+	 */
+	Usuario crear(Usuario usuario);
+
 }
