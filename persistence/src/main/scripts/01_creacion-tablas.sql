@@ -69,6 +69,7 @@ CREATE TABLE gst (
 	gst_fech timestamp NOT NULL,
 	gst_imp numeric(10,2) NOT NULL,
 	gst_nro_fact varchar(24) NOT NULL,
+	gst_cmt_emp varchar(256),
 	CONSTRAINT gst_pk PRIMARY KEY (gst_id),
 	CONSTRAINT gst_fk_slg FOREIGN KEY (gst_slg_id) REFERENCES slg (slg_id) ON DELETE NO ACTION ON UPDATE NO ACTION
 );

@@ -1,1 +1,1 @@
-ALTER TABLE gst DROP gst_cmt_emp;
+ALTER TABLE gst ADD gst_cmt_emp character varying(256);

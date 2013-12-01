@@ -2,10 +2,13 @@ package ar.edu.utn.frsf.tpae.a2013.g05.webui.controller.login;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
+import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
+import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 import ar.edu.utn.frsf.tpae.a2013.g05.service.UsuarioService;
 
 /**
@@ -18,41 +21,41 @@ import ar.edu.utn.frsf.tpae.a2013.g05.service.UsuarioService;
 @SessionScoped
 public class LoginBean implements Serializable {
 
+	private static final long serialVersionUID = -8202726216981729177L;
+
 	// DI via Spring
 	@ManagedProperty(value = "#{usuarioService}")
 	UsuarioService usuarioService;
 
-//	/** El usuario que se edita en "index.jsp". */
-//	private Usuario usuario;
-//
-//	@PostConstruct
-//	public void init() {
-//		// Inicialización de variables usadas en las JSP, para evitar punteros
-//		// nulos.
-//		// usuario = new Empleado();
-//	}
-//
-//	/**
-//	 * Permite que un usuario existente en la base de datos pueda loguearse al
-//	 * sistema de gestión de operaciones Guarda una factura con los datos
-//	 * ingresados en "index.jsp", invocando al servicio correspondiente.
-//	 * 
-//	 * @return <code>null</code> para permanecer en la misma página.
-//	 */
-//	public String guardar() {
-//		// el service locator es un patron que se puede usar si no se quiere
-//		// configurar directamente
-//		// a spring como el motor de resolucion de DI y de EL sino como una
-//		// alternativa
-//		// FacturacionService service = ServiceLocator.getFacturacionService();
-//		List<Factura> facturas = new ArrayList<Factura>();
-//		facturas.add(this.factura);
-//		facturacionService.crear(facturas);
-//
-//		// Se retorna null para permanecer en la misma página.
-//		return null;
-//	}
-//
+	/** El usuario que se edita en "login.xhtml". */
+	private Usuario usuario;
+
+	@PostConstruct
+	public void init() {
+		// Inicialización de variables usadas en las JSP, para evitar punteros
+		// nulos.
+		usuario = new Empleado();
+	}
+
+	/**
+	 * Permite que un usuario existente en la base de datos pueda loguearse al
+	 * sistema de gestión de operaciones. 
+	 * 
+	 * Guarda una factura con los datos
+	 * ingresados en "index.jsp", invocando al servicio correspondiente.
+	 * 
+	 * @return <code>null</code> para permanecer en la misma página.
+	 */
+	public String ingresar() {
+		// el service locator es un patron que se puede usar si no se quiere
+		// configurar directamente a spring como el motor de resolucion de DI y de EL sino como una alternativa
+		// FacturacionService service = ServiceLocator.getFacturacionService();
+		usuarioService.ingresar(this.usuario.getUsuario(), this.usuario.getPassword());
+
+		// Se retorna null para permanecer en la misma página.
+		return null;
+	}
+
 //	/**
 //	 * Guarda en el atributo <code>listaFacturas</code> los resultados de la
 //	 * búsqueda realizada utilizando los valores de los campos de búsquedade
@@ -78,31 +81,23 @@ public class LoginBean implements Serializable {
 //		// Se retorna null para permanecer en la misma página.
 //		return null;
 //	}
-//
-//	// Getters y setters, utilizados por las JSP.
-//
-//	public Factura getFactura() {
-//		return factura;
-//	}
-//
-//	public void setFactura(Factura factura) {
-//		System.out.println("SE EJECUTA EL SET FACTURA");
-//		this.factura = factura;
-//	}
-//
-//	public FacturacionService getFacturacionService() {
-//		return facturacionService;
-//	}
-//
-//	public void setFacturacionService(FacturacionService facturacionService) {
-//		this.facturacionService = facturacionService;
-//	}
-//
-//	public Integer getIdFacturaSeleccionada() {
-//		return idFacturaSeleccionada;
-//	}
-//
-//	public void setIdFacturaSeleccionada(Integer idFacturaSeleccionada) {
-//		this.idFacturaSeleccionada = idFacturaSeleccionada;
-//	}
+
+	// Getters y setters, utilizados por las JSF.
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public UsuarioService getUsuarioService() {
+		return usuarioService;
+	}
+
+	public void setUsuarioService(UsuarioService usuarioService) {
+		this.usuarioService = usuarioService;
+	}
+
 }

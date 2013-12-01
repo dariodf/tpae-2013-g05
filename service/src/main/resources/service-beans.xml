@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+  <import resource="classpath*:persistence-beans.xml"/>
+
+  <!-- Transaction Manager para un único SessionFactory de Hibernate. -->
+  <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+    <property name="sessionFactory" ref="sessionFactory" />
+  </bean>
+
+  <!-- Servicio base, encargado de la administración de transacciones. -->
+  <bean id="baseService" abstract="true" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager" ref="transactionManager" />
+    <property name="transactionAttributes">
+      <props>
+        <prop key="crear*">PROPAGATION_REQUIRED</prop>
+        <prop key="modificar*">PROPAGATION_REQUIRED</prop>
+        <prop key="eliminar*">PROPAGATION_REQUIRED</prop>
+        <prop key="listar*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="buscar*">PROPAGATION_REQUIRED,readOnly</prop>
+        <prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+      </props>
+    </property>
+  </bean>
+
+  <!-- Servicio de usuario. -->
+  <bean id="usuarioService" parent="baseService">
+    <property name="target">
+      <bean class="ar.edu.utn.frsf.tpae.a2013.g05.service.impl.UsuarioServiceImpl" />
+    </property>
+  </bean>
+  
+</beans>
