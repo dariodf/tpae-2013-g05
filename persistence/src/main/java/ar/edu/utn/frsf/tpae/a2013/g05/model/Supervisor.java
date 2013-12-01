@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Supervisor extends Usuario {
 
 	@Column(name = "spv_ult_acc")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date ultimoAcceso;
 
 	/**

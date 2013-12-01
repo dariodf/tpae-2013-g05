@@ -53,10 +53,16 @@ public class GastoHibernate implements GastoDAO {
 		} else {
 
 			if (centrosDeCosto.size() == 0) {
+
+				// if (longitudListaEmpleados == 0) {
+				// query = getCurrentSession().createQuery("FROM Gasto");
+				// } else {
 				query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.empleado=:empleados");
 				query.setParameter("empleados", empleado);
+				// }
 
 			} else {
+
 				// if (longitudListaEmpleados == 0) {
 				// query = getCurrentSession().createQuery(
 				// "FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto");
@@ -67,6 +73,7 @@ public class GastoHibernate implements GastoDAO {
 								"FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto AND solicitudDeGastos.empleado=:empleados");
 				query.setParameterList("centrosdecosto", centrosDeCosto);
 				query.setParameter("empleados", empleado);
+				// }
 			}
 		}
 
