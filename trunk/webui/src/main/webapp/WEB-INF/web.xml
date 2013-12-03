@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
 	      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	      version="3.0">
-  	<display-name>Sistema Web de Gestión Organizacional de Operaciones</display-name>
+  	<display-name>Sistema Web de Gestion Organizacional de Operaciones</display-name>
 
    <!-- Add Support for Spring -->
   <listener>
@@ -26,7 +26,7 @@
  
   <!-- Welcome page -->
   <welcome-file-list>
-    <welcome-file>/login/login.xhtml</welcome-file>
+    <welcome-file>login/login.xhtml</welcome-file>
   </welcome-file-list>
  
   <!-- JSF mapping -->
