@@ -14,20 +14,23 @@
 
 	<ui:define name="content">
 		<fieldset id="fieldLogin">
-			<legend>Ingreso de Usuarios</legend>
+			<legend>Ingreso al Sistema </legend>
 
 			<h:form id="frmLogin">
+
 				<h:panelGrid rows="2" id="pnlGroupLogin" style="text-align:center;" >
 					<h:panelGrid columns="2" id="pnlLogin" >
-					<h:outputLabel for="usuario" value="Usuario"/>
-					<h:inputText id="usuario" value="#{loginBean.usuario.usuario}" required="true" label="Usuario"/>
-					
-					<h:outputLabel for="password" value="Contraseña"/>
-					<h:inputText id="password" value="#{loginBean.usuario.password}" required="true" type="password" label="Contraseña"/>
+						<h:outputLabel for="usuario" value="Usuario"/>
+						<h:inputText id="usuario" value="#{loginBean.usuario.usuario}" required="true" label="Usuario" />
+							
+						<h:outputLabel for="password" value="Contraseña"/>
+						<h:inputText id="password" value="#{loginBean.usuario.password}" required="true" type="password" label="Contraseña"/>
 					</h:panelGrid>
-					
+
 					<h:commandButton id="btnIngresar" value="#{msgs['boton.ingresar']}" action="#{loginBean.ingresar}" />
 				</h:panelGrid>
+				<br/>
+				<h:messages value="#{msgs['login.error']}" style="color:red; margin:8px;" />
 			</h:form>		
 		</fieldset>
 	</ui:define>
