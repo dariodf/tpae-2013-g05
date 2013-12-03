@@ -18,6 +18,16 @@
 	</application>
 
 	<navigation-rule>
+		<from-view-id>login/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>homeEmpleado</from-outcome>
+			<to-view-id>empleado/homeEmpleado.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>homeSupervisor</from-outcome>
+			<to-view-id>supervisor/homeSupervisor.xhtml</to-view-id>
+		</navigation-case>
+			
 		<navigation-case>
 			<from-outcome>navigateToListaFacturas</from-outcome>
 			<to-view-id>facturas/mostrarLista.xhtml</to-view-id>
