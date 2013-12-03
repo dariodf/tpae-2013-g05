@@ -28,10 +28,6 @@
 			<to-view-id>supervisor/homeSupervisor.xhtml</to-view-id>
 		</navigation-case>
 			
-		<navigation-case>
-			<from-outcome>navigateToListaFacturas</from-outcome>
-			<to-view-id>facturas/mostrarLista.xhtml</to-view-id>
-		</navigation-case>
 	</navigation-rule>
 	
 </faces-config>
