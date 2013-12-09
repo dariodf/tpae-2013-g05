@@ -3,9 +3,11 @@ package ar.edu.utn.frsf.tpae.a2013.g05.webui.controller.login;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
@@ -48,6 +50,7 @@ public class LoginBean implements Serializable {
 
 		if (usuario == null) {
 			// Se retorna null para permanecer en la misma página.
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se puede ingresar al sistema, los datos ingresados son inválidos."));
 			return null;
 		} else {
 			// Si el usuario existe en el sistema se lo redirije a la página
