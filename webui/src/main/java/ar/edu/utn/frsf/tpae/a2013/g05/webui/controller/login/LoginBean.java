@@ -46,7 +46,7 @@ public class LoginBean implements Serializable {
 	 * @return <code>null</code> para permanecer en la misma página.
 	 */
 	public String ingresar() {
-		Usuario usuario = usuarioService.ingresar(this.usuario.getUsuario(), this.usuario.getPassword());
+		Usuario usuario = usuarioService.buscarUsuario(this.usuario.getUsuario(), this.usuario.getPassword());
 
 		if (usuario == null) {
 			// Se retorna null para permanecer en la misma página.

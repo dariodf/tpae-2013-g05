@@ -10,7 +10,7 @@ import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 public interface UsuarioService {
 
 	/**
-	 * Permite a un usuario existente ingresar a la aplicación.
+	 * Busca a un usuario utilizando su usuario y contraseña.
 	 * 
 	 * @param usuario
 	 *            nombre de usuario del usuario que esta intentando loguearse
@@ -19,7 +19,7 @@ public interface UsuarioService {
 	 * @return Si los valores ingresados pertenecen a un usuario existente en el
 	 *         sistema, retorna el usuario. Sino retorna null.
 	 */
-	Usuario ingresar(String usuario, String password);
+	Usuario buscarUsuario(String usuario, String password);
 
 	/**
 	 * Permite crear un nuevo usuario con acceso a la aplicación.
@@ -28,6 +28,11 @@ public interface UsuarioService {
 	 *            el usuario a crear.
 	 * @return el usuario creado.
 	 */
-	Usuario crear(Usuario usuario);
+	Usuario crearUsuario(Usuario usuario);
 
+	/**
+	 * Retorna el usuario Logueado.
+	 * @return the usuarioLogueado
+	 */
+	public Usuario getUsuarioLogueado();
 }
