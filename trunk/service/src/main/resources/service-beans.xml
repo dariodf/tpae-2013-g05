@@ -31,4 +31,11 @@
     </property>
   </bean>
   
+  <!-- Servicio de gastos, solicitudes de gasto y centros de costo. -->
+  <bean id="gastoService" parent="baseService">
+    <property name="target">
+      <bean class="ar.edu.utn.frsf.tpae.a2013.g05.service.impl.GastoServiceImpl" />
+    </property>
+  </bean>
+  
 </beans>
