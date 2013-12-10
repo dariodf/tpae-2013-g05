@@ -16,8 +16,36 @@
 		<h:form id="frmSupervisor">
 			<h2>Supervisor - Consultar</h2>
 			<br/>
-
-			TO EDIT			
+			<h:selectOneMenu value="#{consultarGastosBean.empleadoSeleccionado}">
+				<f:selectItem id="itemNuloEmpleados" itemValue="#{consultarGastosBean.nulo}" itemLabel="Seleccione un Empleado"/>
+				<f:selectItems value="#{consultarGastosBean.empleados}"/> 
+			</h:selectOneMenu>
+			
+			<h:selectOneMenu value="#{consultarGastosBean.centroDeCostoSeleccionado}">
+				<f:selectItem id="itemNuloCentrosDeCosto" itemValue="#{consultarGastosBean.nulo}" itemLabel="Seleccione un CdC"/>
+				<f:selectItems value="#{consultarGastosBean.centrosDeCosto}"/> 
+			</h:selectOneMenu>	
+			
+			<h:commandButton id="btnConsultar" value="#{msgs['boton.consultar']}" action="#{consultarGastosBean.consultar}">
+				<f:ajax render="tablaGastos" execute="@this" />
+			</h:commandButton>
+			<br/>
+			<h:dataTable id="tablaGastos" value="#{consultarGastosBean.listaDeGastos}" var="gasto" >
+            	        <h:column>
+                                <f:facet name="header"><h:outputText value="Fecha Gasto" /></f:facet>
+                                <h:outputText value="#{gasto.fecha}"></h:outputText>
+                        </h:column>
+                        <h:column>
+                                <f:facet name="header"><h:outputText value="Importe" /></f:facet>
+                                <h:outputText value="#{gasto.importe}"></h:outputText>
+                        </h:column>
+                        <h:column>
+                                <f:facet name="header"><h:outputText value="N° Factura" /></f:facet>
+                                <h:outputText value="#{gasto.nroFactura}"></h:outputText>
+                        </h:column>
+			</h:dataTable>
+                    
+					
 		</h:form>		
 	</ui:define>
 
