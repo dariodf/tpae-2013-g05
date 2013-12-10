@@ -31,12 +31,12 @@ public interface GastoDAO {
 	 * seleccionados. En el caso de que los parametros sean nulos, se retornan
 	 * todos los gastos.
 	 * 
-	 * @param centrosDeCosto
+	 * @param centroDeCosto
 	 *            centros de costo para los cuales se desea generar el listado
 	 * @param empleado
 	 *            empleado para el cual se desea generar el listado
 	 * @return
 	 */
-	List<Gasto> listarGastos(List<CentroDeCosto> centrosDeCosto, Empleado empleado);
+	List<Gasto> listarGastos(CentroDeCosto centroDeCosto, Empleado empleado);
 
 }

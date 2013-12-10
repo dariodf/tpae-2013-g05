@@ -66,17 +66,20 @@ public class GastoDAOTest {
 						"mrtnz.agustin@gmail.com"), "Default comment"), new Date(), (float) 1500.50, "B004");
 	}
 
+	//TODO: Revisar el metodo.
 	@Test
 	@Transactional
 	@Rollback(true)
 	public void validarListarGastos() {
-		List<CentroDeCosto> centrosDeCosto = new ArrayList<CentroDeCosto>();
+		CentroDeCosto centroDeCosto = new CentroDeCosto();
 		List<Gasto> listaGastos = new ArrayList<Gasto>();
 
 		Gasto gasto1 = crearYPersistirUnGasto();
 
-		centrosDeCosto.add(gasto1.getSolicitudDeGastos().getCentroDeCosto());
-		listaGastos = gastoDAO.listarGastos(centrosDeCosto, null);
+		centroDeCosto.setNombre(gasto1.getSolicitudDeGastos().getCentroDeCosto().getNombre());
+		centroDeCosto.setId(gasto1.getSolicitudDeGastos().getCentroDeCosto().getId());
+		
+		listaGastos = gastoDAO.listarGastos(centroDeCosto, null);
 		for (int i = 0; i < listaGastos.size(); i++) {
 			// Probamos que traiga todos los gastos comprobando que los traiga
 			// secuencialmente.
@@ -84,31 +87,27 @@ public class GastoDAOTest {
 		}
 
 		// Recuperamos de la BD las entidades creadas
-		centrosDeCosto = centroDeCostoDAO.listarCentrosDeCosto();
+		centroDeCosto = centroDeCostoDAO.listarCentrosDeCosto().get(0);
 		Empleado empleado1 = usuarioDAO.listarEmpleados().get(0);
 
-		listaGastos = gastoDAO.listarGastos(centrosDeCosto, empleado1);
+		listaGastos = gastoDAO.listarGastos(centroDeCosto, empleado1);
 		for (int i = 0; i < listaGastos.size(); i++) {
 			// Probamos que traiga todos los gastos del centro de costos 1.
-			assertEquals(centrosDeCosto.get(i).getNombre(), centrosDeCosto.get(i).getNombre());
+			assertEquals(listaGastos.get(i).getSolicitudDeGastos().getCentroDeCosto().getNombre(), centroDeCosto.getNombre());
 		}
 
-		// TODO: Método listarGastos ver como plantearlo, según sea necesario
-		// cdo. implementemos los servicios requeridos.
-		listaGastos = gastoDAO.listarGastos(new ArrayList<CentroDeCosto>(), empleado1);
+		listaGastos = gastoDAO.listarGastos(null, empleado1);
 		for (Gasto gasto : listaGastos) {
 			// Probamos que traiga todos los gastos del empleado 1.
 			assertEquals(empleado1.getNombre(), gasto.getSolicitudDeGastos().getEmpleado().getNombre());
 			assertEquals(empleado1.getApellido(), gasto.getSolicitudDeGastos().getEmpleado().getApellido());
 		}
-		// // Limpiamos la lista de empleados.
-		// empleados.clear();
-
+		
 		// Crea y persiste un Empleado
 		Empleado empleado2 = crearYPersistirUnEmpleado();
 		// empleados.add(empleado2);
 
-		listaGastos = gastoDAO.listarGastos(centrosDeCosto, empleado2);
+		listaGastos = gastoDAO.listarGastos(centroDeCosto, empleado2);
 		for (Gasto gasto : listaGastos) {
 			// Probamos que traiga todos los gastos del centro de costos 1.
 			assertEquals(1, gasto.getSolicitudDeGastos().getCentroDeCosto().getId());

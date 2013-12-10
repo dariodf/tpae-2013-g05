@@ -2,6 +2,7 @@ package ar.edu.utn.frsf.tpae.a2013.g05.dao.junits;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -66,12 +67,21 @@ public class UsuarioDAOTest {
 	@Transactional
 	@Rollback(true)
 	public void validarListarEmpleados() {
-		List<Empleado> listaUsuarios = usuarioDAO.listarEmpleados();
+		
+		List<Usuario> listaCreada = new ArrayList<Usuario>();
+		Usuario usuario = new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456", "Programador Java Junior",
+				"20321234568", "123456789012345678901234567890", "156123456", "mrtnz.agustin@gmail.com");
+		listaCreada.add(this.usuarioDAO.persistir(usuario));
+		
+		usuario = new Empleado("Daniela", "3456", "Greca", "Daniela", "31654321", "Programador Java Senior",
+				"28316543218", "098765432109876543210987654321", "156654321", "daniela.greca@gmail.com");
+		listaCreada.add(this.usuarioDAO.persistir(usuario));
 
-		for (int i = 0; i < listaUsuarios.size(); i++) {
-			// Probamos que traiga todos los empleados comprobando que los
-			// traiga secuencialmente.
-			assertEquals(i + 1, listaUsuarios.get(i).getId());
+		
+		List<Empleado> listaRetornada = usuarioDAO.listarEmpleados();
+
+		for (int i = 0; i < listaRetornada.size(); i++) {
+			assertEquals(listaCreada.get(i).getDni(), listaRetornada.get(i).getDni());
 		}
 	}
 

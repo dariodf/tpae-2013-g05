@@ -44,30 +44,28 @@ public class GastoHibernate implements GastoDAO {
 	}
 
 	@Override
-	public List<Gasto> listarGastos(List<CentroDeCosto> centrosDeCosto, Empleado empleado) {
+	public List<Gasto> listarGastos(CentroDeCosto centroDeCosto, Empleado empleado) {
 		Query query;
 
-		if (empleado == null) {
+		if (empleado == null && centroDeCosto == null){
+			query = getCurrentSession().createQuery("FROM Gasto");
+		
+		}
+		else if (centroDeCosto == null){
+			query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.empleado=:empleados");
+			query.setParameter("empleados", empleado);
+
+		}
+		else if(empleado == null){
 			query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto");
-			query.setParameterList("centrosdecosto", centrosDeCosto);
-		} else {
-
-			if (centrosDeCosto.size() == 0) {
-				query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.empleado=:empleados");
-				query.setParameter("empleados", empleado);
-
-			} else {
-				// if (longitudListaEmpleados == 0) {
-				// query = getCurrentSession().createQuery(
-				// "FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto");
-				// query.setParameterList("centrosdecosto", centrosDeCosto);
-				// } else {
-				query = getCurrentSession()
-						.createQuery(
-								"FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto AND solicitudDeGastos.empleado=:empleados");
-				query.setParameterList("centrosdecosto", centrosDeCosto);
-				query.setParameter("empleados", empleado);
-			}
+			query.setParameter("centrosdecosto", centroDeCosto);
+		}
+		else{	
+			query = getCurrentSession()
+					.createQuery(
+							"FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto AND solicitudDeGastos.empleado=:empleados");
+			query.setParameter("centrosdecosto", centroDeCosto);
+			query.setParameter("empleados", empleado);
 		}
 
 		@SuppressWarnings("unchecked")
