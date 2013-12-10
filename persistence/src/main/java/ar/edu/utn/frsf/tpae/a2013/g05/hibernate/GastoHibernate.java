@@ -52,20 +52,20 @@ public class GastoHibernate implements GastoDAO {
 		
 		}
 		else if (centroDeCosto == null){
-			query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.empleado=:empleados");
-			query.setParameter("empleados", empleado);
+			query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.empleado=:empleado");
+			query.setParameter("empleado", empleado);
 
 		}
 		else if(empleado == null){
-			query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto");
-			query.setParameter("centrosdecosto", centroDeCosto);
+			query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrodecosto");
+			query.setParameter("centrodecosto", centroDeCosto);
 		}
 		else{	
 			query = getCurrentSession()
 					.createQuery(
-							"FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrosdecosto AND solicitudDeGastos.empleado=:empleados");
-			query.setParameter("centrosdecosto", centroDeCosto);
-			query.setParameter("empleados", empleado);
+							"FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrodecosto AND solicitudDeGastos.empleado=:empleado");
+			query.setParameter("centrodecosto", centroDeCosto);
+			query.setParameter("empleado", empleado);
 		}
 
 		@SuppressWarnings("unchecked")
