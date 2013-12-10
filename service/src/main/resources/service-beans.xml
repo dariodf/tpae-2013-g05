@@ -39,7 +39,7 @@
   </bean>
   
   <!-- Servicio de solicitudes de gasto. -->
-  <bean id="solicitudDeGastoService" parent="baseService">
+  <bean id="solicitudDeGastosService" parent="baseService">
     <property name="target">
       <bean class="ar.edu.utn.frsf.tpae.a2013.g05.service.impl.SolicitudDeGastosServiceImpl" />
     </property>

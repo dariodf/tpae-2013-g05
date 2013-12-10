@@ -77,4 +77,10 @@ public class SolicitudDeGastosMockDAO implements SolicitudDeGastosDAO {
 
 	}
 
+	@Override
+	public List<SolicitudDeGastos> listarSolicitudesPendientes() {
+		// TODO Metodo agregado, no necesita mock en TP-10. Solo se hizo el hibernate.
+		return null;
+	}
+
 }

@@ -64,4 +64,15 @@ public class SolicitudDeGastosHibernate implements SolicitudDeGastosDAO {
 		return listaRetorno;
 	}
 
+	@Override
+	public List<SolicitudDeGastos> listarSolicitudesPendientes() {
+		Query query = getCurrentSession().createQuery(
+				"FROM SolicitudDeGastos WHERE estado=:estado");
+		query.setString("estado", "No Procesada");
+
+		@SuppressWarnings("unchecked")
+		List<SolicitudDeGastos> listaRetorno = query.list();
+		return listaRetorno;
+	}
+
 }

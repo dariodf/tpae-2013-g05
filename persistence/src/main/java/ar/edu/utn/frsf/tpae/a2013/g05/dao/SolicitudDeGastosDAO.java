@@ -48,5 +48,12 @@ public interface SolicitudDeGastosDAO {
 	 *         empleado.
 	 */
 	List<SolicitudDeGastos> listarSolicitudes(int idEmpleado);
+	
+	/**
+	 * Obtiene la lista de todas las solicitudes de gastos pendientes de un. 
+	 * Es decir, aquellas no procesadas.
+	 * @return La lista de todas las solicitudes de gastos pendientes
+	 */
+	List<SolicitudDeGastos> listarSolicitudesPendientes();
 
 }
