@@ -33,9 +33,13 @@ public class Gasto {
 	@JoinColumn(name = "gst_slg_id")
 	private SolicitudDeGastos solicitudDeGastos;
 
-	@Column(name = "gst_fech")
+	@Column(name = "gst_fech_alta")
 	@Temporal(TemporalType.DATE)
-	private Date fecha;
+	private Date fechaAlta;
+	
+	@Column(name = "gst_fech_real")
+	@Temporal(TemporalType.DATE)
+	private Date fechaRealizacion;
 
 	@Column(name = "gst_imp")
 	private float importe;
@@ -55,9 +59,9 @@ public class Gasto {
 	 * @param importe
 	 * @param nroFactura
 	 */
-	public Gasto(SolicitudDeGastos solicitudDeGastos, Date fecha, float importe, String nroFactura) {
+	public Gasto(SolicitudDeGastos solicitudDeGastos, Date fechaAlta, float importe, String nroFactura) {
 		this.solicitudDeGastos = solicitudDeGastos;
-		this.fecha = fecha;
+		this.fechaAlta = fechaAlta;
 		this.importe = importe;
 		this.nroFactura = nroFactura;
 	}
@@ -93,21 +97,6 @@ public class Gasto {
 	}
 
 	/**
-	 * @return the fecha
-	 */
-	public Date getFecha() {
-		return fecha;
-	}
-
-	/**
-	 * @param fecha
-	 *            the fecha to set
-	 */
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
-	/**
 	 * @return the importe
 	 */
 	public float getImporte() {
@@ -135,6 +124,34 @@ public class Gasto {
 	 */
 	public void setNroFactura(String nroFactura) {
 		this.nroFactura = nroFactura;
+	}
+
+	/**
+	 * @return the fechaAlta
+	 */
+	public Date getFechaAlta() {
+		return fechaAlta;
+	}
+
+	/**
+	 * @param fechaAlta the fechaAlta to set
+	 */
+	public void setFechaAlta(Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
+	}
+
+	/**
+	 * @return the fechaRealizacion
+	 */
+	public Date getFechaRealizacion() {
+		return fechaRealizacion;
+	}
+
+	/**
+	 * @param fechaRealizacion the fechaRealizacion to set
+	 */
+	public void setFechaRealizacion(Date fechaRealizacion) {
+		this.fechaRealizacion = fechaRealizacion;
 	}
 
 }
