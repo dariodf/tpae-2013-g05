@@ -14,19 +14,13 @@
 
 	<ui:define name="content">
 		<h:form id="frmSupervisor">
-			<h2>Supervisor - Administrar Solicitudes</h2>
+			<h2>Supervisor - Rechazar Solicitud</h2>
 			<br/>
-		
-			<h:commandButton id="btnActualizarSolicitudes" value="Actualizar" 
-                                        action="#{administrarSolicitudesBean.listarSolicitudes}">
-                                        <f:ajax render="tablaSolicitudesPendientes" execute="@form" />        
-			</h:commandButton>
-			
 			<h:dataTable id="tablaSolicitudesPendientes" 
-						value="#{administrarSolicitudesBean.listaSolicitudesPendientes}" var="solicitud"
+						value="#{administrarSolicitudesBean.solicitudPendienteSeleccionada}" var="solicitud"
                         styleClass="order-table" headerClass="order-table-header"
                         rowClasses="order-table-odd-row,order-table-even-row"
-                        binding="#{administrarSolicitudesBean.tablaSolicitudesPendientes}">
+                        >
 	            <h:column>
                       <f:facet name="header"><h:outputText value="Fecha Creacion" /></f:facet>
                       <h:outputText value="#{solicitud.fechaCreacion}"></h:outputText>
@@ -47,17 +41,10 @@
                       <f:facet name="header"><h:outputText value="Empleado Creador" /></f:facet>
                       <h:outputText value="#{solicitud.empleado.nombre}"></h:outputText>
 	            </h:column>
-	            <h:column>
-                     <f:facet name="header"><h:outputText value="Aprobar" /></f:facet>
-                     <h:commandLink id="btnAprobar" action="#{administrarSolicitudesBean.aprobarSolicitud}" value="Aprobar" immediate="true">
-                     </h:commandLink>
-                     <f:facet name="header"><h:outputText value="Rechazar" /></f:facet>
-                     <h:commandLink id="btnRechazar" action="#{administrarSolicitudesBean.rechazarSolicitud}" value="Rechazar" immediate="true">
-                     </h:commandLink>
-                </h:column>
-	           
+	                     
 	            
             </h:dataTable>
+			
             
 		
 		</h:form>		

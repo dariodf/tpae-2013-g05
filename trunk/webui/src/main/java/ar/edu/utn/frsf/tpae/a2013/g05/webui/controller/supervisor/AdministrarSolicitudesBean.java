@@ -68,7 +68,7 @@ public class AdministrarSolicitudesBean implements Serializable {
 
 	public String rechazarSolicitud(){
 		solicitudPendienteSeleccionada = (SolicitudDeGastos)  tablaSolicitudesPendientes.getRowData();
-		return "aprobarSolicitud";
+		return "rechazarSolicitud";
 	}
 	
 	
@@ -114,8 +114,7 @@ public class AdministrarSolicitudesBean implements Serializable {
 	/**
 	 * @param solicitudPendienteSeleccionada the solicitudPendienteSeleccionada to set
 	 */
-	public void setSolicitudPendienteSeleccionada(
-			SolicitudDeGastos solicitudPendienteSeleccionada) {
+	public void setSolicitudPendienteSeleccionada(SolicitudDeGastos solicitudPendienteSeleccionada) {
 		this.solicitudPendienteSeleccionada = solicitudPendienteSeleccionada;
 	}
 
