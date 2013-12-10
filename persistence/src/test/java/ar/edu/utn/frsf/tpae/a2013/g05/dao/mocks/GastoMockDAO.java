@@ -20,7 +20,7 @@ public class GastoMockDAO implements GastoDAO {
 	}
 
 	@Override
-	public List<Gasto> listarGastos(List<CentroDeCosto> centrosDeCosto, Empleado empleado) {
+	public List<Gasto> listarGastos(CentroDeCosto centroDeCosto, Empleado empleado) {
 		// TODO Auto-generated method stub
 		return null;
 	}

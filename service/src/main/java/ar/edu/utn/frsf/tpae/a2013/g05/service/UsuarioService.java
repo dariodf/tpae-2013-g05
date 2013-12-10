@@ -1,5 +1,8 @@
 package ar.edu.utn.frsf.tpae.a2013.g05.service;
 
+import java.util.List;
+
+import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 
 /**
@@ -35,4 +38,10 @@ public interface UsuarioService {
 	 * @return the usuarioLogueado
 	 */
 	public Usuario getUsuarioLogueado();
+	
+	/**
+	 * Retorna todos los empleados de la empresa
+	 * @return Lista de los empleados de la empresa.
+	 */
+	public List<Empleado> listarEmpleados();
 }

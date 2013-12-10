@@ -2,6 +2,7 @@ package ar.edu.utn.frsf.tpae.a2013.g05.dao.junits;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -32,11 +33,18 @@ public class CentroDeCostoDAOTest {
 	@Transactional
 	@Rollback(true)
 	public void validarListarCentrosDeCosto() {
-		List<CentroDeCosto> listaCentrosDeCosto = centroDeCostoDAO.listarCentrosDeCosto();
+		
+		List<CentroDeCosto> listaCreada = new ArrayList<CentroDeCosto>();
+		CentroDeCosto centroDeCosto = new CentroDeCosto("Centro Uno");
+		listaCreada.add(centroDeCosto);
+		centroDeCosto = new CentroDeCosto("Centro Dos");
+		listaCreada.add(centroDeCosto);
+		
+		List<CentroDeCosto> listaRetornada = centroDeCostoDAO.listarCentrosDeCosto();
 		// Probamos que traiga todos los centros de costo comprobando que los
 		// traiga secuencialmente.
-		for (int i = 0; i < listaCentrosDeCosto.size(); i++) {
-			assertEquals(i + 1, listaCentrosDeCosto.get(i).getId());
+		for (int i = 0; i < listaRetornada.size(); i++) {
+			assertEquals(listaCreada.get(i).getNombre(), listaRetornada.get(i).getNombre());
 		}
 
 	}

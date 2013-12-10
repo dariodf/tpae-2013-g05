@@ -1,8 +1,11 @@
 package ar.edu.utn.frsf.tpae.a2013.g05.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.edu.utn.frsf.tpae.a2013.g05.dao.UsuarioDAO;
+import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 import ar.edu.utn.frsf.tpae.a2013.g05.service.UsuarioService;
 
@@ -37,5 +40,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public Usuario crearUsuario(Usuario usuario) {
 		return this.usuarioDao.persistir(usuario);
 	}
+
+	@Override
+	public List<Empleado> listarEmpleados() {
+		return this.usuarioDao.listarEmpleados();
+	}
+	
+	
 
 }
