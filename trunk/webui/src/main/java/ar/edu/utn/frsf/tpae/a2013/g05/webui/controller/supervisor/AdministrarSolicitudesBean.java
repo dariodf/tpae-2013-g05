@@ -24,7 +24,8 @@ import ar.edu.utn.frsf.tpae.a2013.g05.service.UsuarioService;
 import ar.edu.utn.frsf.tpae.a2013.g05.service.impl.SolicitudDeGastosServiceImpl;
 
 /**
- * Managed bean que actua como modelo para la vista "administrarSolicitudes.xhtml"
+ * Managed bean que actua como modelo para las vistas "administrarSolicitudes.xhtml", 
+ * "aprobarSolicitud.xhtml" y "rechazarSolicitud.html"
  * brindando lógica de controlador y siendo el punto de contacto con la capa de
  * servicios.
  * 
@@ -35,9 +36,10 @@ import ar.edu.utn.frsf.tpae.a2013.g05.service.impl.SolicitudDeGastosServiceImpl;
 public class AdministrarSolicitudesBean implements Serializable {
 
 	private HtmlDataTable tablaSolicitudesPendientes;
-	private HtmlInputTextarea comentario;
+	private HtmlInputTextarea inputComentario;
 	private SolicitudDeGastos solicitudPendienteSeleccionada;
 	private List<SolicitudDeGastos> listaSolicitudesPendientes;
+	String comentario;
 	
 	// DI via Spring
 	@ManagedProperty(value = "#{usuarioService}")
@@ -61,16 +63,29 @@ public class AdministrarSolicitudesBean implements Serializable {
 			
 	}
 	
-	public String aprobarSolicitud(){
+	public String irAprobarSolicitud(){
 		solicitudPendienteSeleccionada = (SolicitudDeGastos)  tablaSolicitudesPendientes.getRowData();
 		return "aprobarSolicitud";
 	}
 
-	public String rechazarSolicitud(){
+	public String irRechazarSolicitud(){
 		solicitudPendienteSeleccionada = (SolicitudDeGastos)  tablaSolicitudesPendientes.getRowData();
 		return "rechazarSolicitud";
 	}
 	
+	public void aprobarSolicitud(){
+		
+	}
+	
+	public void rechazarSolicitud(){
+		
+	}
+	
+	public String volverAtras(){
+		if(this.comentario != null)
+			this.comentario = "";
+		return "administrarSolicitudes";
+	}
 	
 	public void listarSolicitudes(){
 		listaSolicitudesPendientes = solicitudDeGastosService.listarSolicitudesPendientes();
@@ -93,15 +108,15 @@ public class AdministrarSolicitudesBean implements Serializable {
 	/**
 	 * @return the comentario
 	 */
-	public HtmlInputTextarea getComentario() {
-		return comentario;
+	public HtmlInputTextarea getInputComentario() {
+		return inputComentario;
 	}
 
 	/**
 	 * @param comentario the comentario to set
 	 */
-	public void setComentario(HtmlInputTextarea comentario) {
-		this.comentario = comentario;
+	public void setInputComentario(HtmlInputTextarea inputComentario) {
+		this.inputComentario = inputComentario;
 	}
 
 	/**
@@ -160,6 +175,20 @@ public class AdministrarSolicitudesBean implements Serializable {
 	public void setSolicitudDeGastosService(
 			SolicitudDeGastosService solicitudDeGastosService) {
 		this.solicitudDeGastosService = solicitudDeGastosService;
+	}
+
+	/**
+	 * @return the comentario
+	 */
+	public String getComentario() {
+		return comentario;
+	}
+
+	/**
+	 * @param comentario the comentario to set
+	 */
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
 	
 	

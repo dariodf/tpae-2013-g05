@@ -41,11 +41,20 @@
                       <f:facet name="header"><h:outputText value="Empleado Creador" /></f:facet>
                       <h:outputText value="#{solicitud.empleado.nombre}"></h:outputText>
 	            </h:column>
-	                     
-	            
-            </h:dataTable>
+	                   
+	        </h:dataTable>
 			
-            
+			<h:panelGrid	 rows="2" id="pnlGroupComentario">
+				<h:outputLabel for="comentario" value="Comentario"/>
+				<h:inputTextarea id="comentario" value="#{administrarSolicitudesBean.comentario}" label="Comentario" binding="#{administrarSolicitudesBean.inputComentario}"/>
+			</h:panelGrid>
+			
+			<h:panelGrid	columns="2" id="pnlBotones">
+				<h:commandButton id="btnAceptar" value="Aceptar" action="#{administrarSolicitudesBean.rechazarSolicitud}" />
+				<h:commandButton id="btnCancelar" value="Cancelar" action="#{administrarSolicitudesBean.volverAtras}" />         
+            </h:panelGrid>
+			
+			
 		
 		</h:form>		
 	</ui:define>

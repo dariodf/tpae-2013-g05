@@ -26,16 +26,6 @@ public class SupervisorBean implements Serializable {
 	@ManagedProperty(value = "#{usuarioService}")
 	UsuarioService usuarioService;
 
-	/** El usuario que se edita en "homeEmpleado.xhtml". */
-	private Usuario usuario;
-
-	// @PostConstruct
-	// public void init() {
-	// // Inicialización de variables usadas en las JSP, para evitar punteros
-	// // nulos.
-	// usuario = new Empleado();
-	// }
-
 	/**
 	 * Permite que un supervisor pueda administrar las solicitudes de gastos.
 	 */
@@ -52,13 +42,7 @@ public class SupervisorBean implements Serializable {
 
 	// Getters y setters, utilizados por las JSF.
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+	
 
 	public UsuarioService getUsuarioService() {
 		return usuarioService;
