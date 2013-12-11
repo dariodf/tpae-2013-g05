@@ -66,7 +66,8 @@ CREATE SEQUENCE seq_gst START 1;
 CREATE TABLE gst ( 
 	gst_id integer NOT NULL,
 	gst_slg_id integer NOT NULL,
-	gst_fech timestamp NOT NULL,
+	gst_fech_real timestamp NOT NULL,
+	gst_fech_alta timestamp NOT NULL,
 	gst_imp numeric(10,2) NOT NULL,
 	gst_nro_fact varchar(24) NOT NULL,
 	gst_cmt_emp varchar(256),
