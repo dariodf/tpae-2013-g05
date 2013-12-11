@@ -27,6 +27,6 @@ INSERT INTO slg (slg_emp_id, slg_cco_id, slg_desc, slg_imp_est, slg_est, slg_spv
 (2, 2, 'Gasto publicidad en cartelería', 3000.0, 'Pendiente', null, null),
 (1, 1, 'Gasto en reparación equipo de oficina maq-0132', 1200.0, 'Aprobada', 3, null);
 
-INSERT INTO gst (gst_id, gst_slg_id, gst_fech, gst_imp, gst_nro_fact, gst_cmt_emp) VALUES 
-(1, 3, '2013-11-12 08:08:09', 1200.0, '000-00001234', 'Gasto en reparación equipo de oficina maq-0132'),
-(2, 2, '2013-11-13 08:09:08', 1330.0, '000-00001241', '');
+INSERT INTO gst (gst_id, gst_slg_id, gst_fech_real, gst_fech_alta, gst_imp, gst_nro_fact, gst_cmt_emp) VALUES 
+(1, 3, '2013-11-12 08:08:09', '2013-12-12 08:08:09', 1200.0, '000-00001234', 'Gasto en reparación equipo de oficina maq-0132'),
+(2, 2, '2013-11-13 08:09:08', '2013-12-12 08:08:09', 1330.0, '000-00001241', '');
