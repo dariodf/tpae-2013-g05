@@ -50,7 +50,8 @@ public class LoginBean implements Serializable {
 
 		if (usuario == null) {
 			// Se retorna null para permanecer en la misma página.
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se puede ingresar al sistema, los datos ingresados son inválidos."));
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("No se puede ingresar al sistema, los datos ingresados son inválidos."));
 			return null;
 		} else {
 			// Si el usuario existe en el sistema se lo redirije a la página
