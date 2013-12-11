@@ -30,4 +30,10 @@ public class SolicitudDeGastosServiceImpl implements SolicitudDeGastosService {
 	public List<SolicitudDeGastos> listarSolicitudesPendientes(){
 		return solicitudDeGastosDAO.listarSolicitudesPendientes();
 	}
+
+	@Override
+	public void crearSolicitudAprobacion(SolicitudDeGastos solicitudDeGastos) {
+		solicitudDeGastosDAO.persistir(solicitudDeGastos);
+		
+	}
 }

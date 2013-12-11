@@ -9,13 +9,18 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.html.HtmlDataTable;
 import javax.faces.component.html.HtmlInputTextarea;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
 
 import ar.edu.utn.frsf.tpae.a2013.g05.model.CentroDeCosto;
+import ar.edu.utn.frsf.tpae.a2013.g05.model.Constantes;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.SolicitudDeGastos;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Supervisor;
@@ -36,7 +41,6 @@ import ar.edu.utn.frsf.tpae.a2013.g05.service.impl.SolicitudDeGastosServiceImpl;
 public class AdministrarSolicitudesBean implements Serializable {
 
 	private HtmlDataTable tablaSolicitudesPendientes;
-	private HtmlInputTextarea inputComentario;
 	private SolicitudDeGastos solicitudPendienteSeleccionada;
 	private List<SolicitudDeGastos> listaSolicitudesPendientes;
 	String comentario;
@@ -57,39 +61,77 @@ public class AdministrarSolicitudesBean implements Serializable {
 	@PostConstruct
 	public void init()
 	{
+		/*
+		 * Inicializa las variables para que no haya punteros nulos y trae las solicitudes de gastos pendientes
+		 */
 		solicitudPendienteSeleccionada = new SolicitudDeGastos();
 		listaSolicitudesPendientes = new ArrayList<SolicitudDeGastos>();
 		listaSolicitudesPendientes = solicitudDeGastosService.listarSolicitudesPendientes();
+		comentario = new String();
+		
 			
 	}
 	
+	/**
+	 * Navega a la pagina de aprobarSolicitud.xhtml y ademas obtiene la solicitud seleccionada
+	 * @return la referencia a la pagina
+	 */
 	public String irAprobarSolicitud(){
 		solicitudPendienteSeleccionada = (SolicitudDeGastos)  tablaSolicitudesPendientes.getRowData();
 		return "aprobarSolicitud";
 	}
-
+	
+	/**
+	 * Navega a la pagina de rechazarSolicitud.xhtml y ademas obtiene la solicitud seleccionada
+	 * @return la referencia a la pagina
+	 */
 	public String irRechazarSolicitud(){
 		solicitudPendienteSeleccionada = (SolicitudDeGastos)  tablaSolicitudesPendientes.getRowData();
 		return "rechazarSolicitud";
 	}
 	
-	public void aprobarSolicitud(){
-		
+	/**
+	 * Metodo encargado de aprobar la solicitud en la base de datos
+	 * @return String indicador de la proxima pagina a la cual navegar
+	 */
+	public String aprobarSolicitud(){
+		if(!comentario.isEmpty())
+			this.solicitudPendienteSeleccionada.setComentario(this.comentario);
+		//TODO: Poner lo que corresponde, agregar o no la constante
+		this.solicitudPendienteSeleccionada.setEstado(Constantes.APROBADA.name());
+		this.solicitudPendienteSeleccionada.setSupervisor((Supervisor)usuarioService.getUsuarioLogueado());
+		this.solicitudPendienteSeleccionada.setFechaAprobacion(new Date());
+		solicitudDeGastosService.crearSolicitudAprobacion(this.solicitudPendienteSeleccionada);
+		return volverAtras();
+	}
+	/**
+	 * Metodo encargado de rechazar la solicitud en la base de datos
+	 * @return String indicador de la proxima pagina a la cual navegar
+	 */
+	public String rechazarSolicitud(){
+		this.solicitudPendienteSeleccionada.setComentario(this.comentario);
+		//TODO: Poner lo que corresponde, agregar o no la constante
+		this.solicitudPendienteSeleccionada.setEstado(Constantes.RECHAZADA.name());
+		this.solicitudPendienteSeleccionada.setSupervisor((Supervisor)usuarioService.getUsuarioLogueado());
+		this.solicitudPendienteSeleccionada.setFechaAprobacion(new Date());
+		solicitudDeGastosService.crearSolicitudAprobacion(this.solicitudPendienteSeleccionada);
+		return volverAtras();
 	}
 	
-	public void rechazarSolicitud(){
-		
-	}
-	
+	/**
+	 * Metodo encargado de limpiar la pantalla y volver a la pantalla anterior 
+	 * @return String indicador de la proxima pagina a la cual navegar
+	 */
 	public String volverAtras(){
 		if(this.comentario != null)
 			this.comentario = "";
+		//TODO: Ver que mostrar cuando no hay solicitudes pendientes (No solicitado)
+		this.listaSolicitudesPendientes = solicitudDeGastosService.listarSolicitudesPendientes();
+		this.solicitudPendienteSeleccionada = new SolicitudDeGastos();
 		return "administrarSolicitudes";
 	}
 	
-	public void listarSolicitudes(){
-		listaSolicitudesPendientes = solicitudDeGastosService.listarSolicitudesPendientes();
-	}
+		
 	/**
 	 * @return the tablaSolicitudesPendientes
 	 */
@@ -103,20 +145,6 @@ public class AdministrarSolicitudesBean implements Serializable {
 	public void setTablaSolicitudesPendientes(
 			HtmlDataTable tablaSolicitudesPendientes) {
 		this.tablaSolicitudesPendientes = tablaSolicitudesPendientes;
-	}
-
-	/**
-	 * @return the comentario
-	 */
-	public HtmlInputTextarea getInputComentario() {
-		return inputComentario;
-	}
-
-	/**
-	 * @param comentario the comentario to set
-	 */
-	public void setInputComentario(HtmlInputTextarea inputComentario) {
-		this.inputComentario = inputComentario;
 	}
 
 	/**

@@ -35,7 +35,7 @@ public class GastoHibernate implements GastoDAO {
 
 	@Override
 	public Gasto persistir(Gasto gasto) {
-		getCurrentSession().save(gasto);
+		getCurrentSession().saveOrUpdate(gasto);
 
 		Query query = getCurrentSession().createQuery("FROM Gasto WHERE id=:id");
 		query.setInteger("id", gasto.getId());

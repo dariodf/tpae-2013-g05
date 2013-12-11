@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/WEB-INF/templates/template.xhtml">
 
@@ -16,6 +17,7 @@
 		<h:form id="frmSupervisor">
 			<h2>Supervisor - Aprobar Solicitud</h2>
 			<br/>
+			
 			<h:dataTable id="tablaSolicitudesPendientes" 
 						value="#{administrarSolicitudesBean.solicitudPendienteSeleccionada}" var="solicitud"
                         styleClass="order-table" headerClass="order-table-header"
@@ -42,16 +44,31 @@
                       <h:outputText value="#{solicitud.empleado.nombre}"></h:outputText>
 	            </h:column>
 	        </h:dataTable>
+			
 			<h:panelGrid	 rows="2" id="pnlGroupComentario">
 				<h:outputLabel for="comentario" value="Comentario"/>
-				<h:inputTextarea id="comentario" value="#{administrarSolicitudesBean.comentario}" label="Comentario" binding="#{administrarSolicitudesBean.inputComentario}"/>
+				<h:inputTextarea id="comentario" value="#{administrarSolicitudesBean.comentario}" label="Comentario" />
 			</h:panelGrid>
 			
-			<h:panelGrid	columns="2" id="pnlBotones">
-				<h:commandButton id="btnAceptar" value="Aceptar" action="#{administrarSolicitudesBean.aprobarSolicitud}" />
-				<h:commandButton id="btnCancelar" value="Cancelar" action="#{administrarSolicitudesBean.volverAtras}" />         
-            </h:panelGrid>	          
-		
+			<!-- Dialogo -->
+			<h:panelGrid columns="2" id="pnlBotones" style="margin-left:172px;">
+				<h:panelGroup>
+					<p:commandButton id="btnAceptar" value="Aceptar"  action="#{administrarSolicitudesBean.aprobarSolicitud}" style="text-align:center;">
+						<p:confirm header="Confirmación" message="¿Esta seguro que desea aprobar la solicitud?" icon="ui-icon-alert" />
+					</p:commandButton>
+					
+					<p:confirmDialog global="true">
+						<p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
+					
+					<p:commandButton id="btnCancelar" value="Cancelar" action="#{administrarSolicitudesBean.volverAtras}" style="text-align:center;">
+					</p:commandButton>
+					 
+				</h:panelGroup>
+			</h:panelGrid>
+			
+			
 		</h:form>		
 	</ui:define>
 
