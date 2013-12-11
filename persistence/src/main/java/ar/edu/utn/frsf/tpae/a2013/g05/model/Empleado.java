@@ -1,5 +1,7 @@
 package ar.edu.utn.frsf.tpae.a2013.g05.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 /**
@@ -8,7 +10,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "emp")
-public class Empleado extends Usuario {
+public class Empleado extends Usuario implements Serializable {
+
+	private static final long serialVersionUID = -103528344938423134L;
 
 	@Column(name = "emp_crg")
 	private String cargo;

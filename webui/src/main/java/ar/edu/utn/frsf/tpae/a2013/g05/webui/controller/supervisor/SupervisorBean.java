@@ -6,7 +6,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 import ar.edu.utn.frsf.tpae.a2013.g05.service.UsuarioService;
 
 /**
@@ -14,6 +13,7 @@ import ar.edu.utn.frsf.tpae.a2013.g05.service.UsuarioService;
  * brindando lógica de controlador y siendo el punto de contacto con la capa de
  * servicios.
  * 
+ * @author Agustin
  * @author Daniela
  */
 @ManagedBean(name = "supervisorBean")
@@ -41,8 +41,6 @@ public class SupervisorBean implements Serializable {
 	}
 
 	// Getters y setters, utilizados por las JSF.
-
-	
 
 	public UsuarioService getUsuarioService() {
 		return usuarioService;

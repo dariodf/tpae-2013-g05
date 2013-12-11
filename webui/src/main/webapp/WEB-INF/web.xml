@@ -54,10 +54,15 @@
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
 
-  <!-- To use comments in JSF 2 -->
+  <!-- To use comments in JSF 2. -->
   <context-param>
 	<param-name>facelets.SKIP_COMMENTS</param-name>
 	<param-value>true</param-value>
   </context-param>
 
+  <!-- Tiempo maximo de duracion de una sesion. -->
+  <session-config>
+	<session-timeout>10</session-timeout>
+  </session-config>
+  
 </web-app>

@@ -1,5 +1,6 @@
 package ar.edu.utn.frsf.tpae.a2013.g05.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -21,7 +22,9 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "gst")
-public class Gasto {
+public class Gasto implements Serializable {
+
+	private static final long serialVersionUID = 6968402046147272039L;
 
 	@Id
 	@Column(name = "gst_id")

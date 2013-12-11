@@ -1,6 +1,3 @@
-/**
- * 
- */
 package ar.edu.utn.frsf.tpae.a2013.g05.webui.controller.supervisor;
 
 import java.io.Serializable;
@@ -21,8 +18,9 @@ import ar.edu.utn.frsf.tpae.a2013.g05.service.GastoService;
 import ar.edu.utn.frsf.tpae.a2013.g05.service.UsuarioService;
 
 /**
- * Managed bean que actua como modelo para la vista "supervisor/consultar.xhtml" brindando
- * lógica de controlador y siendo el punto de contacto con la capa de servicios.
+ * Managed bean que actua como modelo para la vista "supervisor/consultar.xhtml"
+ * brindando lógica de controlador y siendo el punto de contacto con la capa de
+ * servicios.
  * 
  * @author Dario
  */
@@ -30,9 +28,6 @@ import ar.edu.utn.frsf.tpae.a2013.g05.service.UsuarioService;
 @SessionScoped
 public class ConsultarGastosBean implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2621590729713912608L;
 
 	private List<SelectItem> centrosDeCosto;
@@ -41,7 +36,7 @@ public class ConsultarGastosBean implements Serializable {
 	CentroDeCosto centroDeCostoSeleccionado;
 	Empleado empleadoSeleccionado;
 	Object nulo;
-	
+
 	// DI via Spring
 	@ManagedProperty(value = "#{usuarioService}")
 	UsuarioService usuarioService;
@@ -49,35 +44,33 @@ public class ConsultarGastosBean implements Serializable {
 	// DI via Spring
 	@ManagedProperty(value = "#{centroDeCostoService}")
 	CentroDeCostoService centroDeCostoService;
-	
+
 	// DI via Springs
 	@ManagedProperty(value = "#{gastoService}")
 	GastoService gastoService;
-	
+
 	@PostConstruct
-	public void init()
-	{
+	public void init() {
 		nulo = null;
 		centrosDeCosto = new ArrayList<SelectItem>();
 		empleados = new ArrayList<SelectItem>();
 		listaDeGastos = new ArrayList<Gasto>();
-		
+
 		List<CentroDeCosto> listaCentrosDeCosto = centroDeCostoService.listarCentrosDeCosto();
 		List<Empleado> listaEmpleados = usuarioService.listarEmpleados();
-		
-		for(int i = 0; i<listaEmpleados.size(); i++)
-			empleados.add(new SelectItem(listaEmpleados.get(i),listaEmpleados.get(i).getNombre()+" "+listaEmpleados.get(i).getApellido()));
-			
-		for(int i = 0; i<listaCentrosDeCosto.size(); i++)
+
+		for (int i = 0; i < listaEmpleados.size(); i++)
+			empleados.add(new SelectItem(listaEmpleados.get(i), listaEmpleados.get(i).getNombre() + " "
+					+ listaEmpleados.get(i).getApellido()));
+
+		for (int i = 0; i < listaCentrosDeCosto.size(); i++)
 			centrosDeCosto.add(new SelectItem(listaCentrosDeCosto.get(i), listaCentrosDeCosto.get(i).getNombre()));
 	}
-	
+
 	public void consultar() {
 		listaDeGastos = gastoService.listarGastos(centroDeCostoSeleccionado, empleadoSeleccionado);
-
 	}
-	
-	
+
 	/**
 	 * @return the usuarioService
 	 */
@@ -86,7 +79,8 @@ public class ConsultarGastosBean implements Serializable {
 	}
 
 	/**
-	 * @param usuarioService the usuarioService to set
+	 * @param usuarioService
+	 *            the usuarioService to set
 	 */
 	public void setUsuarioService(UsuarioService usuarioService) {
 		this.usuarioService = usuarioService;
@@ -100,7 +94,8 @@ public class ConsultarGastosBean implements Serializable {
 	}
 
 	/**
-	 * @param centroDeCostoService the centroDeCostoService to set
+	 * @param centroDeCostoService
+	 *            the centroDeCostoService to set
 	 */
 	public void setCentroDeCostoService(CentroDeCostoService centroDeCostoService) {
 		this.centroDeCostoService = centroDeCostoService;
@@ -114,7 +109,8 @@ public class ConsultarGastosBean implements Serializable {
 	}
 
 	/**
-	 * @param gastoService the gastoService to set
+	 * @param gastoService
+	 *            the gastoService to set
 	 */
 	public void setGastoService(GastoService gastoService) {
 		this.gastoService = gastoService;
@@ -128,7 +124,8 @@ public class ConsultarGastosBean implements Serializable {
 	}
 
 	/**
-	 * @param centrosDeCosto the centrosDeCosto to set
+	 * @param centrosDeCosto
+	 *            the centrosDeCosto to set
 	 */
 	public void setCentrosDeCosto(ArrayList<SelectItem> centrosDeCosto) {
 		this.centrosDeCosto = centrosDeCosto;
@@ -142,7 +139,8 @@ public class ConsultarGastosBean implements Serializable {
 	}
 
 	/**
-	 * @param empleados the empleados to set
+	 * @param empleados
+	 *            the empleados to set
 	 */
 	public void setEmpleados(ArrayList<SelectItem> empleados) {
 		this.empleados = empleados;
@@ -156,7 +154,8 @@ public class ConsultarGastosBean implements Serializable {
 	}
 
 	/**
-	 * @param listaDeGastos the listaDeGastos to set
+	 * @param listaDeGastos
+	 *            the listaDeGastos to set
 	 */
 	public void setListaDeGastos(List<Gasto> listaDeGastos) {
 		this.listaDeGastos = listaDeGastos;
@@ -170,7 +169,8 @@ public class ConsultarGastosBean implements Serializable {
 	}
 
 	/**
-	 * @param centroDeCostoSeleccionado the centroDeCostoSeleccionado to set
+	 * @param centroDeCostoSeleccionado
+	 *            the centroDeCostoSeleccionado to set
 	 */
 	public void setCentroDeCostoSeleccionado(CentroDeCosto centroDeCostoSeleccionado) {
 		this.centroDeCostoSeleccionado = centroDeCostoSeleccionado;
@@ -184,7 +184,8 @@ public class ConsultarGastosBean implements Serializable {
 	}
 
 	/**
-	 * @param empleadoSeleccionado the empleadoSeleccionado to set
+	 * @param empleadoSeleccionado
+	 *            the empleadoSeleccionado to set
 	 */
 	public void setEmpleadoSeleccionado(Empleado empleadoSeleccionado) {
 		this.empleadoSeleccionado = empleadoSeleccionado;
@@ -198,11 +199,11 @@ public class ConsultarGastosBean implements Serializable {
 	}
 
 	/**
-	 * @param nulo the nulo to set
+	 * @param nulo
+	 *            the nulo to set
 	 */
 	public void setNulo(Object nulo) {
 		this.nulo = nulo;
 	}
 
-	
 }

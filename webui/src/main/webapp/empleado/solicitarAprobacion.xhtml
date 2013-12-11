@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/WEB-INF/templates/template.xhtml">
 
@@ -13,12 +14,48 @@
 	</ui:define>
 
 	<ui:define name="content">
+		
 		<h:form id="frmEmpleado">
-			<h2>Empleados - Solicitud de Aprobaci&#243;n</h2>
+			<h:panelGrid id="validar">
+				<h:messages errorStyle="color: red;" />
+			</h:panelGrid>
+
+			<h2>Empleados - Nueva solicitud de aprobaci&#243;n de gasto</h2>
 			<br/>
-		
-			TO EDIT
-		
+			Ingrese o seleccione los siguientes datos:
+			<br/><br/>
+			<h:panelGrid columns="2" id="pnlLogin" >
+				<h:outputLabel for="ccos" value="#{msgs['cco.nombre']}" />
+				<h:selectOneMenu id="ccos" value="#{empleadoBean.centroDeCostoSeleccionado}" required="true" label="#{msgs['cco.nombre']}">
+					<f:selectItem itemLabel="Seleccione un Centro de Costo" noSelectionOption="true"/>
+					<f:selectItems value="#{empleadoBean.centrosDeCosto}" var="cco" 
+						itemLabel="#{cco.nombre}" itemValue="#{cco.nombre}"  />
+				</h:selectOneMenu>
+					
+				<h:outputLabel for="descripcion" value="#{msgs['slg.descripcion']}" />
+				<h:inputTextarea id="descripcion" value="#{empleadoBean.solicitudDeGastos.descripcion}" required="true" label="#{msgs['slg.descripcion']}">
+					<f:validateLength minimum="1" maximum="256" />
+				</h:inputTextarea>
+
+				<h:outputLabel for="importeEst" value="#{msgs['slg.importeEstimado']}" />
+				<h:inputText id="importeEst" value="#{empleadoBean.solicitudDeGastos.importeEstimado}" required="true" label="#{msgs['slg.importeEstimado']}">
+					<f:convertNumber maxFractionDigits="2" />
+					<f:validateDoubleRange minimum="0.01"/>
+				</h:inputText>
+			</h:panelGrid>
+			
+			<h:panelGrid style="margin-left:172px;">
+				<h:panelGroup>
+					<p:commandButton value="Aceptar" actionListener="#{empleadoBean.aceptaSolicitarAprobacion}" style="text-align:center;" update="validar">
+						<p:confirm header="Confirmación" message="#{msgs['slg.confirmar']}" icon="ui-icon-alert" />
+					</p:commandButton>
+					
+					<p:confirmDialog global="true">
+						<p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="validar"/>
+						<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" update="validar"/>
+					</p:confirmDialog>
+				</h:panelGroup>
+			</h:panelGrid>
 		</h:form>		
 	</ui:define>
 
