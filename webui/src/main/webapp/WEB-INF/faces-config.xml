@@ -26,8 +26,35 @@
 		<navigation-case>
 			<from-outcome>homeSupervisor</from-outcome>
 			<to-view-id>supervisor/homeSupervisor.xhtml</to-view-id>
+		</navigation-case>	
+	</navigation-rule>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>consultar</from-outcome>
+			<to-view-id>supervisor/consultar.xhtml</to-view-id>
+		</navigation-case>		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>aprobarSolicitud</from-outcome>
+			<to-view-id>supervisor/aprobarSolicitud.xhtml</to-view-id>
 		</navigation-case>
-			
+	</navigation-rule>
+	
+	<navigation-rule>	
+		<navigation-case>
+			<from-outcome>rechazarSolicitud</from-outcome>
+			<to-view-id>supervisor/rechazarSolicitud.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>administrarSolicitudes</from-outcome>
+			<to-view-id>supervisor/administrarSolicitudes.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 </faces-config>
