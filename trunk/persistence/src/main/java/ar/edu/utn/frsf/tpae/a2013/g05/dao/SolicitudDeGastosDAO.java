@@ -13,9 +13,7 @@ import ar.edu.utn.frsf.tpae.a2013.g05.model.SolicitudDeGastos;
 public interface SolicitudDeGastosDAO {
 
 	/**
-	 * Crea o modifica una solicitud de gastos. Si el identificador tiene el
-	 * valor <code>null</code>, se trata de una operación de creación. En caso
-	 * contrario, modificación.
+	 * Crea o modifica una solicitud de gastos. 
 	 * 
 	 * @param solicitudDeGastos
 	 *            La solicitud de gastos a crear o modificar.

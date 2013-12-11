@@ -16,11 +16,6 @@
 		<h:form id="frmSupervisor">
 			<h2>Supervisor - Administrar Solicitudes</h2>
 			<br/>
-		
-			<h:commandButton id="btnActualizarSolicitudes" value="Actualizar" 
-                                        action="#{administrarSolicitudesBean.listarSolicitudes}">
-                                        <f:ajax render="tablaSolicitudesPendientes" execute="@form" />        
-			</h:commandButton>
 			
 			<h:dataTable id="tablaSolicitudesPendientes" 
 						value="#{administrarSolicitudesBean.listaSolicitudesPendientes}" var="solicitud"

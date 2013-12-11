@@ -14,9 +14,7 @@ import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 public interface GastoDAO {
 
 	/**
-	 * Crea o modifica un gasto. Si el identificador tiene el valor
-	 * <code>null</code>, se trata de una operación de creación. En caso
-	 * contrario, modificación.
+	 * Crea o modifica un gasto. 
 	 * 
 	 * @param gasto
 	 *            El gasto a crear o modificar.

@@ -21,4 +21,11 @@ public interface SolicitudDeGastosService {
 	 */
 	public List<SolicitudDeGastos> listarSolicitudesPendientes();
 	
+	/**
+	 * Metodo encargado de persistir una solicitud de gastos en la base de datos 
+	 * o de modificar una existente en caso de que la misma ya se encuentre en la base de datos
+	 * @param solicitudDeGastos La solicitud de gastos a persistir
+	 */
+	public void crearSolicitudAprobacion(SolicitudDeGastos solicitudDeGastos);
 }
+

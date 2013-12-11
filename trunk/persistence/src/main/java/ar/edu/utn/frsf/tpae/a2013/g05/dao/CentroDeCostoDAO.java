@@ -13,10 +13,7 @@ import ar.edu.utn.frsf.tpae.a2013.g05.model.CentroDeCosto;
 public interface CentroDeCostoDAO {
 
 	/**
-	 * Crea o modifica un centro de costo. Si el identificador tiene el valor
-	 * <code>null</code>, se trata de una operación de creación. En caso
-	 * contrario, modificación.
-	 * 
+	 * Crea o modifica un centro de costo.  
 	 * @param centro
 	 *            de costo El centro de costo a crear o modificar.
 	 * @return El centro de costo persistido, con sus campos actualizados. En el

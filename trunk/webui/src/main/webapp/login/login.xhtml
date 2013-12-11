@@ -20,11 +20,11 @@
 
 				<h:panelGrid rows="2" id="pnlGroupLogin" style="text-align:center;" >
 					<h:panelGrid columns="2" id="pnlLogin" >
-						<h:outputLabel for="usuario" value="Usuario"/>
-						<h:inputText id="usuario" value="#{loginBean.usuario.usuario}" required="true" label="Usuario" />
+						<h:outputLabel for="usuario" value="#{msgs['login.usuario']}"/>
+						<h:inputText id="usuario" value="#{loginBean.usuario.usuario}" required="true" label="#{msgs['login.usuario']}" />
 							
-						<h:outputLabel for="password" value="Contraseña"/>
-						<h:inputSecret id="password" value="#{loginBean.usuario.password}" required="true" label="Contraseña"/>
+						<h:outputLabel for="password" value="#{msgs['login.contraseña']}"/>
+						<h:inputSecret id="password" value="#{loginBean.usuario.password}" required="true" label="#{msgs['login.contraseña']}"/>
 					</h:panelGrid>
 
 					<h:commandButton id="btnIngresar" value="#{msgs['boton.ingresar']}" action="#{loginBean.ingresar}" />

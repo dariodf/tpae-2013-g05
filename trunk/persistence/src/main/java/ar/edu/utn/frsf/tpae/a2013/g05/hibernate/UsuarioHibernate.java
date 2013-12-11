@@ -52,7 +52,7 @@ public class UsuarioHibernate implements UsuarioDAO {
 
 	@Override
 	public Usuario persistir(Usuario usuario) {
-		getCurrentSession().save(usuario);
+		getCurrentSession().saveOrUpdate(usuario);
 
 		Query query = getCurrentSession().createQuery("FROM Usuario WHERE id=:id");
 		query.setInteger("id", usuario.getId());

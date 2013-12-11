@@ -34,9 +34,7 @@ public interface UsuarioDAO {
 	List<Empleado> listarEmpleados();
 
 	/**
-	 * Crea o modifica un usuario. Si el identificador tiene el valor
-	 * <code>null</code>, se trata de una operación de creación. En caso
-	 * contrario, modificación.
+	 * Crea o modifica un usuario. 
 	 * 
 	 * @param usuario
 	 *            El usuario a crear o modificar.
