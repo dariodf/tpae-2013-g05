@@ -109,7 +109,8 @@ public class AdministrarSolicitudesBean implements Serializable {
 	 * @return String indicador de la proxima pagina a la cual navegar
 	 */
 	public String rechazarSolicitud(){
-		this.solicitudPendienteSeleccionada.setComentario(this.comentario);
+		if(!comentario.isEmpty())	
+			this.solicitudPendienteSeleccionada.setComentario(this.comentario);
 		//TODO: Poner lo que corresponde, agregar o no la constante
 		this.solicitudPendienteSeleccionada.setEstado(Constantes.RECHAZADA.name());
 		this.solicitudPendienteSeleccionada.setSupervisor((Supervisor)usuarioService.getUsuarioLogueado());
