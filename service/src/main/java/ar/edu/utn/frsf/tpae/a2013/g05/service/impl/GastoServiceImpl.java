@@ -4,14 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ar.edu.utn.frsf.tpae.a2013.g05.dao.CentroDeCostoDAO;
 import ar.edu.utn.frsf.tpae.a2013.g05.dao.GastoDAO;
-import ar.edu.utn.frsf.tpae.a2013.g05.dao.SolicitudDeGastosDAO;
-import ar.edu.utn.frsf.tpae.a2013.g05.dao.UsuarioDAO;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.CentroDeCosto;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Gasto;
-import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 import ar.edu.utn.frsf.tpae.a2013.g05.service.GastoService;
 
 /**
@@ -30,10 +26,10 @@ public class GastoServiceImpl implements GastoService {
 	}
 
 	@Override
-	public List<Gasto> listarGastos(CentroDeCosto centroDeCosto,
-			Empleado empleado) {
+	public List<Gasto> listarGastos(CentroDeCosto centroDeCosto, Empleado empleado) {
 		return gastoDAO.listarGastos(centroDeCosto, empleado);
 	}
 
+	
 
 }

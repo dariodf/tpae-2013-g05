@@ -15,6 +15,15 @@
   <version>${product.version}</version>
   <name>webui</name>
   <packaging>war</packaging>
+    
+  <!-- Descomentar si necesitan bajar el primefaces-4.0 del repo y maven no lo baja -->
+  <repositories>
+	<repository>
+		<id>prime-repo</id>
+		<name>Prime Repo</name>
+		<url>http://repository.primefaces.org</url>
+	</repository>
+  </repositories>
   
   <dependencies>
 
@@ -44,8 +53,6 @@
 	  <artifactId>jsf-impl</artifactId>
 	</dependency>
     
-	
-	
     <!-- http://repo1.maven.org/maven2/ -->
     <dependency>
 	  <groupId>javax.servlet</groupId>
@@ -79,12 +86,11 @@
       <groupId>commons-collections</groupId>
       <artifactId>commons-collections</artifactId>
     </dependency>
-	<!--
 	<dependency>
 		<groupId>org.primefaces</groupId>
 		<artifactId>primefaces</artifactId>
+		<version>4.0</version> 
 	</dependency>
-	-->
   </dependencies>
 
   <build>

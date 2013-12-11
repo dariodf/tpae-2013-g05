@@ -35,13 +35,16 @@ public interface UsuarioService {
 
 	/**
 	 * Retorna el usuario Logueado.
+	 * 
 	 * @return the usuarioLogueado
 	 */
 	public Usuario getUsuarioLogueado();
-	
+
 	/**
 	 * Retorna todos los empleados de la empresa
+	 * 
 	 * @return Lista de los empleados de la empresa.
 	 */
 	public List<Empleado> listarEmpleados();
+
 }

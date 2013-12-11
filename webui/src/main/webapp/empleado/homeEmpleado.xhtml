@@ -17,8 +17,8 @@
 			<h2>Empleados - Gastos</h2>
 			<br/>
 			<h:panelGrid rows="2" id="pnlHomeEmpl" style="padding-left: 35px; border-spacing:10px;">
-				<h:commandLink action="#{empleadoBean.solicitarAprobacion}" value="1. Solicitar Aprobación" />
-				<h:commandLink action="#{empleadoBean.verSolicitudesPendientes}" value="2. Ver Solicitudes Pendientes" />
+				<h:commandLink action="#{empleadoBean.solicitarAprobacion}" value="1. Solicitar Aprobación" immediate="true" id="btnAprobacion"/>
+				<h:commandLink action="#{empleadoBean.verSolicitudesPendientes}" value="2. Ver Solicitudes Pendientes"  immediate="true" id="btnPendientes"/>
 			</h:panelGrid>
 		</h:form>		
 	</ui:define>

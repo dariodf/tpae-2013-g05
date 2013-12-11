@@ -16,8 +16,8 @@ import ar.edu.utn.frsf.tpae.a2013.g05.service.UsuarioService;
  */
 public class UsuarioServiceImpl implements UsuarioService {
 
+	private UsuarioDAO usuarioDAO;
 	
-	private UsuarioDAO usuarioDao;
 	private Usuario usuarioLogueado;
 
 	public Usuario getUsuarioLogueado() {
@@ -26,26 +26,24 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	// Setter utilizado por Spring.
 	@Autowired(required = true)
-	public void setUsuarioDao(UsuarioDAO usuarioDao) {
-		this.usuarioDao = usuarioDao;
+	public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
+		this.usuarioDAO = usuarioDAO;
 	}
 
 	@Override
 	public Usuario buscarUsuario(String usuario, String password) {
-		this.usuarioLogueado = usuarioDao.validarUsuario(usuario, password);
+		this.usuarioLogueado = usuarioDAO.validarUsuario(usuario, password);
 		return this.usuarioLogueado;
 	}
 
 	@Override
 	public Usuario crearUsuario(Usuario usuario) {
-		return this.usuarioDao.persistir(usuario);
+		return this.usuarioDAO.persistir(usuario);
 	}
 
 	@Override
 	public List<Empleado> listarEmpleados() {
-		return this.usuarioDao.listarEmpleados();
+		return this.usuarioDAO.listarEmpleados();
 	}
-	
-	
 
 }
