@@ -1,5 +1,7 @@
 package ar.edu.utn.frsf.tpae.a2013.g05.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 /**
@@ -8,7 +10,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "cco")
-public class CentroDeCosto {
+public class CentroDeCosto implements Serializable {
+
+	private static final long serialVersionUID = 8141373408551731362L;
 
 	@Id
 	@Column(name = "cco_id")

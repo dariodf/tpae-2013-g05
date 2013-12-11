@@ -1,5 +1,6 @@
 package ar.edu.utn.frsf.tpae.a2013.g05.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -10,7 +11,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "spv")
-public class Supervisor extends Usuario {
+public class Supervisor extends Usuario implements Serializable {
+
+	private static final long serialVersionUID = 6205548401818672691L;
 
 	@Column(name = "spv_ult_acc")
 	@Temporal(TemporalType.TIMESTAMP)
