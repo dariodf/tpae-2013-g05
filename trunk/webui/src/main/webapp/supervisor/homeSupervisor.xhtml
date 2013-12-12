@@ -14,11 +14,11 @@
 
 	<ui:define name="content">
 		<h:form id="frmSupervisor">
-			<h2>Supervisor - Gastos</h2>
+			<h2>#{msgs['homeSupervisor.titulo']}</h2>
 			<br/>
 			<h:panelGrid rows="2" id="pnlHomeEmpl" style="padding-left: 35px; border-spacing:10px;">
-				<h:commandLink action="#{supervisorBean.administrarSolicitudes}" value="1. Administrar Solicitudes" />
-				<h:commandLink action="#{supervisorBean.consultar}" value="2. Consultar" />
+				<h:commandLink action="#{supervisorBean.administrarSolicitudes}" value="#{msgs['homeSupervisor.administrarSolicitudes']}" />
+				<h:commandLink action="#{supervisorBean.consultar}" value="#{msgs['homeSupervisor.consultar']}" />
 			</h:panelGrid>
 		</h:form>		
 	</ui:define>

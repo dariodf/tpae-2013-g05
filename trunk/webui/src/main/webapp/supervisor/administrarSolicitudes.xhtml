@@ -14,8 +14,11 @@
 
 	<ui:define name="content">
 		<h:form id="frmSupervisor">
-			<h2>Supervisor - Administrar Solicitudes</h2>
+			<h2>#{msgs['administrarSolicitudes.titulo']}</h2>
 			<br/>
+			
+			<h:commandButton action="#{administrarSolicitudesBean.init}" value="#{msgs['boton.actualizar']}">
+			</h:commandButton>
 			
 			<h:dataTable id="tablaSolicitudesPendientes" 
 						value="#{administrarSolicitudesBean.listaSolicitudesPendientes}" var="solicitud"
@@ -43,10 +46,9 @@
                       <h:outputText value="#{solicitud.empleado.nombre}"></h:outputText>
 	            </h:column>
 	            <h:column>
-                     <f:facet name="header"><h:outputText value="Aprobar" /></f:facet>
+                     <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.aprobar']} / #{msgs['administrarSolicitudes.rechazar']}" /></f:facet>
                      <h:commandLink id="btnAprobar" action="#{administrarSolicitudesBean.irAprobarSolicitud}" value="#{msgs['administrarSolicitudes.aprobar']}" immediate="true">
                      </h:commandLink>
-                     <f:facet name="header"><h:outputText value="Rechazar" /></f:facet>
                      <h:commandLink id="btnRechazar" action="#{administrarSolicitudesBean.irRechazarSolicitud}" value="#{msgs['administrarSolicitudes.rechazar']}" immediate="true">
                      </h:commandLink>
                 </h:column>
