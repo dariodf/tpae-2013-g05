@@ -37,12 +37,10 @@ public class CentroDeCostoDAOTest {
 		
 		// Se crea un CCO y persiste
 		CentroDeCosto centroDeCosto1 = new CentroDeCosto("Centro Uno");
-		centroDeCostoDAO.persistir(centroDeCosto1);
 		listaCreada.add(centroDeCosto1);
 		
 		// Se crea un segundo CCO y persiste
 		CentroDeCosto centroDeCosto2 = new CentroDeCosto("Centro Dos");
-		centroDeCostoDAO.persistir(centroDeCosto2);
 		listaCreada.add(centroDeCosto2);
 
 		List<CentroDeCosto> listaRetornada = centroDeCostoDAO.listarCentrosDeCosto();

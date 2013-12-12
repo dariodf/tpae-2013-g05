@@ -57,7 +57,7 @@ public class SolicitudDeGastosHibernate implements SolicitudDeGastosDAO {
 
 	@Override
 	public List<SolicitudDeGastos> listarSolicitudes(int idEmpleado) {
-		Query query = getCurrentSession().createQuery("FROM SolicitudDeGastos WHERE empleado.id=:idEmpleado");
+		Query query = getCurrentSession().createQuery("FROM SolicitudDeGastos WHERE empleado.id=:idEmpleado ORDER BY fechaCreacion DESC");
 		query.setInteger("idEmpleado", idEmpleado);
 
 		@SuppressWarnings("unchecked")
@@ -68,7 +68,7 @@ public class SolicitudDeGastosHibernate implements SolicitudDeGastosDAO {
 	@Override
 	public List<SolicitudDeGastos> listarSolicitudesPendientes() {
 		Query query = getCurrentSession().createQuery(
-				"FROM SolicitudDeGastos WHERE estado=:estado");
+				"FROM SolicitudDeGastos WHERE estado=:estado ORDER BY fechaCreacion DESC");
 		//TODO: Poner lo que corresponde Pendiente o No Procesada
 		query.setString("estado", Constantes.PENDIENTE.name());
 
