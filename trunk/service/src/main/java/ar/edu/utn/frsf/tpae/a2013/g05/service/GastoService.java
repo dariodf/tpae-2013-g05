@@ -30,6 +30,6 @@ public interface GastoService {
 	 * @param gasto
 	 *            el gasto a persistir
 	 */
-	public void agregarGasto(Gasto gasto);
+	public void crearGasto(Gasto gasto);
 
 }

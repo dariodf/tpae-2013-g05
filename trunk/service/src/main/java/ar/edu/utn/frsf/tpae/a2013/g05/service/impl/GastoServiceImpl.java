@@ -31,10 +31,8 @@ public class GastoServiceImpl implements GastoService {
 	}
 
 	@Override
-	public void agregarGasto(Gasto gasto) {
+	public void crearGasto(Gasto gasto) {
 		gastoDAO.persistir(gasto);		
 	}
-
-	
 
 }
