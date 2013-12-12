@@ -5,6 +5,9 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 /**
+ * Objeto del modelo de datos (persistente). Representa un centro de costo al
+ * que pertenece determinado Gasto.
+ * 
  * @author root
  * 
  */

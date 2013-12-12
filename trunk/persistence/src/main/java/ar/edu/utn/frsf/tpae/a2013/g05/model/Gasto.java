@@ -17,8 +17,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * @author root
+ * Objeto del modelo de datos (persistente). Representa un Gasto realizado por
+ * un empleado.
  * 
+ * @author root
  */
 @Entity
 @Table(name = "gst")
@@ -39,7 +41,7 @@ public class Gasto implements Serializable {
 	@Column(name = "gst_fech_alta")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaAlta;
-	
+
 	@Column(name = "gst_fech_real")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaRealizacion;
@@ -63,7 +65,8 @@ public class Gasto implements Serializable {
 	 * @param importe
 	 * @param nroFactura
 	 */
-	public Gasto(SolicitudDeGastos solicitudDeGastos, Date fechaRealizacion, Date fechaAlta, float importe, String nroFactura) {
+	public Gasto(SolicitudDeGastos solicitudDeGastos, Date fechaRealizacion, Date fechaAlta, float importe,
+			String nroFactura) {
 		this.solicitudDeGastos = solicitudDeGastos;
 		this.fechaRealizacion = fechaRealizacion;
 		this.fechaAlta = fechaAlta;
@@ -139,7 +142,8 @@ public class Gasto implements Serializable {
 	}
 
 	/**
-	 * @param fechaAlta the fechaAlta to set
+	 * @param fechaAlta
+	 *            the fechaAlta to set
 	 */
 	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
@@ -153,7 +157,8 @@ public class Gasto implements Serializable {
 	}
 
 	/**
-	 * @param fechaRealizacion the fechaRealizacion to set
+	 * @param fechaRealizacion
+	 *            the fechaRealizacion to set
 	 */
 	public void setFechaRealizacion(Date fechaRealizacion) {
 		this.fechaRealizacion = fechaRealizacion;

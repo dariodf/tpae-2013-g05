@@ -17,8 +17,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * @author root
+ * Objeto del modelo de datos (persistente). Representa una solicitud de gastos.
  * 
+ * @author root
  */
 @Entity
 @Table(name = "slg")
