@@ -35,7 +35,7 @@ public class GastoHibernate implements GastoDAO {
 
 	@Override
 	public Gasto persistir(Gasto gasto) {
-		getCurrentSession().saveOrUpdate(gasto);
+		getCurrentSession().save(gasto);
 
 		Query query = getCurrentSession().createQuery("FROM Gasto WHERE id=:id");
 		query.setInteger("id", gasto.getId());
@@ -48,19 +48,19 @@ public class GastoHibernate implements GastoDAO {
 		Query query;
 
 		if (empleado == null && centroDeCosto == null) {
-			query = getCurrentSession().createQuery("FROM Gasto");
+			query = getCurrentSession().createQuery("FROM Gasto  ORDER BY fechaRealizacion DESC");
 
 		} else if (centroDeCosto == null) {
-			query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.empleado=:empleado");
+			query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.empleado=:empleado ORDER BY fechaRealizacion DESC");
 			query.setParameter("empleado", empleado);
 
 		} else if (empleado == null) {
-			query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrodecosto");
+			query = getCurrentSession().createQuery("FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrodecosto  ORDER BY fechaRealizacion DESC");
 			query.setParameter("centrodecosto", centroDeCosto);
 		} else {
 			query = getCurrentSession()
 					.createQuery(
-							"FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrodecosto AND solicitudDeGastos.empleado=:empleado");
+							"FROM Gasto WHERE solicitudDeGastos.centroDeCosto=:centrodecosto AND solicitudDeGastos.empleado=:empleado  ORDER BY fechaRealizacion DESC");
 			query.setParameter("centrodecosto", centroDeCosto);
 			query.setParameter("empleado", empleado);
 		}

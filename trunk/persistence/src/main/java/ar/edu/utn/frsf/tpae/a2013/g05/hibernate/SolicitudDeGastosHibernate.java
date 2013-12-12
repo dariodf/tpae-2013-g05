@@ -46,7 +46,7 @@ public class SolicitudDeGastosHibernate implements SolicitudDeGastosDAO {
 	@Override
 	public List<SolicitudDeGastos> listarSolicitudesPendientes(int idEmpleado) {
 		Query query = getCurrentSession().createQuery(
-				"FROM SolicitudDeGastos WHERE empleado.id=:idEmpleado AND estado=:estado");
+				"FROM SolicitudDeGastos WHERE empleado.id=:idEmpleado AND estado=:estado  ORDER BY fechaCreacion DESC");
 		query.setInteger("idEmpleado", idEmpleado);
 		query.setString("estado", Constantes.PENDIENTE.name());
 
@@ -56,7 +56,7 @@ public class SolicitudDeGastosHibernate implements SolicitudDeGastosDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<SolicitudDeGastos> listarSolicitudes(int idEmpleado) {
-		Query query = getCurrentSession().createQuery("FROM SolicitudDeGastos WHERE empleado.id=:idEmpleado");
+		Query query = getCurrentSession().createQuery("FROM SolicitudDeGastos WHERE empleado.id=:idEmpleado  ORDER BY fechaCreacion DESC");
 		query.setInteger("idEmpleado", idEmpleado);
 
 		return query.list();
@@ -65,7 +65,7 @@ public class SolicitudDeGastosHibernate implements SolicitudDeGastosDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<SolicitudDeGastos> listarSolicitudesPendientes() {
-		Query query = getCurrentSession().createQuery("FROM SolicitudDeGastos WHERE estado=:estado");
+		Query query = getCurrentSession().createQuery("FROM SolicitudDeGastos WHERE estado=:estado ORDER BY fechaCreacion DESC");
 		query.setString("estado", Constantes.PENDIENTE.name());
 
 		return query.list();
