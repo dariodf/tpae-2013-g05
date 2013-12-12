@@ -53,7 +53,7 @@ CREATE TABLE slg (
 	slg_cco_id integer NOT NULL,
 	slg_desc varchar(256) NOT NULL,
 	slg_fecha_creacion timestamp NOT NULL,
-	slg_fecha_aprobacion,
+	slg_fecha_aprobacion timestamp,
 	slg_imp_est numeric(10,2) NOT NULL,
 	slg_est varchar(16) NOT NULL,
 	slg_spv_id integer,
@@ -66,7 +66,7 @@ CREATE TABLE slg (
 
 CREATE SEQUENCE seq_gst START 1;
 CREATE TABLE gst ( 
-	gst_id integer NOT NULL,
+	gst_id integer NOT NULL DEFAULT nextval('seq_gst'),
 	gst_slg_id integer NOT NULL,
 	gst_fech_real timestamp NOT NULL,
 	gst_fech_alta timestamp NOT NULL,
