@@ -23,31 +23,31 @@
                         rowClasses="order-table-odd-row,order-table-even-row"
                         binding="#{administrarSolicitudesBean.tablaSolicitudesPendientes}">
 	            <h:column>
-                      <f:facet name="header"><h:outputText value="Fecha Creacion" /></f:facet>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.fechaCreacion']}" /></f:facet>
                       <h:outputText value="#{solicitud.fechaCreacion}"></h:outputText>
 	            </h:column>
 	            <h:column>
-                      <f:facet name="header"><h:outputText value="Centro de Costo" /></f:facet>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.centroDeCosto']}" /></f:facet>
                       <h:outputText value="#{solicitud.centroDeCosto.nombre}"></h:outputText>
 	            </h:column>
 	            <h:column>
-                      <f:facet name="header"><h:outputText value="Descripcion" /></f:facet>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.descripcion']}" /></f:facet>
                       <h:outputText value="#{solicitud.descripcion}"></h:outputText>
 	            </h:column>
 	            <h:column>
-                      <f:facet name="header"><h:outputText value="Importe Estimado" /></f:facet>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.importeEstimado']}" /></f:facet>
                       <h:outputText value="#{solicitud.importeEstimado}"></h:outputText>
 	            </h:column>
 	            <h:column>
-                      <f:facet name="header"><h:outputText value="Empleado Creador" /></f:facet>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.empleado']}" /></f:facet>
                       <h:outputText value="#{solicitud.empleado.nombre}"></h:outputText>
 	            </h:column>
 	            <h:column>
                      <f:facet name="header"><h:outputText value="Aprobar" /></f:facet>
-                     <h:commandLink id="btnAprobar" action="#{administrarSolicitudesBean.irAprobarSolicitud}" value="Aprobar" immediate="true">
+                     <h:commandLink id="btnAprobar" action="#{administrarSolicitudesBean.irAprobarSolicitud}" value="#{msgs['administrarSolicitudes.aprobar']}" immediate="true">
                      </h:commandLink>
                      <f:facet name="header"><h:outputText value="Rechazar" /></f:facet>
-                     <h:commandLink id="btnRechazar" action="#{administrarSolicitudesBean.irRechazarSolicitud}" value="Rechazar" immediate="true">
+                     <h:commandLink id="btnRechazar" action="#{administrarSolicitudesBean.irRechazarSolicitud}" value="#{msgs['administrarSolicitudes.rechazar']}" immediate="true">
                      </h:commandLink>
                 </h:column>
 	           

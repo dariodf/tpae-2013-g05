@@ -24,31 +24,31 @@
                         rowClasses="order-table-odd-row,order-table-even-row"
                         binding="#{altaGastoBean.tablaSolicitudAprobada}">
 		            <h:column>
-	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.fechaCreacion']}" /></f:facet>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpleado.fechaCreacion']}" /></f:facet>
 	                      <h:outputText value="#{solApr.fechaCreacion}"></h:outputText>
 		            </h:column>
 		            <h:column>
-	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.centroDeCosto']}" /></f:facet>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpleado.centroDeCosto']}" /></f:facet>
 	                      <h:outputText value="#{solApr.centroDeCosto.nombre}" ></h:outputText>
 		            </h:column>
 		            <h:column>
-	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.descripcion']}" /></f:facet>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpleado.descripcion']}" /></f:facet>
 	                      <h:outputText value="#{solApr.descripcion}" ></h:outputText>
 		            </h:column>
 		            <h:column>
-	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.importeEstimado']}" /></f:facet>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpleado.importeEstimado']}" /></f:facet>
 	                      <h:outputText value="#{solApr.importeEstimado}" ></h:outputText>
 		            </h:column>
 		            <h:column>
-	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.nombreSupervisor']}" /></f:facet>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpleado.nombreSupervisor']}" /></f:facet>
 	                      <h:outputText value="#{solApr.supervisor.nombre} #{solApr.supervisor.apellido}" ></h:outputText>
 		            </h:column>
 		            <h:column>
-	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.fechaAprobacion']}" /></f:facet>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpleado.fechaAprobacion']}" /></f:facet>
 	                      <h:outputText value="#{solApr.fechaAprobacion}" ></h:outputText>
 		            </h:column>
 		            <h:column>
-	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.comentario']}" /></f:facet>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpleado.comentario']}" /></f:facet>
 	                      <h:outputText value="#{solApr.comentario}" ></h:outputText>
 		            </h:column>
               </h:dataTable>
