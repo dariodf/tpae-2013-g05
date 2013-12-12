@@ -41,8 +41,7 @@ public class UsuarioServiceTest {
 	@Transactional
 	@Rollback(true)
 	public void validarUsuarioExistente() {
-		Empleado empleado = new Empleado("Romina", "3456", "Greca", "Romina", "31654321", "Programador Java Senior",
-				"28316543218", "098765432109876543210987654321", "156654321", "romina.greca@gmail.com");
+		Empleado empleado = this.crearUnEmpleado();
 		usuarioService.crearUsuario(empleado);
 
 		assertNotNull(empleado);
@@ -51,27 +50,33 @@ public class UsuarioServiceTest {
 		
 		assertNotNull(usuarioExistente);
 		assertEquals(empleado.getId(), usuarioExistente.getId());
-	}
-	
+	}	
 	
 	@Test
 	@Transactional
 	@Rollback(true)
 	public void listarEmpleados() {
-		
 		List<Empleado> listaCreada = new ArrayList<Empleado>();
 		
-		Empleado empleado = new Empleado("Romina", "3456", "Greca", "Romina", "31654321", "Programador Java Senior",
-				"28316543218", "098765432109876543210987654321", "156654321", "romina.greca@gmail.com");
+		Empleado empleado = this.crearUnEmpleado();
 		listaCreada.add((Empleado) usuarioService.crearUsuario(empleado));
-		empleado = new Empleado("Daniela", "3456", "Greca", "Daniela", "31654321", "Programador C++ Junior",
-				"28316544444", "198765432109876543210987654321", "156654321", "danis.greca@gmail.com");
+	
+		empleado = crearOtroEmpleado();
 		listaCreada.add((Empleado) usuarioService.crearUsuario(empleado));
 		
 		List<Empleado> listaRetorno = this.usuarioService.listarEmpleados();
-		for(int i=0; i<listaRetorno.size();i++)
-			assertEquals(listaCreada.get(i).getDni(),listaRetorno.get(i).getDni());
+		for(int i=0; i < listaRetorno.size(); i++)
+			assertEquals(listaCreada.get(i).getDni(), listaRetorno.get(i).getDni());
+	}
+
+	private Empleado crearUnEmpleado() {
+		return new Empleado("Romina", "3456", "Greca", "Romina", "31654321", "Programador Java Senior",
+				"28316543218", "098765432109876543210987654321", "156654321", "romina.greca@gmail.com");
 	}
 	
+	private Empleado crearOtroEmpleado() {
+		return new Empleado("Ramon", "3356", "Zutti", "Ramon", "30054321", "Programador C++ Junior",
+				"28316544444", "198765432109876543210987654321", "156654321", "ramon.zutti@gmail.com");
+	}
 
 }

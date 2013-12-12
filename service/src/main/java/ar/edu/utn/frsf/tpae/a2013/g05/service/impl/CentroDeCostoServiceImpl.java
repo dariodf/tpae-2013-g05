@@ -23,6 +23,11 @@ public class CentroDeCostoServiceImpl implements CentroDeCostoService {
 	}
 
 	@Override
+	public CentroDeCosto crearCentroDeCosto(CentroDeCosto centroDeCosto) {
+		return centroDeCostoDAO.persistir(centroDeCosto);
+	}
+	
+	@Override
 	public List<CentroDeCosto> listarCentrosDeCosto() {
 		return centroDeCostoDAO.listarCentrosDeCosto();
 	}

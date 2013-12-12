@@ -58,12 +58,14 @@ public class Gasto implements Serializable {
 
 	/**
 	 * @param solicitudDeGastos
-	 * @param fecha
+	 * @param fechaRealizacion
+	 * @param fechaAlta
 	 * @param importe
 	 * @param nroFactura
 	 */
-	public Gasto(SolicitudDeGastos solicitudDeGastos, Date fechaAlta, float importe, String nroFactura) {
+	public Gasto(SolicitudDeGastos solicitudDeGastos, Date fechaRealizacion, Date fechaAlta, float importe, String nroFactura) {
 		this.solicitudDeGastos = solicitudDeGastos;
+		this.fechaRealizacion = fechaRealizacion;
 		this.fechaAlta = fechaAlta;
 		this.importe = importe;
 		this.nroFactura = nroFactura;
