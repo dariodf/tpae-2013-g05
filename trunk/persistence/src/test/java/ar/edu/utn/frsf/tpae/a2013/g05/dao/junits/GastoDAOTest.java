@@ -18,6 +18,7 @@ import ar.edu.utn.frsf.tpae.a2013.g05.dao.CentroDeCostoDAO;
 import ar.edu.utn.frsf.tpae.a2013.g05.dao.GastoDAO;
 import ar.edu.utn.frsf.tpae.a2013.g05.dao.UsuarioDAO;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.CentroDeCosto;
+import ar.edu.utn.frsf.tpae.a2013.g05.model.Constantes;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Empleado;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Gasto;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.SolicitudDeGastos;
@@ -60,13 +61,13 @@ public class GastoDAOTest {
 
 	private Gasto crearUnGasto() {
 		return new Gasto(new SolicitudDeGastos(new CentroDeCosto("Centro Uno"), "Gastos en viajes a CBA", 12354,
-				"No Procesada", new Date(), new Date(), new Supervisor("Dario", "5678", "De Filippis", "Dario",
-						"30789456", new Date()), new Empleado("Agustin", "1234", "Martinez", "Agustin", "32123456",
-						"Programador Java Junior", "20321234568", "123456789012345678901234567890", "156123456",
-						"mrtnz.agustin@gmail.com"), "Default comment"), new Date(), (float) 1500.50, "B004");
+				Constantes.PENDIENTE.name(), new Date(), new Date(), new Supervisor("Dario", "5678", "De Filippis",
+						"Dario", "30789456", new Date()), new Empleado("Agustin", "1234", "Martinez", "Agustin",
+						"32123456", "Programador Java Junior", "20321234568", "123456789012345678901234567890",
+						"156123456", "mrtnz.agustin@gmail.com"), "Default comment"), new Date(), new Date(),
+				(float) 1500.50, "B004");
 	}
 
-	//TODO: Revisar el metodo.
 	@Test
 	@Transactional
 	@Rollback(true)
@@ -78,7 +79,7 @@ public class GastoDAOTest {
 
 		centroDeCosto.setNombre(gasto1.getSolicitudDeGastos().getCentroDeCosto().getNombre());
 		centroDeCosto.setId(gasto1.getSolicitudDeGastos().getCentroDeCosto().getId());
-		
+
 		listaGastos = gastoDAO.listarGastos(centroDeCosto, null);
 		for (int i = 0; i < listaGastos.size(); i++) {
 			// Probamos que traiga todos los gastos comprobando que los traiga
@@ -93,7 +94,8 @@ public class GastoDAOTest {
 		listaGastos = gastoDAO.listarGastos(centroDeCosto, empleado1);
 		for (int i = 0; i < listaGastos.size(); i++) {
 			// Probamos que traiga todos los gastos del centro de costos 1.
-			assertEquals(listaGastos.get(i).getSolicitudDeGastos().getCentroDeCosto().getNombre(), centroDeCosto.getNombre());
+			assertEquals(listaGastos.get(i).getSolicitudDeGastos().getCentroDeCosto().getNombre(),
+					centroDeCosto.getNombre());
 		}
 
 		listaGastos = gastoDAO.listarGastos(null, empleado1);
@@ -102,10 +104,9 @@ public class GastoDAOTest {
 			assertEquals(empleado1.getNombre(), gasto.getSolicitudDeGastos().getEmpleado().getNombre());
 			assertEquals(empleado1.getApellido(), gasto.getSolicitudDeGastos().getEmpleado().getApellido());
 		}
-		
+
 		// Crea y persiste un Empleado
 		Empleado empleado2 = crearYPersistirUnEmpleado();
-		// empleados.add(empleado2);
 
 		listaGastos = gastoDAO.listarGastos(centroDeCosto, empleado2);
 		for (Gasto gasto : listaGastos) {

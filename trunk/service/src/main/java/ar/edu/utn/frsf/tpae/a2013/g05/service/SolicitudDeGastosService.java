@@ -18,7 +18,7 @@ public interface SolicitudDeGastosService {
 	 * 
 	 * @param solicitudDeGastos
 	 *            la solicitudDeGastos a crear.
-	 * @return el usuario creado.
+	 * @return la solicitudDeGastos creada.
 	 */
 	void crearSolicitudAprobacion(SolicitudDeGastos solicitudDeGastos);
 
@@ -29,12 +29,14 @@ public interface SolicitudDeGastosService {
 	 */
 	public List<SolicitudDeGastos> listarSolicitudesPendientes();
 
-	
 	/**
-	 * Metodo encargado de listar todas las solicitudes de un empleado especifico
-	 * @param idEmpleado id del empleado del cual se quiere listar las solicitudes
+	 * Metodo encargado de listar todas las solicitudes de un empleado
+	 * especifico
+	 * 
+	 * @param idEmpleado
+	 *            id del empleado del cual se quiere listar las solicitudes
 	 * @return lista de solicitudes del empleado en cuestion
 	 */
 	public List<SolicitudDeGastos> listarSolicitudes(int idEmpleado);
-}
 
+}
