@@ -54,29 +54,27 @@
               </h:dataTable>
               
               <h:panelGrid columns="2" id="panelGasto">
-                                
-                     <h:outputLabel for="fecha" value="#{msgs['altaGasto.fechaRealizacion']}" />
-                     <h:inputText id="fecha" value="#{altaGastoBean.fechaRealizacionGasto}"  
-                             label="#{msgs['altaGasto.fechaRealizacion']}" binding="#{altaGastoBean.inputFechaRealizacionGasto}">
-                             <f:convertDateTime pattern="dd/MM/yyyy" />
-                     </h:inputText>
                      
+                     <h:outputLabel for="fechaRealizacionGasto" value="#{msgs['altaGasto.fechaRealizacion']}"/>
+					 <h:inputText id="fechaRealizacionGasto" value="#{altaGastoBean.fechaRealizacionGasto}" binding="#{altaGastoBean.inputFechaRealizacionGasto}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					 </h:inputText>
+                    
                      <h:outputLabel for="importe" value="#{msgs['altaGasto.importe']}" />
                      <h:inputText id="importe" value="#{altaGastoBean.importeGasto}"  
                              label="#{msgs['altaGasto.importe']}" binding="#{altaGastoBean.inputImporteGasto}" >
-                             <f:convertNumber maxFractionDigits="2" />
                      </h:inputText>        
                      
                      <h:outputLabel for="numeroTicket" value="#{msgs['altaGasto.numeroTicket']}" />
                      <h:inputText id="numeroTicket" value="#{altaGastoBean.numeroTicketGasto}"  
-                             label="#{msgs['altaGasto.numeroTicket']}" binding="#{altaGastoBean.inputNumeroTicketGasto}" maxlenght="24"/>
-                     
+                             label="#{msgs['altaGasto.numeroTicket']}" binding="#{altaGastoBean.inputNumeroTicketGasto}" />
+                       
                </h:panelGrid>
                         
 			<!-- Dialogo -->
 			<h:panelGrid columns="2" id="pnlBotones" style="margin-left:172px;">
 				<h:panelGroup>
-					<p:commandButton id="btnAceptar" value="#{msgs['boton.aceptar']}"  action="#{altaGastoBean.agregarGasto}" style="text-align:center;">
+					<p:commandButton id="btnAceptar" value="#{msgs['boton.aceptar']}"  action="#{altaGastoBean.crearGasto}" style="text-align:center;">
 						<p:confirm header="#{msgs['titulo.confirmacion']}" message="#{msgs['altaGasto.confirmacion']}" icon="ui-icon-alert" />
 					</p:commandButton>
 					
