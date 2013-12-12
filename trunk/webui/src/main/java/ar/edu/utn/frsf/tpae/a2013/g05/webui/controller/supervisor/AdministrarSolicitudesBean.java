@@ -86,7 +86,6 @@ public class AdministrarSolicitudesBean implements Serializable {
 	public String aprobarSolicitud() {
 		if (!comentario.isEmpty())
 			this.solicitudPendienteSeleccionada.setComentario(this.comentario);
-		// TODO: Poner lo que corresponde, agregar o no la constante
 		this.solicitudPendienteSeleccionada.setEstado(Constantes.APROBADA.name());
 		this.solicitudPendienteSeleccionada.setSupervisor((Supervisor) usuarioService.getUsuarioLogueado());
 		this.solicitudPendienteSeleccionada.setFechaAprobacion(new Date());
@@ -102,7 +101,6 @@ public class AdministrarSolicitudesBean implements Serializable {
 	public String rechazarSolicitud() {
 		if (!comentario.isEmpty())
 			this.solicitudPendienteSeleccionada.setComentario(this.comentario);
-		// TODO: Poner lo que corresponde, agregar o no la constante
 		this.solicitudPendienteSeleccionada.setEstado(Constantes.RECHAZADA.name());
 		this.solicitudPendienteSeleccionada.setSupervisor((Supervisor) usuarioService.getUsuarioLogueado());
 		this.solicitudPendienteSeleccionada.setFechaAprobacion(new Date());
@@ -118,8 +116,6 @@ public class AdministrarSolicitudesBean implements Serializable {
 	public String volverAtras() {
 		if (this.comentario != null)
 			this.comentario = "";
-		// TODO: Ver que mostrar cuando no hay solicitudes pendientes (No
-		// solicitado)
 		this.listaSolicitudesPendientes = solicitudDeGastosService.listarSolicitudesPendientes();
 		this.solicitudPendienteSeleccionada = new SolicitudDeGastos();
 		return "administrarSolicitudes";
