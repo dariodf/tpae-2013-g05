@@ -2,7 +2,6 @@ package ar.edu.utn.frsf.tpae.a2013.g05.webui.controller.empleado;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -11,10 +10,9 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.component.html.HtmlDataTable;
 import javax.faces.component.html.HtmlInputText;
 
-import ar.edu.utn.frsf.tpae.a2013.g05.dao.GastoDAO;
+
 import ar.edu.utn.frsf.tpae.a2013.g05.model.Gasto;
 import ar.edu.utn.frsf.tpae.a2013.g05.model.SolicitudDeGastos;
-import ar.edu.utn.frsf.tpae.a2013.g05.model.Usuario;
 import ar.edu.utn.frsf.tpae.a2013.g05.service.GastoService;
 import ar.edu.utn.frsf.tpae.a2013.g05.service.SolicitudDeGastosService;
 import ar.edu.utn.frsf.tpae.a2013.g05.service.UsuarioService;
@@ -51,7 +49,7 @@ public class altaGastoBean implements Serializable {
 	
 	private Gasto gasto;
 	private Date fechaRealizacionGasto;
-	private Double importeGasto;
+	private float importeGasto;
 	private String numeroTicketGasto;
 	
 	
@@ -68,7 +66,7 @@ public class altaGastoBean implements Serializable {
 	public String crearGasto(){
 		gasto.setFechaAlta(new Date());
 		gasto.setFechaRealizacion(fechaRealizacionGasto);
-		gasto.setImporte(importeGasto.floatValue());
+		gasto.setImporte(importeGasto);
 		gasto.setNroFactura(numeroTicketGasto);
 		gasto.setSolicitudDeGastos((SolicitudDeGastos) tablaSolicitudAprobada.getRowData());
 		
@@ -78,7 +76,7 @@ public class altaGastoBean implements Serializable {
 	}
 	
 	public String volverAtras(){
-		importeGasto = new Double(0);
+		importeGasto = 0;
 		numeroTicketGasto = "";
 		inputFechaRealizacionGasto.clearInitialState();
 		inputFechaRealizacionGasto.resetValue();
@@ -204,14 +202,14 @@ public class altaGastoBean implements Serializable {
 	/**
 	 * @return the importeGasto
 	 */
-	public Double getImporteGasto() {
+	public float getImporteGasto() {
 		return importeGasto;
 	}
 
 	/**
 	 * @param importeGasto the importeGasto to set
 	 */
-	public void setImporteGasto(Double importeGasto) {
+	public void setImporteGasto(float importeGasto) {
 		this.importeGasto = importeGasto;
 	}
 

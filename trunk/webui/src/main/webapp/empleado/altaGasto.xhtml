@@ -17,6 +17,10 @@
 		<h:form id="frmEmpleado">
 			<h2>#{msgs['altaGasto.titulo']}</h2>
 			<br/>
+			
+			<h:panelGrid id="validar">
+				<h:messages errorStyle="color: red;" />
+			</h:panelGrid>
 
 			  <h:dataTable id="tablaSolicitudAprobada" 
 						value="#{solicitudesEmpleadoBean.solicitudAprobadaSeleccionada}" var="solApr"
@@ -56,34 +60,36 @@
               <h:panelGrid columns="2" id="panelGasto">
                      
                      <h:outputLabel for="fechaRealizacionGasto" value="#{msgs['altaGasto.fechaRealizacion']}"/>
-					 <h:inputText id="fechaRealizacionGasto" value="#{altaGastoBean.fechaRealizacionGasto}" binding="#{altaGastoBean.inputFechaRealizacionGasto}">
+					 <h:inputText id="fechaRealizacionGasto" value="#{altaGastoBean.fechaRealizacionGasto}" required="true" label="#{msgs['altaGasto.fechaRealizacion']}" binding="#{altaGastoBean.inputFechaRealizacionGasto}">
 						<f:convertDateTime pattern="dd-MM-yyyy" />
 					 </h:inputText>
                     
                      <h:outputLabel for="importe" value="#{msgs['altaGasto.importe']}" />
-                     <h:inputText id="importe" value="#{altaGastoBean.importeGasto}"  
-                             label="#{msgs['altaGasto.importe']}" binding="#{altaGastoBean.inputImporteGasto}" >
+                     <h:inputText id="importe" value="#{altaGastoBean.importeGasto}" required="true" label="#{msgs['altaGasto.importe']}" binding="#{altaGastoBean.inputImporteGasto}" >
+                     	<f:convertNumber maxFractionDigits="2" />
+						<f:validateDoubleRange minimum="0.01"/>
                      </h:inputText>        
                      
                      <h:outputLabel for="numeroTicket" value="#{msgs['altaGasto.numeroTicket']}" />
-                     <h:inputText id="numeroTicket" value="#{altaGastoBean.numeroTicketGasto}"  
-                             label="#{msgs['altaGasto.numeroTicket']}" binding="#{altaGastoBean.inputNumeroTicketGasto}" />
+                     <h:inputText id="numeroTicket" value="#{altaGastoBean.numeroTicketGasto}" required="true" label="#{msgs['altaGasto.numeroTicket']}" binding="#{altaGastoBean.inputNumeroTicketGasto}">
+                     	<f:validateLength minimum="1" maximum="24" />
+                     </h:inputText>
                        
                </h:panelGrid>
                         
 			<!-- Dialogo -->
 			<h:panelGrid columns="2" id="pnlBotones" style="margin-left:172px;">
 				<h:panelGroup>
-					<p:commandButton id="btnAceptar" value="#{msgs['boton.aceptar']}"  action="#{altaGastoBean.crearGasto}" style="text-align:center;">
+					<p:commandButton id="btnAceptar" value="#{msgs['boton.aceptar']}"  action="#{altaGastoBean.crearGasto}" style="text-align:center;" update="validar">
 						<p:confirm header="#{msgs['titulo.confirmacion']}" message="#{msgs['altaGasto.confirmacion']}" icon="ui-icon-alert" />
 					</p:commandButton>
 					
 					<p:confirmDialog global="true">
-						<p:commandButton value="#{msgs['confirmacion.si']}" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-						<p:commandButton value="#{msgs['confirmacion.no']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+						<p:commandButton value="#{msgs['confirmacion.si']}" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="validar"/>
+						<p:commandButton value="#{msgs['confirmacion.no']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" update="validar"/>
 					</p:confirmDialog>
 					
-					<p:commandButton id="btnCancelar" value="#{msgs['boton.cancelar']}" action="#{altaGastoBean.volverAtras}" style="text-align:center;">
+					<p:commandButton id="btnCancelar" value="#{msgs['boton.cancelar']}" immediate="true" action="#{altaGastoBean.volverAtras}" style="text-align:center;">
 					</p:commandButton>
 					 
 				</h:panelGroup>

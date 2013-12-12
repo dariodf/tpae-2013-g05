@@ -18,6 +18,10 @@
 			<h2>#{msgs['aprobarSolicitud.titulo']}</h2>
 			<br/>
 			
+			<h:panelGrid id="validar">
+				<h:messages errorStyle="color: red;" />
+			</h:panelGrid>
+			
 			<h:dataTable id="tablaSolicitudesPendientes" 
 						value="#{administrarSolicitudesBean.solicitudPendienteSeleccionada}" var="solicitud"
                         styleClass="order-table" headerClass="order-table-header"
@@ -47,22 +51,24 @@
 			
 			<h:panelGrid	 rows="2" id="pnlGroupComentario">
 				<h:outputLabel for="comentario" value="#{msgs['administrarSolicitudes.comentario']}"/>
-				<h:inputTextarea id="comentario" value="#{administrarSolicitudesBean.comentario}" label="#{msgs['administrarSolicitudes.comentario']}" />
+				<h:inputTextarea id="comentario" value="#{administrarSolicitudesBean.comentario}" label="#{msgs['administrarSolicitudes.comentario']}" required="true">
+					<f:validateLength minimum="1" maximum="256" />
+				</h:inputTextarea>
 			</h:panelGrid>
 			
 			<!-- Dialogo -->
 			<h:panelGrid columns="2" id="pnlBotones" style="margin-left:172px;">
 				<h:panelGroup>
-					<p:commandButton id="btnAceptar" value="#{msgs['boton.aceptar']}"  action="#{administrarSolicitudesBean.aprobarSolicitud}" style="text-align:center;">
+					<p:commandButton id="btnAceptar" value="#{msgs['boton.aceptar']}"  action="#{administrarSolicitudesBean.aprobarSolicitud}" style="text-align:center;" update="validar">
 						<p:confirm header="Confirmación" message="#{msgs['administrarSolicitudes.aprobarConfirmacion']}" icon="ui-icon-alert" />
 					</p:commandButton>
 					
 					<p:confirmDialog global="true">
-						<p:commandButton value="#{msgs['confirmacion.si']}" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-						<p:commandButton value="#{msgs['confirmacion.no']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+						<p:commandButton value="#{msgs['confirmacion.si']}" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="validar"/>
+						<p:commandButton value="#{msgs['confirmacion.no']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" update="validar"/>
 					</p:confirmDialog>
 					
-					<p:commandButton id="btnCancelar" value="#{msgs['boton.cancelar']}" action="#{administrarSolicitudesBean.volverAtras}" style="text-align:center;">
+					<p:commandButton id="btnCancelar" value="#{msgs['boton.cancelar']}" immediate="true" action="#{administrarSolicitudesBean.volverAtras}" style="text-align:center;">
 					</p:commandButton>
 					 
 				</h:panelGroup>
