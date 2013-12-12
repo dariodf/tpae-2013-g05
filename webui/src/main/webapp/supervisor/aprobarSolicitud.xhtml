@@ -24,45 +24,45 @@
                         rowClasses="order-table-odd-row,order-table-even-row"
                         >
 	            <h:column>
-                      <f:facet name="header"><h:outputText value="Fecha Creacion" /></f:facet>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.fechaCreacion']}" /></f:facet>
                       <h:outputText value="#{solicitud.fechaCreacion}"></h:outputText>
 	            </h:column>
 	            <h:column>
-                      <f:facet name="header"><h:outputText value="Centro de Costo" /></f:facet>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.centroDeCosto']}" /></f:facet>
                       <h:outputText value="#{solicitud.centroDeCosto.nombre}"></h:outputText>
 	            </h:column>
 	            <h:column>
-                      <f:facet name="header"><h:outputText value="Descripcion" /></f:facet>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.descripcion']}" /></f:facet>
                       <h:outputText value="#{solicitud.descripcion}"></h:outputText>
 	            </h:column>
 	            <h:column>
-                      <f:facet name="header"><h:outputText value="Importe Estimado" /></f:facet>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.importeEstimado']}" /></f:facet>
                       <h:outputText value="#{solicitud.importeEstimado}"></h:outputText>
 	            </h:column>
 	            <h:column>
-                      <f:facet name="header"><h:outputText value="Empleado Creador" /></f:facet>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.empleado']}" /></f:facet>
                       <h:outputText value="#{solicitud.empleado.nombre}"></h:outputText>
 	            </h:column>
 	        </h:dataTable>
 			
 			<h:panelGrid	 rows="2" id="pnlGroupComentario">
-				<h:outputLabel for="comentario" value="Comentario"/>
-				<h:inputTextarea id="comentario" value="#{administrarSolicitudesBean.comentario}" label="Comentario" />
+				<h:outputLabel for="comentario" value="#{msgs['administrarSolicitudes.comentario']}"/>
+				<h:inputTextarea id="comentario" value="#{administrarSolicitudesBean.comentario}" label="#{msgs['administrarSolicitudes.comentario']}" />
 			</h:panelGrid>
 			
 			<!-- Dialogo -->
 			<h:panelGrid columns="2" id="pnlBotones" style="margin-left:172px;">
 				<h:panelGroup>
-					<p:commandButton id="btnAceptar" value="Aceptar"  action="#{administrarSolicitudesBean.aprobarSolicitud}" style="text-align:center;">
-						<p:confirm header="Confirmación" message="¿Esta seguro que desea aprobar la solicitud?" icon="ui-icon-alert" />
+					<p:commandButton id="btnAceptar" value="#{msgs['boton.aceptar']}"  action="#{administrarSolicitudesBean.aprobarSolicitud}" style="text-align:center;">
+						<p:confirm header="Confirmación" message="#{msgs['administrarSolicitudes.aprobarConfirmacion']}" icon="ui-icon-alert" />
 					</p:commandButton>
 					
 					<p:confirmDialog global="true">
-						<p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-						<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+						<p:commandButton value="#{msgs['confirmacion.si']}" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="#{msgs['confirmacion.no']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 					</p:confirmDialog>
 					
-					<p:commandButton id="btnCancelar" value="Cancelar" action="#{administrarSolicitudesBean.volverAtras}" style="text-align:center;">
+					<p:commandButton id="btnCancelar" value="#{msgs['boton.cancelar']}" action="#{administrarSolicitudesBean.volverAtras}" style="text-align:center;">
 					</p:commandButton>
 					 
 				</h:panelGroup>
