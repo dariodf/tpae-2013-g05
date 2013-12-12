@@ -16,9 +16,113 @@
 		<h:form id="frmEmpleado">
 			<h2>Empleados - Solicitudes Pendientes</h2>
 			<br/>
-
-			TO EDIT		
-				
+			
+			<h:outputLabel value="#{msgs['solicitudesEmpelado.solicitudesPendientes']}"/>
+			<h:dataTable id="tablaSolicitudesPendientes" 
+						value="#{solicitudesEmpleadoBean.listaSolicitudesPendientes}" var="solPend"
+                        styleClass="order-table" headerClass="order-table-header"
+                        rowClasses="order-table-odd-row,order-table-even-row"
+                        binding="#{solicitudesEmpleadoBean.tablaSolicitudesPendientes}">
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.fechaCreacion']}" /></f:facet>
+	                      <h:outputText value="#{solPend.fechaCreacion}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.centroDeCosto']}" /></f:facet>
+	                      <h:outputText value="#{solPend.centroDeCosto.nombre}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.descripcion']}" /></f:facet>
+	                      <h:outputText value="#{solPend.descripcion}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.importeEstimado']}" /></f:facet>
+	                      <h:outputText value="#{solPend.importeEstimado}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.nombreSupervisor']}" /></f:facet>
+	                      <h:outputText value="-" ></h:outputText>
+		            </h:column>
+            </h:dataTable>
+			
+			
+			
+			
+			
+			
+			<h:outputLabel value="#{msgs['solicitudesEmpelado.solicitudesAprobadas']}"/>
+			<h:dataTable id="tablaSolicitudesAprobadas" 
+						value="#{solicitudesEmpleadoBean.listaSolicitudesAprobadas}" var="solApr"
+                        styleClass="order-table" headerClass="order-table-header"
+                        rowClasses="order-table-odd-row,order-table-even-row"
+                        binding="#{solicitudesEmpleadoBean.tablaSolicitudesAprobadas}">
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.fechaCreacion']}" /></f:facet>
+	                      <h:outputText value="#{solApr.fechaCreacion}"></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.centroDeCosto']}" /></f:facet>
+	                      <h:outputText value="#{solApr.centroDeCosto.nombre}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.descripcion']}" /></f:facet>
+	                      <h:outputText value="#{solApr.descripcion}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.importeEstimado']}" /></f:facet>
+	                      <h:outputText value="#{solApr.importeEstimado}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.nombreSupervisor']}" /></f:facet>
+	                      <h:outputText value="#{solApr.supervisor.nombre} #{solApr.supervisor.apellido}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.fechaAprobacion']}" /></f:facet>
+	                      <h:outputText value="#{solApr.fechaAprobacion}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+			              <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.altaGasto']}" /></f:facet>
+	                      <h:commandLink id="btnAlta" action="#{solicitudesEmpleadoBean.irDarAlta}" value="#{msgs['solicitudesEmpelado.linkDarAlta']}" immediate="true">
+	                      </h:commandLink>
+		            </h:column>
+            </h:dataTable>
+			
+			
+			
+			
+			
+			
+			<h:outputLabel value="#{msgs['solicitudesEmpelado.solicitudesRechazadas']}"/>
+			<h:dataTable id="tablaSolicitudesRechazadas" 
+						value="#{solicitudesEmpleadoBean.listaSolicitudesRechazadas}" var="solRech"
+                        styleClass="order-table" headerClass="order-table-header"
+                        rowClasses="order-table-odd-row,order-table-even-row"
+                        binding="#{solicitudesEmpleadoBean.tablaSolicitudesRechazadas}">
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.fechaCreacion']}" /></f:facet>
+	                      <h:outputText value="#{solRech.fechaCreacion}"></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.centroDeCosto']}" /></f:facet>
+	                      <h:outputText value="#{solRech.centroDeCosto.nombre}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.descripcion']}" /></f:facet>
+	                      <h:outputText value="#{solRech.descripcion}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.importeEstimado']}" /></f:facet>
+	                      <h:outputText value="#{solRech.importeEstimado}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpelado.nombreSupervisor']}" /></f:facet>
+	                      <h:outputText value="#{solRech.supervisor.nombre} #{solRech.supervisor.apellido}" ></h:outputText>
+		            </h:column>
+            </h:dataTable>
+			
+			
+			
+						
 		</h:form>		
 	</ui:define>
 

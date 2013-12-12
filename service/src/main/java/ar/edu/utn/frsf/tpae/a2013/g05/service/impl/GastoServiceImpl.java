@@ -30,6 +30,11 @@ public class GastoServiceImpl implements GastoService {
 		return gastoDAO.listarGastos(centroDeCosto, empleado);
 	}
 
+	@Override
+	public void agregarGasto(Gasto gasto) {
+		gastoDAO.persistir(gasto);		
+	}
+
 	
 
 }
