@@ -6,8 +6,10 @@ import java.util.Date;
 import javax.persistence.*;
 
 /**
- * @author root
+ * Objeto del modelo de datos (persistente). Representa un supervisor de la
+ * empresa.
  * 
+ * @author root
  */
 @Entity
 @Table(name = "spv")
@@ -33,8 +35,7 @@ public class Supervisor extends Usuario implements Serializable {
 	 * @param dni
 	 * @param ultimoAcceso
 	 */
-	public Supervisor(String usuario, String password, String apellido, String nombre, String dni,
-			Date ultimoAcceso) {
+	public Supervisor(String usuario, String password, String apellido, String nombre, String dni, Date ultimoAcceso) {
 		super(usuario, password, apellido, nombre, dni);
 		this.ultimoAcceso = ultimoAcceso;
 	}

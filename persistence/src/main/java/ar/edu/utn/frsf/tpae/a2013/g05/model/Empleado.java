@@ -5,8 +5,10 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 /**
- * @author root
+ * Objeto del modelo de datos (persistente). Representa un empleado de la
+ * empresa.
  * 
+ * @author root
  */
 @Entity
 @Table(name = "emp")

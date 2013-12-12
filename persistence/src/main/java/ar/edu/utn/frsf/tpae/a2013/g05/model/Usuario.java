@@ -3,8 +3,10 @@ package ar.edu.utn.frsf.tpae.a2013.g05.model;
 import javax.persistence.*;
 
 /**
- * @author
+ * Objeto del modelo de datos (persistente). Representa un usuario que es parte
+ * de la empresa.
  * 
+ * @author
  */
 @Entity
 @Table(name = "usr")
