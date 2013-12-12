@@ -33,20 +33,24 @@ public class CentroDeCostoDAOTest {
 	@Transactional
 	@Rollback(true)
 	public void validarListarCentrosDeCosto() {
-		
 		List<CentroDeCosto> listaCreada = new ArrayList<CentroDeCosto>();
-		CentroDeCosto centroDeCosto = new CentroDeCosto("Centro Uno");
-		listaCreada.add(centroDeCosto);
-		centroDeCosto = new CentroDeCosto("Centro Dos");
-		listaCreada.add(centroDeCosto);
 		
+		// Se crea un CCO y persiste
+		CentroDeCosto centroDeCosto1 = new CentroDeCosto("Centro Uno");
+		centroDeCostoDAO.persistir(centroDeCosto1);
+		listaCreada.add(centroDeCosto1);
+		
+		// Se crea un segundo CCO y persiste
+		CentroDeCosto centroDeCosto2 = new CentroDeCosto("Centro Dos");
+		centroDeCostoDAO.persistir(centroDeCosto2);
+		listaCreada.add(centroDeCosto2);
+
 		List<CentroDeCosto> listaRetornada = centroDeCostoDAO.listarCentrosDeCosto();
-		// Probamos que traiga todos los centros de costo comprobando que los
-		// traiga secuencialmente.
+
+		// Probamos que traiga todos los centros de costo recién creados.
 		for (int i = 0; i < listaRetornada.size(); i++) {
 			assertEquals(listaCreada.get(i).getNombre(), listaRetornada.get(i).getNombre());
 		}
-
 	}
 
 }
