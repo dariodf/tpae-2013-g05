@@ -23,5 +23,11 @@ public interface GastoService {
 	 * @return Lista de los gastos que cumplen los criterios seleccionados.
 	 */
 	public List<Gasto> listarGastos(CentroDeCosto centroDeCosto, Empleado empleado);
+	
+	/**
+	 * Metodo encargado de persistir un gasto en la base de datos
+	 * @param gasto el gasto a persistir
+	 */
+	public void agregarGasto(Gasto gasto);
 
 }

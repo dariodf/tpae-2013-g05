@@ -29,5 +29,12 @@ public interface SolicitudDeGastosService {
 	 */
 	public List<SolicitudDeGastos> listarSolicitudesPendientes();
 
+	
+	/**
+	 * Metodo encargado de listar todas las solicitudes de un empleado especifico
+	 * @param idEmpleado id del empleado del cual se quiere listar las solicitudes
+	 * @return lista de solicitudes del empleado en cuestion
+	 */
+	public List<SolicitudDeGastos> listarSolicitudes(int idEmpleado);
 }
 

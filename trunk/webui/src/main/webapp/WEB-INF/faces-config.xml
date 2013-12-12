@@ -57,4 +57,25 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>altaGasto</from-outcome>
+			<to-view-id>empleado/altaGasto.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>solicitarAprobacion</from-outcome>
+			<to-view-id>empleado/solicitarAprobacion.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>verSolicitudesPendientes</from-outcome>
+			<to-view-id>empleado/verSolicitudesPendientes.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>
