@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="header">
+		 <ui:include src="/WEB-INF/templates/header.xhtml" /> 
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="frmSupervisor">
+			<h2>#{msgs['administrarSolicitudes.titulo']}</h2>
+			<br/>
+			
+			<h:commandButton action="#{administrarSolicitudesBean.init}" value="#{msgs['boton.actualizar']}">
+			</h:commandButton>
+			
+			<h:dataTable id="tablaSolicitudesPendientes" 
+						value="#{administrarSolicitudesBean.listaSolicitudesPendientes}" var="solicitud"
+                        styleClass="order-table" headerClass="order-table-header"
+                        rowClasses="order-table-odd-row,order-table-even-row"
+                        binding="#{administrarSolicitudesBean.tablaSolicitudesPendientes}">
+	            <h:column>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.fechaCreacion']}" /></f:facet>
+                      <h:outputText value="#{solicitud.fechaCreacion}"></h:outputText>
+	            </h:column>
+	            <h:column>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.centroDeCosto']}" /></f:facet>
+                      <h:outputText value="#{solicitud.centroDeCosto.nombre}"></h:outputText>
+	            </h:column>
+	            <h:column>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.descripcion']}" /></f:facet>
+                      <h:outputText value="#{solicitud.descripcion}"></h:outputText>
+	            </h:column>
+	            <h:column>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.importeEstimado']}" /></f:facet>
+                      <h:outputText value="#{solicitud.importeEstimado}"></h:outputText>
+	            </h:column>
+	            <h:column>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.empleado']}" /></f:facet>
+                      <h:outputText value="#{solicitud.empleado.nombre}"></h:outputText>
+	            </h:column>
+	            <h:column>
+                     <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.aprobar']} / #{msgs['administrarSolicitudes.rechazar']}" /></f:facet>
+                     <h:commandLink id="btnAprobar" action="#{administrarSolicitudesBean.irAprobarSolicitud}" value="#{msgs['administrarSolicitudes.aprobar']}" immediate="true">
+                     </h:commandLink>
+                     <h:commandLink id="btnRechazar" action="#{administrarSolicitudesBean.irRechazarSolicitud}" value="#{msgs['administrarSolicitudes.rechazar']}" immediate="true">
+                     </h:commandLink>
+                </h:column>
+	           
+	            
+            </h:dataTable>
+            
+		
+		</h:form>		
+	</ui:define>
+
+	<ui:define name="footer">
+		<ui:include src="/WEB-INF/templates/footer.xhtml" />
+	</ui:define>
+	
+</ui:composition>
+</html>

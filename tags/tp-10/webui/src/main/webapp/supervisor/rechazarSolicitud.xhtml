@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="header">
+		 <ui:include src="/WEB-INF/templates/header.xhtml" /> 
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="frmSupervisor">
+			<h2>#{msgs['rechazarSolicitud.titulo']}</h2>
+			<br/>
+			
+			<h:panelGrid id="validar">
+				<h:messages errorStyle="color: red;" />
+			</h:panelGrid>
+			
+			<h:dataTable id="tablaSolicitudesPendientes" 
+						value="#{administrarSolicitudesBean.solicitudPendienteSeleccionada}" var="solicitud"
+                        styleClass="order-table" headerClass="order-table-header"
+                        rowClasses="order-table-odd-row,order-table-even-row"
+                        >
+	            <h:column>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.fechaCreacion']}" /></f:facet>
+                      <h:outputText value="#{solicitud.fechaCreacion}"></h:outputText>
+	            </h:column>
+	            <h:column>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.centroDeCosto']}" /></f:facet>
+                      <h:outputText value="#{solicitud.centroDeCosto.nombre}"></h:outputText>
+	            </h:column>
+	            <h:column>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.descripcion']}" /></f:facet>
+                      <h:outputText value="#{solicitud.descripcion}"></h:outputText>
+	            </h:column>
+	            <h:column>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.importeEstimado']}" /></f:facet>
+                      <h:outputText value="#{solicitud.importeEstimado}"></h:outputText>
+	            </h:column>
+	            <h:column>
+                      <f:facet name="header"><h:outputText value="#{msgs['administrarSolicitudes.empleado']}" /></f:facet>
+                      <h:outputText value="#{solicitud.empleado.nombre}"></h:outputText>
+	            </h:column>
+	                   
+	        </h:dataTable>
+			
+			<h:panelGrid	 rows="2" id="pnlGroupComentario">
+				<h:outputLabel for="comentario" value="#{msgs['administrarSolicitudes.comentario']}"/>
+				<h:inputTextarea id="comentario" value="#{administrarSolicitudesBean.comentario}" required="true" label="#{msgs['administrarSolicitudes.comentario']}">
+					<f:validateLength minimum="1" maximum="256" />
+				</h:inputTextarea>
+			</h:panelGrid>
+			
+			<!-- Dialogo -->
+			<h:panelGrid columns="2" id="pnlBotones" style="margin-left:172px;">
+				<h:panelGroup>
+					<p:commandButton id="btnAceptar" value="#{msgs['boton.aceptar']}"  action="#{administrarSolicitudesBean.rechazarSolicitud}" style="text-align:center;" update="validar">
+						<p:confirm header="Confirmación" message="#{msgs['administrarSolicitudes.rechazarConfirmacion']}" icon="ui-icon-alert" />
+					</p:commandButton>
+					
+					<p:confirmDialog global="true">
+						<p:commandButton value="#{msgs['confirmacion.si']}" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="validar"/>
+						<p:commandButton value="#{msgs['confirmacion.no']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" update="validar" />
+					</p:confirmDialog>
+					
+					<p:commandButton id="btnCancelar" value="#{msgs['boton.cancelar']}" immediate="true" action="#{administrarSolicitudesBean.volverAtras}" style="text-align:center;">
+					</p:commandButton>
+					 
+				</h:panelGroup>
+			</h:panelGrid>
+			
+			
+		
+		</h:form>		
+	</ui:define>
+
+	<ui:define name="footer">
+		<ui:include src="/WEB-INF/templates/footer.xhtml" />
+	</ui:define>
+	
+</ui:composition>
+</html>

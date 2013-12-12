@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="header">
+		 <ui:include src="/WEB-INF/templates/header.xhtml" /> 
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="frmSupervisor">
+			<h2>#{msgs['consultarGastos.titulo']}</h2>
+			<br/>
+			
+			
+			<h:selectOneMenu id="centroDeCosto" value="#{consultarGastosBean.centroDeCostoSeleccionado}">
+				<f:selectItem itemValue="#{null}" itemLabel="#{msgs['consultarGastos.comboboxCCODefault']}"/>
+				<f:selectItems value="#{consultarGastosBean.centrosDeCosto}" var="cdc" itemValue="#{cdc.id}" itemLabel="#{cdc.nombre}"/> 
+			</h:selectOneMenu>	
+			
+			<h:selectOneMenu id="empleados" value="#{consultarGastosBean.empleadoSeleccionado}" >
+				<f:selectItem itemValue="#{null}" itemLabel="#{msgs['consultarGastos.comboboxEmpleadoDefault']}"/>
+				<f:selectItems value="#{consultarGastosBean.empleados}" var="emp" itemValue="#{emp.id}" itemLabel="#{emp.nombre} #{emp.apellido}"/> 
+			</h:selectOneMenu>	
+			
+			<h:commandButton action="#{consultarGastosBean.consultar}" value="#{msgs['boton.consultar']}">
+			</h:commandButton>
+			
+            <h:dataTable id="tablaGastos" value="#{consultarGastosBean.listaDeGastos}" var="gasto"
+	            styleClass="order-table" headerClass="order-table-header"
+	            rowClasses="order-table-odd-row,order-table-even-row" >
+                        <h:column>
+                                <f:facet name="header"><h:outputText value="#{msgs['consultarGastos.fechaRealizacion']}" /></f:facet>
+                                <h:outputText value="#{gasto.fechaRealizacion}"></h:outputText>
+                        </h:column>
+                        <h:column>
+                                <f:facet name="header"><h:outputText value="#{msgs['consultarGastos.fechaAprobacionSolicitud']}" /></f:facet>
+                                <h:outputText value="#{gasto.solicitudDeGastos.fechaAprobacion}"></h:outputText>
+                        </h:column>
+                        <h:column>
+                                <f:facet name="header"><h:outputText value="#{msgs['consultarGastos.fechaAlta']}" /></f:facet>
+                                <h:outputText value="#{gasto.fechaAlta}"></h:outputText>
+                        </h:column>
+                        <h:column>
+                                <f:facet name="header"><h:outputText value="#{msgs['consultarGastos.centroDeCosto']}" /></f:facet>
+                                <h:outputText value="#{gasto.solicitudDeGastos.centroDeCosto.nombre}"></h:outputText>
+                        </h:column>
+                        <h:column>
+                                <f:facet name="header"><h:outputText value="#{msgs['consultarGastos.descripcion']}" /></f:facet>
+                                <h:outputText value="#{gasto.solicitudDeGastos.descripcion}"></h:outputText>
+                        </h:column>
+                        <h:column>
+                                <f:facet name="header"><h:outputText value="#{msgs['consultarGastos.importe']}" /></f:facet>
+                                <h:outputText value="#{gasto.importe}"></h:outputText>
+                        </h:column>
+                        <h:column>
+                                <f:facet name="header"><h:outputText value="#{msgs['consultarGastos.empleado']}" /></f:facet>
+                                <h:outputText value="#{gasto.solicitudDeGastos.empleado.nombre} #{gasto.solicitudDeGastos.empleado.apellido}"></h:outputText>
+                        </h:column>
+                        <h:column>
+                                <f:facet name="header"><h:outputText value="#{msgs['consultarGastos.supervisor']}" /></f:facet>
+                                <h:outputText value="#{gasto.solicitudDeGastos.supervisor.nombre} #{gasto.solicitudDeGastos.supervisor.apellido}"></h:outputText>
+                        </h:column>
+             </h:dataTable>       
+					
+		</h:form>		
+	</ui:define>
+
+	<ui:define name="footer">
+		<ui:include src="/WEB-INF/templates/footer.xhtml" />
+	</ui:define>
+	
+</ui:composition>
+</html>

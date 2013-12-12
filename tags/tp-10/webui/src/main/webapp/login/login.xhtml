@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="header">
+		 <ui:include src="/WEB-INF/templates/header.xhtml" /> 
+	</ui:define>
+
+	<ui:define name="content">
+		<fieldset id="fieldLogin">
+			<legend>#{msgs['login.titulo']}</legend>
+
+			<h:form id="frmLogin">
+
+				<h:panelGrid rows="2" id="pnlGroupLogin" style="text-align:center;" >
+					<h:panelGrid columns="2" id="pnlLogin" >
+						<h:outputLabel for="usuario" value="#{msgs['login.usuario']}"/>
+						<h:inputText id="usuario" value="#{loginBean.usuario.usuario}" required="true" label="#{msgs['login.usuario']}" />
+							
+						<h:outputLabel for="password" value="#{msgs['login.contraseña']}"/>
+						<h:inputSecret id="password" value="#{loginBean.usuario.password}" required="true" label="#{msgs['login.contraseña']}"/>
+					</h:panelGrid>
+
+					<h:commandButton id="btnIngresar" value="#{msgs['boton.ingresar']}" action="#{loginBean.ingresar}" />
+				</h:panelGrid>
+				<br/>
+				<h:messages value="#{msgs['login.error']}" style="color:red; margin:8px;" />
+			</h:form>		
+		</fieldset>
+	</ui:define>
+
+	<ui:define name="footer">
+		<ui:include src="/WEB-INF/templates/footer.xhtml" />
+	</ui:define>
+	
+</ui:composition>
+</html>

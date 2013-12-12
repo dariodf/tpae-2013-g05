@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="header">
+		 <ui:include src="/WEB-INF/templates/header.xhtml" /> 
+	</ui:define>
+
+	<ui:define name="content">
+		
+		<h:form id="frmEmpleado">
+			<h:panelGrid id="validar">
+				<h:messages errorStyle="color: red;" />
+			</h:panelGrid>
+
+			<h2>#{msgs['solicitarAprobacion.titulo']}</h2>
+			<br/>
+			#{msgs['solicitarAprobacion.instrucciones']}
+			<br/><br/>
+			<h:panelGrid columns="2" id="pnlLogin" >
+				<h:outputLabel for="ccos" value="#{msgs['solicitarAprobacion.nombreCCO']}" />
+				<h:selectOneMenu id="ccos" value="#{empleadoBean.centroDeCostoSeleccionado}" required="true" label="#{msgs['solicitarAprobacion.nombreCCO']}">
+					<f:selectItem itemLabel="#{msgs['solicitarAprobacion.comboboxEmpleadoDefault']}" noSelectionOption="true"/>
+					<f:selectItems value="#{empleadoBean.centrosDeCosto}" var="cco" 
+						itemLabel="#{cco.nombre}" itemValue="#{cco.nombre}"  />
+				</h:selectOneMenu>
+					
+				<h:outputLabel for="descripcion" value="#{msgs['solicitarAprobacion.descripcion']}" />
+				<h:inputTextarea id="descripcion" value="#{empleadoBean.solicitudDeGastos.descripcion}" required="true" label="#{msgs['solicitarAprobacion.descripcion']}">
+					<f:validateLength minimum="1" maximum="256" />
+				</h:inputTextarea>
+
+				<h:outputLabel for="importeEst" value="#{msgs['solicitarAprobacion.importeEstimado']}" />
+				<h:inputText id="importeEst" value="#{empleadoBean.solicitudDeGastos.importeEstimado}" required="true" label="#{msgs['solicitarAprobacion.importeEstimado']}">
+					<f:convertNumber maxFractionDigits="2" />
+					<f:validateDoubleRange minimum="0.01"/>
+				</h:inputText>
+			</h:panelGrid>
+			
+			<h:panelGrid style="margin-left:172px;">
+				<h:panelGroup>
+					<p:commandButton value="#{msgs['boton.aceptar']}" actionListener="#{empleadoBean.aceptaSolicitarAprobacion}" style="text-align:center;" update="validar">
+						<p:confirm header="#{msgs['titulo.confirmacion']}" message="#{msgs['solicitarAprobacion.confirmar']}" icon="ui-icon-alert" />
+					</p:commandButton>
+					
+					<p:confirmDialog global="true">
+						<p:commandButton value="#{msgs['confirmacion.si']}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="validar"/>
+						<p:commandButton value="#{msgs['confirmacion.no']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" update="validar"/>
+					</p:confirmDialog>
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>		
+	</ui:define>
+
+	<ui:define name="footer">
+		<ui:include src="/WEB-INF/templates/footer.xhtml" />
+	</ui:define>
+	
+</ui:composition>
+</html>

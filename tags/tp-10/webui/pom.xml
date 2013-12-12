@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>ar.edu.utn.frsf.tpae.a2013.g05</groupId>
+    <artifactId>parent-pom</artifactId>
+    <version>1</version>
+  </parent>
+
+  <groupId>ar.edu.utn.frsf.tpae.a2013.g05</groupId>
+  <artifactId>webui</artifactId>
+  <version>${product.version}</version>
+  <name>webui</name>
+  <packaging>war</packaging>
+    
+  <!-- Descomentar si necesitan bajar el primefaces-4.0 del repo y maven no lo baja -->
+  <repositories>
+	<repository>
+		<id>prime-repo</id>
+		<name>Prime Repo</name>
+		<url>http://repository.primefaces.org</url>
+	</repository>
+  </repositories>
+  
+  <dependencies>
+
+    <dependency>
+      <groupId>ar.edu.utn.frsf.tpae.a2013.g05</groupId>
+      <artifactId>persistence</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ar.edu.utn.frsf.tpae.a2013.g05</groupId>
+      <artifactId>service</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring</artifactId>
+    </dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+	</dependency>
+     <dependency>
+	  <groupId>com.sun.faces</groupId>
+	  <artifactId>jsf-api</artifactId>
+	</dependency>
+    <dependency>
+	  <groupId>com.sun.faces</groupId>
+	  <artifactId>jsf-impl</artifactId>
+	</dependency>
+    
+    <!-- http://repo1.maven.org/maven2/ -->
+    <dependency>
+	  <groupId>javax.servlet</groupId>
+	  <artifactId>jstl</artifactId>
+	</dependency>
+
+	<dependency>
+	  <groupId>javax.servlet</groupId>
+	  <artifactId>servlet-api</artifactId>
+	</dependency>
+
+	<dependency>
+	  <groupId>javax.servlet.jsp</groupId>
+	  <artifactId>jsp-api</artifactId>
+	</dependency>
+	
+    <dependency>
+      <groupId>javax.annotation</groupId>
+      <artifactId>jsr250-api</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-digester</groupId>
+      <artifactId>commons-digester</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+    </dependency>
+	<dependency>
+		<groupId>org.primefaces</groupId>
+		<artifactId>primefaces</artifactId>
+		<version>4.0</version> 
+	</dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-eclipse-plugin</artifactId>
+          <configuration>
+            <wtpversion>1.5</wtpversion>
+          </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

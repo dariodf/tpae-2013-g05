@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="header">
+		 <ui:include src="/WEB-INF/templates/header.xhtml" /> 
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="frmEmpleado">
+			<h2>#{msgs['altaGasto.titulo']}</h2>
+			<br/>
+			
+			<h:panelGrid id="validar">
+				<h:messages errorStyle="color: red;" />
+			</h:panelGrid>
+
+			  <h:dataTable id="tablaSolicitudAprobada" 
+						value="#{solicitudesEmpleadoBean.solicitudAprobadaSeleccionada}" var="solApr"
+                        styleClass="order-table" headerClass="order-table-header"
+                        rowClasses="order-table-odd-row,order-table-even-row"
+                        binding="#{altaGastoBean.tablaSolicitudAprobada}">
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpleado.fechaCreacion']}" /></f:facet>
+	                      <h:outputText value="#{solApr.fechaCreacion}"></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpleado.centroDeCosto']}" /></f:facet>
+	                      <h:outputText value="#{solApr.centroDeCosto.nombre}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpleado.descripcion']}" /></f:facet>
+	                      <h:outputText value="#{solApr.descripcion}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpleado.importeEstimado']}" /></f:facet>
+	                      <h:outputText value="#{solApr.importeEstimado}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpleado.nombreSupervisor']}" /></f:facet>
+	                      <h:outputText value="#{solApr.supervisor.nombre} #{solApr.supervisor.apellido}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpleado.fechaAprobacion']}" /></f:facet>
+	                      <h:outputText value="#{solApr.fechaAprobacion}" ></h:outputText>
+		            </h:column>
+		            <h:column>
+	                      <f:facet name="header"><h:outputText value="#{msgs['solicitudesEmpleado.comentario']}" /></f:facet>
+	                      <h:outputText value="#{solApr.comentario}" ></h:outputText>
+		            </h:column>
+              </h:dataTable>
+              
+              <h:panelGrid columns="2" id="panelGasto">
+                     
+                     <h:outputLabel for="fechaRealizacionGasto" value="#{msgs['altaGasto.fechaRealizacion']}"/>
+					 <h:inputText id="fechaRealizacionGasto" value="#{altaGastoBean.fechaRealizacionGasto}" required="true" label="#{msgs['altaGasto.fechaRealizacion']}" binding="#{altaGastoBean.inputFechaRealizacionGasto}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					 </h:inputText>
+                    
+                     <h:outputLabel for="importe" value="#{msgs['altaGasto.importe']}" />
+                     <h:inputText id="importe" value="#{altaGastoBean.importeGasto}" required="true" label="#{msgs['altaGasto.importe']}" binding="#{altaGastoBean.inputImporteGasto}" >
+                     	<f:convertNumber maxFractionDigits="2" />
+						<f:validateDoubleRange minimum="0.01"/>
+                     </h:inputText>        
+                     
+                     <h:outputLabel for="numeroTicket" value="#{msgs['altaGasto.numeroTicket']}" />
+                     <h:inputText id="numeroTicket" value="#{altaGastoBean.numeroTicketGasto}" required="true" label="#{msgs['altaGasto.numeroTicket']}" binding="#{altaGastoBean.inputNumeroTicketGasto}">
+                     	<f:validateLength minimum="1" maximum="24" />
+                     </h:inputText>
+                       
+               </h:panelGrid>
+                        
+			<!-- Dialogo -->
+			<h:panelGrid columns="2" id="pnlBotones" style="margin-left:172px;">
+				<h:panelGroup>
+					<p:commandButton id="btnAceptar" value="#{msgs['boton.aceptar']}"  action="#{altaGastoBean.crearGasto}" style="text-align:center;" update="validar">
+						<p:confirm header="#{msgs['titulo.confirmacion']}" message="#{msgs['altaGasto.confirmacion']}" icon="ui-icon-alert" />
+					</p:commandButton>
+					
+					<p:confirmDialog global="true">
+						<p:commandButton value="#{msgs['confirmacion.si']}" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="validar"/>
+						<p:commandButton value="#{msgs['confirmacion.no']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" update="validar"/>
+					</p:confirmDialog>
+					
+					<p:commandButton id="btnCancelar" value="#{msgs['boton.cancelar']}" immediate="true" action="#{altaGastoBean.volverAtras}" style="text-align:center;">
+					</p:commandButton>
+					 
+				</h:panelGroup>
+			</h:panelGrid>
+			
+			
+			
+			
+		</h:form>		
+	</ui:define>
+
+	<ui:define name="footer">
+		<ui:include src="/WEB-INF/templates/footer.xhtml" />
+	</ui:define>
+	
+</ui:composition>
+</html>
