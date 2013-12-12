@@ -37,11 +37,11 @@ public class Gasto implements Serializable {
 	private SolicitudDeGastos solicitudDeGastos;
 
 	@Column(name = "gst_fech_alta")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaAlta;
 	
 	@Column(name = "gst_fech_real")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaRealizacion;
 
 	@Column(name = "gst_imp")

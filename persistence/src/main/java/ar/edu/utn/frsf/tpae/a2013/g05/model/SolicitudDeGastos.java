@@ -44,11 +44,11 @@ public class SolicitudDeGastos implements Serializable {
 	private String descripcion;
 
 	@Column(name = "slg_fecha_creacion")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaCreacion;
 
 	@Column(name = "slg_fecha_aprobacion")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaAprobacion;
 
 	@Column(name = "slg_imp_est")
