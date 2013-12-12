@@ -14,10 +14,16 @@
 
 	<ui:define name="content">
 		<h:form id="frmEmpleado">
-			<h2>Empleados - Solicitudes Pendientes</h2>
+			<h2>#{msgs['solicitudesEmpleado.titulo']}</h2>
 			<br/>
 			
-			<h:outputLabel value="#{msgs['solicitudesEmpleado.solicitudesPendientes']}"/>
+			<h:commandButton action="#{solicitudesEmpleadoBean.actualizar}" value="#{msgs['boton.actualizar']}">
+			</h:commandButton>
+			
+			<br/>
+			<br/>
+			
+			<h3>#{msgs['solicitudesEmpleado.solicitudesPendientes']}</h3>
 			<h:dataTable id="tablaSolicitudesPendientes" 
 						value="#{solicitudesEmpleadoBean.listaSolicitudesPendientes}" var="solPend"
                         styleClass="order-table" headerClass="order-table-header"
@@ -47,10 +53,10 @@
 			
 			
 			
+			<br/>
+			<br/>
 			
-			
-			
-			<h:outputLabel value="#{msgs['solicitudesEmpleado.solicitudesAprobadas']}"/>
+			<h3>#{msgs['solicitudesEmpleado.solicitudesAprobadas']}</h3>
 			<h:dataTable id="tablaSolicitudesAprobadas" 
 						value="#{solicitudesEmpleadoBean.listaSolicitudesAprobadas}" var="solApr"
                         styleClass="order-table" headerClass="order-table-header"
@@ -88,11 +94,11 @@
             </h:dataTable>
 			
 			
+			<br/>
+			<br/>
 			
 			
-			
-			
-			<h:outputLabel value="#{msgs['solicitudesEmpleado.solicitudesRechazadas']}"/>
+			<h3>#{msgs['solicitudesEmpleado.solicitudesRechazadas']}</h3>
 			<h:dataTable id="tablaSolicitudesRechazadas" 
 						value="#{solicitudesEmpleadoBean.listaSolicitudesRechazadas}" var="solRech"
                         styleClass="order-table" headerClass="order-table-header"

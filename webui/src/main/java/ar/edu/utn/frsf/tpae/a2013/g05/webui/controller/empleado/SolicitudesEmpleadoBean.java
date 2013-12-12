@@ -77,6 +77,27 @@ public class SolicitudesEmpleadoBean implements Serializable {
 		}
 	}
 	
+	public void actualizar(){
+		listaSolicitudesPendientes.clear();
+		listaSolicitudesAprobadas.clear();
+		listaSolicitudesRechazadas.clear();
+				
+		Empleado usuarioLogueado = (Empleado) usuarioService.getUsuarioLogueado();
+				
+		List<SolicitudDeGastos> solicitudesEmpleado = solicitudDeGastosService.listarSolicitudes(usuarioLogueado.getId());
+		
+		// Separa las solicitudes en tres listas distintas dependiendo su tipo
+		for (SolicitudDeGastos solicitudDeGastos : solicitudesEmpleado){
+			if(solicitudDeGastos.getEstado().compareTo(Constantes.PENDIENTE.name()) == 0)
+				listaSolicitudesPendientes.add(solicitudDeGastos);
+			else if(solicitudDeGastos.getEstado().compareTo(Constantes.APROBADA.name()) == 0)
+				listaSolicitudesAprobadas.add(solicitudDeGastos);
+			else
+				listaSolicitudesRechazadas.add(solicitudDeGastos);
+		}
+	}
+	
+	
 	public String irDarAlta(){
 		solicitudAprobadaSeleccionada = (SolicitudDeGastos) tablaSolicitudesAprobadas.getRowData();
 		return "altaGasto";
